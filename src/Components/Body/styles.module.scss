@@ -1,0 +1,21 @@
+.body {
+    max-width: 1120px;
+    width: 100%;
+    //background-color: lightblue;
+    margin: 0 auto;
+    //border: 1px dashed red;
+
+    @media (max-width: 767px) {
+        & {
+            max-width: 272px;
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        & {
+            max-width: 688px;
+            width: 100%;
+        }
+    }
+}
