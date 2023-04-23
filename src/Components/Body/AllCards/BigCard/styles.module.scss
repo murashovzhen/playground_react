@@ -1,0 +1,15 @@
+.bigCard {
+    max-width: 736px;
+    width: 100%;
+    border: 1px dashed green;
+
+    .bigCardContent {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
+
+

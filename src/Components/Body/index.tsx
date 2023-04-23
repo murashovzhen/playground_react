@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import MainHeader from "./Main_header";
+import BodyHeader from "./Body_header";
+import BodyContent from "./Body_content";
 
 const Body = () => {
-
-    return (
-    <body className = { styles.body } >
-        <MainHeader/>
-    </body>
-    )     
+  return (
+    <div className={styles.body}>
+      <BodyHeader />
+      <BodyContent />
+    </div>
+  );
 };
 
 export default Body;

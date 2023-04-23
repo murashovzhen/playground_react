@@ -1,0 +1,21 @@
+.cardFooter{
+display: flex;
+justify-content: space-between;
+//border: 1px dashed blue;
+padding-bottom: 40px;
+
+& span{
+    display: inline-block;
+    font-family: Barlow;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    padding: 0 25px 0 8px;
+    vertical-align: top;
+}
+
+.bookmark{
+    padding-right: 30px;
+    vertical-align: bottom;
+}
+}
