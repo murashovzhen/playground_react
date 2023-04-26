@@ -1,15 +1,43 @@
 .bigCard {
     max-width: 736px;
     width: 100%;
-    border: 1px dashed green;
-
+    margin-bottom: 40px;
+    background-color: hotpink;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
     .bigCardContent {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        padding-bottom: 32px;
+
+        .bigCardText {
+            width: 60%;
+            padding-right: 32px;
+            text-align: left;
+        }
+
+        h2 {
+            font-size: 32px;
+            line-height: 44px;
+            font-weight: 700;
+            color: #313037;
+            padding-bottom: 24px;
+            margin: 0;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 28px;
+            font-weight: 400;
+            color: #8D8E97;
+            margin: 0;
+        }
+
+        .bigCardImg {
+            width: 35%;
+            object-fit: cover;
+        }
     }
 }
-
-
-
-

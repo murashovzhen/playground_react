@@ -1,0 +1,34 @@
+.smallCard {
+    max-width: 354px;
+    width: 100%;
+    margin-bottom: 40px;
+    background-color: bisque;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .smallCardContent {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 25px;
+
+        .smallCardText {
+            width: 63%;
+            padding-right: 34px;
+            text-align: left;
+        }
+
+        h3 {
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 600;
+            color: #313037;
+            padding-bottom: 25px;
+            margin: 0;
+        }
+
+        .smallCardImg {
+            width: 27%;
+            object-fit: cover;
+        }
+    }
+}

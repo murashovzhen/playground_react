@@ -1,0 +1,25 @@
+.middleCard {
+    display: flex;
+    max-width: 352px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    background-color: aquamarine;
+    margin-bottom: 40px;
+
+    h3 {
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 600;
+        color: #313037;
+        padding-bottom: 28px;
+        margin: 0;
+    }
+
+    .middleCardImg {
+        width: 100%;
+        object-fit: cover;
+        padding-bottom: 24px;
+    }
+}
