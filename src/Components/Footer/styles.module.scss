@@ -1,0 +1,34 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1120px;
+    width: 100%;
+    margin: 0 auto;
+    height: 90px;
+    border-top: 3px solid #DADADA;
+    align-items: center;
+
+
+    @media (max-width: 767px) {
+        & {
+            max-width: 272px;
+            width: 100%;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        & {
+            max-width: 688px;
+            width: 100%;
+        }
+    }
+
+        span {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            color: #8D8E97;
+        }
+}
