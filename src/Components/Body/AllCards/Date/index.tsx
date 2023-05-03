@@ -17,6 +17,3 @@ const CardDate = (props: Props) => {
 
 export default CardDate;
 
-// var today = new Date();
-// var options = { year: "numeric", month: "long", day: "numeric" };
-// var now = today.toLocaleString("en-US", options);

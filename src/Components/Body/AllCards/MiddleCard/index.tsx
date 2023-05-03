@@ -10,7 +10,7 @@ const MiddleCard = () => {
     const [post, setPost] = useState<PostType>({} as PostType)
 
     useEffect(() => {
-        getPost(10)
+        getPost('640f2d6af5d04dbff2c5ab3a')
             .then(post => setPost(post))
     })
 

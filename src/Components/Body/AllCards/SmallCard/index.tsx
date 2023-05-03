@@ -9,13 +9,14 @@ const SmallCard = () => {
   const [post, setPost] = useState<PostType>({} as PostType)
 
   useEffect(() => {
-    getPost(10)
+    getPost('640f2d6af5d04dbff2c5ab45')
       .then(post => setPost(post))
   })
 
   return (
     <div className={styles.smallCard}>
       <div className={styles.smallCardContent}>
+        <img className={styles.smallCardImg_Upper} src={post.image} alt="SmallCard" />
         <div className={styles.smallCardText}>
           <CardDate />
           <h3>{post.title}</h3>

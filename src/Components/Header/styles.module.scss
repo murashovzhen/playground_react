@@ -1,5 +1,11 @@
-.header{
+.header {
+    display: flex;
+    position: fixed;
     height: 84px;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    z-index: 100;
     background-color: #2231AA;
-    margin-bottom: 72px;
 }

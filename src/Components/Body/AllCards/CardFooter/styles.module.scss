@@ -1,22 +1,28 @@
-.cardFooter{
-display: flex;
-justify-content: space-between;
-border-bottom: 3px solid #DADADA;
-padding-bottom: 35px;
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid #DADADA;
+    padding-bottom: 35px;
 
-& span{
-    display: inline-block;
-    font-family: Barlow;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 700;
-    padding: 0 25px 0 8px;
-    vertical-align: top;
-    color: #313037;
-}
+    @media (max-width: 767px) {
+        & {
+            padding-bottom: 30px;
+        }
+    }
 
-.bookmark{
-    padding-right: 30px;
-    vertical-align: bottom;
-}
+    & span {
+        display: inline-block;
+        font-family: Barlow;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 700;
+        padding: 0 25px 0 8px;
+        vertical-align: top;
+        color: #313037;
+    }
+
+    .bookmark {
+        padding-right: 30px;
+        vertical-align: bottom;
+    }
 }
