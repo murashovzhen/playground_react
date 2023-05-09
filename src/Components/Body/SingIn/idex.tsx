@@ -6,13 +6,41 @@ const SingIn = () => {
 
   return (
     <div className={styles.singIn}>
-      <div>
+
+      <div className={styles.singInTitle}>
         <span>Back to home</span>
         <h1>Sign In</h1>
       </div>
-      <div>
 
-      </div>
+      {/* <form className={styles.singInBox}>
+
+        <div className={styles.email}>
+          <label>{title}</label>
+          <input
+            className={isError ? styles.error : ''}
+            type="text"
+            value={text}
+            placeholder={placeholder} />
+        </div>
+        <div className={styles.password}>
+          <label>{title}</label>
+          <input
+            className={isError ? styles.error : ''}
+            type="text"
+            value={text}
+            placeholder={placeholder} />
+          {
+            isError && (
+              <div className={styles.error}>
+                {errorMessage}
+              </div>
+            )
+          }
+        </div>
+
+
+        <input type="button" />
+      </form> */}
     </div>
   )
 }

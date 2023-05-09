@@ -2,6 +2,7 @@ import styles from "./App.module.scss";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
 import Footer from "./Components/Footer";
+import SingIn from "./Components/Body/SingIn/idex";
 
 
 const App = () => {
@@ -9,7 +10,8 @@ const App = () => {
     <div className={styles.app}>
       <Header />
       <Body />
-      <Footer/>
+      <SingIn />
+      <Footer />   
     </div>
   );
 };

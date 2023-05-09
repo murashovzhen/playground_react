@@ -6,9 +6,9 @@ const HeaderTabs = () => {
     <nav className={styles.navigation}>
       <a className={styles.navTabs} href="#">All</a>
       <a className={styles.navTabs} href="#">My favorites</a>
-      <a className={styles.navTabs} href="#"> Popular</a>
+      <a className={styles.navTabs} href="#"> My posts</a>
     </nav>
-  ); 
+  );
 };
 
 export default HeaderTabs;
