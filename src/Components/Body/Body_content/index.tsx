@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./styles.module.scss";
 import { PostType } from '../../../Types/Post'
-import CardFooter from '../AllCards/CardFooter';
-import MiddleCard from '../AllCards/MiddleCard';
-import SmallCard from '../AllCards/SmallCard';
 import Card from '../../Card';
 import cardStyles from "../../Card/styles.module.scss";
 
@@ -31,30 +28,30 @@ const BodyContent = () => {
       <div className={styles.bigAndSmallContent}>
         <Card post={posts && posts[0]} cardstyle={cardStyles.bigCard} />
         <div className={styles.smallAndSmallContent}>
-          <SmallCard post={posts && posts[1]} />
-          <SmallCard post={posts && posts[2]} />
+          <Card post={posts && posts[1]} cardstyle={cardStyles.smallCard} />
+          <Card post={posts && posts[2]} cardstyle={cardStyles.smallCard} />
         </div>
       </div>
 
       <div className={styles.middleAndSmallContent}>
         <div className={styles.middleAndMiddleContent} >
-          <MiddleCard post={posts && posts[3]} />
-          <MiddleCard post={posts && posts[4]} />
+          <Card post={posts && posts[3]} cardstyle={cardStyles.middleCard} />
+          <Card post={posts && posts[4]} cardstyle={cardStyles.middleCard} />
         </div>
         <div className={styles.smallAndSmallContent}>
-          <SmallCard post={posts && posts[5]} />
-          <SmallCard post={posts && posts[6]} />
+          <Card post={posts && posts[5]} cardstyle={cardStyles.smallCard} />
+          <Card post={posts && posts[6]} cardstyle={cardStyles.smallCard} />
         </div>
       </div>
 
       <div className={styles.middleAndSmallContent}>
         <div className={styles.middleAndMiddleContent} >
-          <MiddleCard post={posts && posts[7]} />
-          <MiddleCard post={posts && posts[8]} />
+          <Card post={posts && posts[7]} cardstyle={cardStyles.middleCard} />
+          <Card post={posts && posts[8]} cardstyle={cardStyles.middleCard} />
         </div>
         <div className={styles.smallAndSmallContent}>
-          <SmallCard post={posts && posts[9]} />
-          <SmallCard post={posts && posts[10]} />
+          <Card post={posts && posts[9]} cardstyle={cardStyles.smallCard} />
+          <Card post={posts && posts[10]} cardstyle={cardStyles.smallCard} />
         </div>
       </div>
 

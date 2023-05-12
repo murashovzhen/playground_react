@@ -43,7 +43,8 @@
             }
         }
 
-        h2 {
+        .title {
+            display: inline-block;
             font-size: 32px;
             line-height: 44px;
             font-weight: 700;
@@ -138,7 +139,12 @@
         }
     }
 
-    h3 {
+    p {
+        display: none;
+    }
+
+    .title {
+        display: inline-block;
         font-size: 18px;
         line-height: 28px;
         font-weight: 600;
@@ -161,9 +167,146 @@
         }
     }
 
-    .cardImg {
+    .cardImg_Upper {
         width: 100%;
         object-fit: contain;
         padding-bottom: 24px;
+    }
+
+    .cardImg {
+        display: none;
+    }
+}
+
+.smallCard {
+    display: flex;
+    max-width: 354px;
+    width: 100%;
+    margin-bottom: 40px;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: 767px) {
+        & {
+            max-width: 272px;
+            width: 100%;
+            margin-bottom: 32px;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        & {
+            max-width: 328px;
+            width: 100%;
+        }
+    }
+
+    .cardContent {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 25px;
+
+        @media (max-width: 767px) {
+            & {
+                flex-direction: column;
+                padding-bottom: 0;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            & {
+                flex-direction: column;
+                padding-bottom: 0;
+            }
+        }
+
+        .cardImg_Upper {
+            display: none;
+            width: 100%;
+            object-fit: contain;
+            padding-bottom: 24px;
+
+            @media (max-width: 767px) {
+                & {
+                    display: block;
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1024px) {
+                & {
+                    display: block;
+                }
+            }
+        }
+
+                 p {
+                     display: none;
+                 }
+
+        .cardText {
+            width: 63%;
+            padding-right: 34px;
+            text-align: left;
+
+            @media (max-width: 767px) {
+                & {
+                    width: 100%;
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1024px) {
+                & {
+                    width: 100%;
+                }
+            }
+        }
+
+        .title {
+            display: inline-block;
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 600;
+            color: #313037;
+            padding: 8px 0 0 0;
+            margin: 0;
+
+
+            @media (max-width: 767px) {
+                & {
+                    padding: 8px 0 25px 0;
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1024px) {
+                & {
+                    padding: 8px 0 25px 0;
+                }
+            }
+
+            &:hover {
+                color: #2231AA;
+                cursor: pointer;
+                transition: all 0.7s;
+            }
+        }
+
+        .cardImg {
+            display: block;
+            width: 27%;
+            object-fit: contain;
+            align-self: flex-start;
+
+            @media (max-width: 767px) {
+                & {
+                    display: none;
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1024px) {
+                & {
+                    display: none;
+                }
+            }
+        }
     }
 }

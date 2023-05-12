@@ -4,6 +4,6 @@ export type PostType = {
     title: string
     text: string
     image: string
-    createDate: Date
+    createdAt: Date
 }
 
