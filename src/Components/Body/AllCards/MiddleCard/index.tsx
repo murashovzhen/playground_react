@@ -4,22 +4,22 @@ import { getPost } from '../../../../Services/PostServise'
 import styles from './styles.module.scss'
 import CardDate from '../Date'
 import CardFooter from '../CardFooter/index'
+import { Link } from 'react-router-dom'
 
 
-const MiddleCard = () => {
-    const [post, setPost] = useState<PostType>({} as PostType)
-
-    useEffect(() => {
-        getPost('640f2d6af5d04dbff2c5ab3a')
-            .then(post => setPost(post))
-    })
+const MiddleCard = (props: { post: PostType | undefined }) => {
+    if (props.post == undefined) {
+        return <div></div>;
+    }
 
     return (
         <div className={styles.middleCard}>
             <div>
-                <img className={styles.middleCardImg} src={post.image} alt="MiddleCard" />
+                <img className={styles.middleCardImg} src={props.post.image} alt="MiddleCard" />
                 <CardDate />
-                <h3>{post.title}</h3>
+                <Link to={`/posts/${props.post.id}`}>
+                    <h3>{props.post.title}</h3>
+                </Link>
             </div>
             <CardFooter />
         </div>

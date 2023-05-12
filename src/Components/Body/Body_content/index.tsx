@@ -22,7 +22,7 @@ const BodyContent = () => {
     getApiData();
   }, []);
 
-//***************************************************************************************** */
+  //***************************************************************************************** */
   const Card = (props: { post: PostType | undefined, style: string }) => {
     if (props.post == undefined) {
       return <div></div>;
@@ -47,41 +47,42 @@ const BodyContent = () => {
     );
   };
 
-//*********************************************************************** */
-  
+  //*********************************************************************** */
+
   return (
+
     <div>
 
       <div className={styles.bigAndSmallContent}>
-        <BigCard />
+        <BigCard post={posts && posts[0]} />
         <div className={styles.smallAndSmallContent}>
-          <SmallCard />
-          <SmallCard />
+          <SmallCard post={posts && posts[1]} />
+          <SmallCard post={posts && posts[2]} />
         </div>
       </div>
 
       <div className={styles.middleAndSmallContent}>
         <div className={styles.middleAndMiddleContent} >
-          <MiddleCard />
-          <MiddleCard />
+          <MiddleCard post={posts && posts[3]} />
+          <MiddleCard post={posts && posts[4]} />
         </div>
         <div className={styles.smallAndSmallContent}>
-          <SmallCard />
-          <SmallCard />
+          <SmallCard post={posts && posts[5]} />
+          <SmallCard post={posts && posts[6]} />
         </div>
       </div>
 
       <div className={styles.middleAndSmallContent}>
         <div className={styles.middleAndMiddleContent} >
-          <MiddleCard />
-          <MiddleCard />
+          <MiddleCard post={posts && posts[7]} />
+          <MiddleCard post={posts && posts[8]} />
         </div>
         <div className={styles.smallAndSmallContent}>
-          <SmallCard />
-          <SmallCard />
+          <SmallCard post={posts && posts[9]} />
+          <SmallCard post={posts && posts[10]} />
         </div>
       </div>
-      
+
     </div>
   )
 }

@@ -4,25 +4,27 @@ import styles from '../BigCard/styles.module.scss'
 import CardDate from '../Date'
 import { PostType } from '../../../../Types/Post'
 import { getPost } from '../../../../Services/PostServise'
+import { Link } from 'react-router-dom'
 
-const BigCard = () => {
-  const [post, setPost] = useState<PostType>({} as PostType)
-
-  useEffect(() => {
-    getPost('640f2d6af5d04dbff2c5ab2a')
-      .then(post => setPost(post))
-  })
+const BigCard = (props: { post: PostType | undefined }) => {
+  if (props.post == undefined) {
+    return <div></div>;
+  }
 
   return (
     <div className={styles.bigCard}>
       <div className={styles.bigCardContent}>
-        <img className={styles.bigCardImg_Upper} src={post.image} alt="BigCard" />
+        <img className={styles.bigCardImg_Upper} src={props.post.image} alt="BigCard" />
         <div className={styles.bigCardText}>
           <CardDate />
-          <h2>{post.title}</h2>
-          <p>{post.text}</p>
+          <Link to={`/posts/${props.post.id}`}>
+            <h2>{props.post.title}</h2>
+          </Link>
+
+
+          <p>{props.post.text}</p>
         </div>
-        <img className={styles.bigCardImg} src={post.image} alt="BigCard" />
+        <img className={styles.bigCardImg} src={props.post.image} alt="BigCard" />
       </div>
       <CardFooter />
     </div>

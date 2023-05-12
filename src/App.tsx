@@ -1,18 +1,20 @@
 import styles from "./App.module.scss";
-import Header from "./Components/Header";
+import { Route, Routes } from 'react-router-dom'
+import Layout from './Components/Layout'
 import Body from "./Components/Body";
-import Footer from "./Components/Footer";
-import SingIn from "./Components/Body/SingIn/idex";
+import Post from "./Components/Post";
+import SingIn from "./Components/SingIn/idex";
 
 
 const App = () => {
   return (
-    <div className={styles.app}>
-      <Header />
-      <Body />
-      <SingIn />
-      <Footer />   
-    </div>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<Body />} />
+        <Route path='posts/:id' element={<Post />} />
+        <Route path='singin' element={<SingIn />} />
+      </Route>
+    </Routes>
   );
 };
 
