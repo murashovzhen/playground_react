@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from './Components/Layout'
 import Body from "./Components/Body";
 import Post from "./Components/Post";
-import SingIn from "./Components/SingIn/idex";
+import SingIn from "./Components/SingIn";
 
 
 const App = () => {

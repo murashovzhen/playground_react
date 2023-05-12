@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import FormLayout from '../FormLayout'
+import FormElement from '../FormElement'
+
 
 const SingIn = () => {
 
@@ -9,7 +11,10 @@ const SingIn = () => {
     <FormLayout title={'Sign In'} breadcrumbs={['Back to Home']}>
       <form className={styles.singInBox}>
 
-        <div className={styles.formControl}>
+        <FormElement value={''} placeholder={'Your email'} label={'Email'} type={'text'} />
+        <FormElement value={''} placeholder={'Your password'} label={'Password'} type={'password'} />
+
+        {/* <div className={styles.formControl}>
           <label>Email</label>
           <input
             // className={isError ? styles.error : ''}
@@ -32,7 +37,7 @@ const SingIn = () => {
               </div>
             )
           } */}
-        </div>
+        {/* </div> */} 
         <a href="#">Forgot password?</a>
         <input type="button" />
         <span>Don’t have an account?<a href="#"> Sign Up</a></span>
