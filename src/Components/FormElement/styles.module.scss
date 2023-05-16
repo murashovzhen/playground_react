@@ -1,0 +1,23 @@
+.formElement {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+
+    label {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #313037;
+        text-align: left;
+        padding-bottom: 8px;
+    }
+
+    input {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #8D8E97;
+        padding: 18px;
+        border: none;
+    }
+}

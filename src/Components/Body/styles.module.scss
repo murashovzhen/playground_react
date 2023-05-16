@@ -1,8 +1,10 @@
 .body {
     max-width: 1120px;
     width: 100%;
+    height: 100%;
     margin: 0 auto;
-    padding-top: 156px;
+    padding-top: 84px;
+    flex: 1 0 auto;
 
     @media (max-width: 767px) {
         & {

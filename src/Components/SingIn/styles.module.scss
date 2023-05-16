@@ -1,8 +1,9 @@
-.singIn {
+.singInBox {
+    display: flex;
+    flex-direction: column;
     max-width: 1120px;
     width: 100%;
     margin: 0 auto;
-    padding-top: 156px;
 
     @media (max-width: 767px) {
         & {
@@ -18,23 +19,37 @@
         }
     }
 
-        .singInTitle {
-            text-align: left
+    .singInBox_footer {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            color: #313037;
+            padding-top: 16px;
+            text-align: left;
+            text-decoration: none;
+
+            // &:hover {
+            //         color: #2231AA;
+            //         cursor: pointer;
+            //         transition: all 0.25s;
+            //     }
+            // }
         }
 
-                .singInBox{
-                    display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        padding: 40px;
-                        gap: 10px;
-                    
-                        position: absolute;
-                        width: 624px;
-                        height: 472px;
-                        left: 648px;
-                        top: 364px;
+        span {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            color: #8D8E97;
+            padding-top: 24px;
 
-                        border: 1px solid #DADADA;
-                }
+            a {
+                color: #2231aa;
+            }
+        }
+    }
 }

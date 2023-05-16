@@ -8,6 +8,11 @@
   
   .content{
     margin-top: 84px;
+        max-width: 1120px;
+          width: 100%;
+          margin: 0 auto;
+          flex: 1 0 auto;
+          padding-top: 84px;
   }
 
   // .app_header {

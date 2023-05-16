@@ -19,10 +19,7 @@ const BodyContent = () => {
     getApiData();
   }, []);
 
-
-
   return (
-
     <div>
 
       <div className={styles.bigAndSmallContent}>
@@ -58,6 +55,5 @@ const BodyContent = () => {
     </div>
   )
 }
-
 
 export default BodyContent;

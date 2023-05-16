@@ -1,17 +1,10 @@
-import React from 'react'
-
-type FormElementType = {
-    value: string
-    placeholder: string
-    label: string
-    type: string
-}
+import { FormElementType } from '../../Types/FormElement'
+import styles from './styles.module.scss'
 
 const FormElement = (props: FormElementType) => {
 
-
     return (
-        <div>
+        <div className={styles.formElement}>
             <label>{props.label}</label>
             <input
                 //   className={isError ? styles.error : ''}

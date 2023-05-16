@@ -1,0 +1,14 @@
+.formButton {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 1);
+    background: #2231AA;
+    border: none;
+    padding: 16px 0;
+    margin-top: 48px;
+
+    &:hover {
+        background: #5360CD;
+    }
+}
