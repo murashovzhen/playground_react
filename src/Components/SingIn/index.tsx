@@ -11,7 +11,7 @@ const SingIn = () => {
       title={'Sign In'}
       breadcrumbs={['Back to Home']}>
         <div className={[genericStyles.row].join(' ')}>
-        <div className={[genericStyles.col_lg_6, genericStyles.offset_lg_3, genericStyles.col_12, genericStyles.offset_12].join(' ')}>
+        <div className={[genericStyles.col_lg_6, genericStyles.offset_lg_3, genericStyles.col_12].join(' ')}>
         <form className={[genericStyles.bordered_box, genericStyles.content_center].join(' ')}>
       <div className={genericStyles.row}>
          <div className={genericStyles.col_12}>
