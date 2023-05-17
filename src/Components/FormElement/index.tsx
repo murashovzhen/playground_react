@@ -7,7 +7,6 @@ const FormElement = (props: FormElementType) => {
         <div className={styles.formElement}>
             <label>{props.label}</label>
             <input
-                //   className={isError ? styles.error : ''}
                 type={props.type}
                 //value={props.value}
                 placeholder={props.placeholder} />

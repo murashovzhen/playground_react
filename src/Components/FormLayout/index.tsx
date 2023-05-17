@@ -5,8 +5,8 @@ const FormLayout = (props: FormLayoutType) => {
 
   return (
     <div className={styles.col}>
-      <div className={styles.row_w_100}>
-        <div className={styles.breadcrumbs}>
+      <div className={styles.row_w_12}>
+        <div>
           {props.breadcrumbs.map(breadcrumb => (
             <span><a href="#">{breadcrumb}</a>/</span>
           ))}
@@ -16,8 +16,7 @@ const FormLayout = (props: FormLayoutType) => {
           {props.title}
         </h1>
       </div>
-
-      <div className={styles.row_w_55_align_self_center}>
+      <div className={`${styles.row_w_6} ${styles.align_self_center}`}>
         {props.children}
       </div>
     </div>

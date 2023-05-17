@@ -21,12 +21,12 @@ const SingIn = () => {
           placeholder={'Your password'}
           label={'Password'} />
         <div className={styles.singInBox_footer}>
-          <a href="#">Forgot password?</a>
+          <a href="#">{'Forgot password?'}</a>
           <FormButton
             text="Sign In" />
           <span>
-            Don’t have an account?
-            <a href="#"> Sign Up</a>
+            {'Don’t have an account?'}
+            <a href="#">{'Sign Up'} </a>
           </span>
         </div>
       </form>
