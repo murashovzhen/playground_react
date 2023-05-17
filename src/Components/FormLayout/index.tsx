@@ -22,9 +22,7 @@ const FormLayout = (props: FormLayoutType) => {
       </div>
     </div>
     <div className={genericStyles.row}>
-      <div className={[genericStyles.col_lg_6, genericStyles.offset_lg_3, genericStyles.col_12, genericStyles.offset_12].join(' ')}>
-      {/* the same
-       <div className={[genericStyles.col_lg_6, genericStyles.offset_lg_3, genericStyles.col_md_12, genericStyles.offset_md_12, genericStyles.col_sm_12, genericStyles.offset_sm_12].join(' ')}> */}
+      <div className={genericStyles.col_12}>    
         {props.children}
       </div>
     </div>
