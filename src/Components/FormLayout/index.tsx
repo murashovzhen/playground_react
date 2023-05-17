@@ -1,5 +1,5 @@
 import styles from './styles.module.scss'
-import { FormLayoutType } from '../../Types/FormLayoutType'
+import { FormLayoutType } from '../../Types/FormLayout'
 
 const FormLayout = (props: FormLayoutType) => {
 

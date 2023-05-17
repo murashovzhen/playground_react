@@ -1,15 +1,26 @@
-import { FormElementType } from '../../Types/FormElement'
+//import { FormElementType } from '../../Types/FormElement'
 import styles from './styles.module.scss'
 
-const FormElement = (props: FormElementType) => {
+
+export type FormElementType = {
+    placeholder: string
+    label: string
+    type: string
+    id: string
+    onChange: () => void
+    //value?: string | undefined
+}
+
+function FormElement(props: FormElementType): JSX.Element {
 
     return (
         <div className={styles.formElement}>
             <label>{props.label}</label>
-            <input
+            <input onChange={props.onChange}
+                id={props.id}
                 type={props.type}
-                //value={props.value}
-                placeholder={props.placeholder} />
+                placeholder={props.placeholder}
+                name={props.id} />
         </div>
     )
 }
