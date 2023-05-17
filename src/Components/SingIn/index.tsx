@@ -12,7 +12,7 @@ const SingIn = () => {
       breadcrumbs={['Back to Home']}>
         <div className={[genericStyles.row].join(' ')}>
         <div className={[genericStyles.col_lg_6, genericStyles.offset_lg_3, genericStyles.col_12].join(' ')}>
-        <form className={[genericStyles.bordered_box, genericStyles.content_center].join(' ')}>
+        <form className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')}>
       <div className={genericStyles.row}>
          <div className={genericStyles.col_12}>
              <FormElement
@@ -32,8 +32,8 @@ const SingIn = () => {
          </div>
       </div>
       <div className={genericStyles.row}>
-         <div className={genericStyles.col_12}>
-            <a href="#" className={[genericStyles.link, genericStyles.m_t_5].join(" ")}>Forgot password?</a>
+         <div className={[genericStyles.col_12, genericStyles.m_t_10].join(" ")}>
+            <a href="#" className={[genericStyles.link].join(" ")}>Forgot password?</a>
          </div>
       </div>
       <div className={genericStyles.row}>
@@ -42,8 +42,8 @@ const SingIn = () => {
          </div>
       </div>
       <div className={genericStyles.row}>
-         <div className={genericStyles.col_12}>
-            <span className={[genericStyles.help_text, genericStyles.m_t_25].join(" ")}>Don’t have an account? <a href="#" className={genericStyles.link}> Sign Up</a></span>
+         <div className={[genericStyles.col_12, genericStyles.m_t_25, genericStyles.content_center].join(' ')}>
+            <span className={[genericStyles.help_text].join(" ")}>Don’t have an account? <a href="#" className={genericStyles.link}> Sign Up</a></span>
          </div>          
       </div>
       
