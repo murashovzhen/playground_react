@@ -4,4 +4,6 @@ export type FormElementType = {
     placeholder: string
     label: string
     type: string
+    name: string
+    component: string
 }

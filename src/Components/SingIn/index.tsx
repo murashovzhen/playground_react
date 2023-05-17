@@ -20,7 +20,10 @@ const SingIn = () => {
               type={'text'}
               value={''}
               placeholder={'Your email'}
-              label={'Email'} />
+              label={'Email'} 
+              name={'Email'}
+              component='TextBox'
+              />
          </div>
       </div>
       <div className={genericStyles.row}>
@@ -29,7 +32,10 @@ const SingIn = () => {
           type={'text'}
           value={''}
           placeholder={'Your password'}
-          label={'Password'} />
+          label={'Password'}
+          name={'Password'}
+          component='TextBox'
+          />
          </div>
       </div>
       <div className={genericStyles.row}>

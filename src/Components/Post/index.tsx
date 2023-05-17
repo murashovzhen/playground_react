@@ -19,6 +19,13 @@ const Post = () => {
 
   return (
     <FormLayout title={post.title}  breadcrumbs={[<Link to="/" className={genericStyles.link}>Home</Link>]}> 
+
+
+      <div className={[genericStyles.row, genericStyles.m_t_25].join('')}>
+      <div className={[genericStyles.col_12].join(' ')}>
+        <Link to={`/posts/edit/${post.id}`}>Edit Post</Link>
+      </div> 
+      </div> 
       <div className={[genericStyles.row, genericStyles.m_t_25].join('')}>
       <div className={[genericStyles.col_lg_6, genericStyles.offset_lg_3, genericStyles.col_12].join(' ')}>
          <img src={post.image} alt='Image' />

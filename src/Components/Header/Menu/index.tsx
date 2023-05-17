@@ -8,7 +8,8 @@ const Menu = () => {
     return (
         <div className={styles.menu}>
             <ul>
-                <li>Home </li>
+                <li><Link to={`/`}>Home</Link></li>
+                <li><Link to={`/posts/create`}>Create Post</Link></li>
                 <li><Link to={`/singin`}>Sing In</Link></li>
             </ul>
         </div>
