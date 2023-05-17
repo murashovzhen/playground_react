@@ -10,7 +10,7 @@ const FormLayout = (props: FormLayoutType) => {
     <div className={genericStyles.row}>
       <div className={[genericStyles.col_12, styles.breadcrumbs].join(' ')}>
           {props.breadcrumbs.map(breadcrumb => (
-            <span><a href="#" className={genericStyles.link}>{breadcrumb}</a>/</span>
+            <span><a href="#" className={genericStyles.link}>{breadcrumb}</a> / </span>
           ))}
           <span className={genericStyles.help_text}>{props.title}</span>
           
