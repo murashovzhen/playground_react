@@ -1,26 +1,29 @@
-//import { FormElementType } from '../../Types/FormElement'
+import { FormElementType } from '../../Types/FormElement'
 import styles from './styles.module.scss'
 
-
-export type FormElementType = {
-    placeholder: string
-    label: string
-    type: string
-    id: string
-    onChange: () => void
-    //value?: string | undefined
-}
-
 function FormElement(props: FormElementType): JSX.Element {
+
+    let input = <input
+        onChange={props.onChangeFunction}
+        id={props.id}
+        type={props.type}
+        placeholder={props.placeholder} />;
+
+    if (props.component == 'TextArea') {
+        input = <textarea
+            id={props.id}
+            // value={props.value}
+            placeholder={props.placeholder} />
+    }
 
     return (
         <div className={styles.formElement}>
             <label>{props.label}</label>
-            <input onChange={props.onChange}
+            {/* <input onChange={props.onChangeFunction}
                 id={props.id}
                 type={props.type}
-                placeholder={props.placeholder}
-                name={props.id} />
+                placeholder={props.placeholder}/> */}
+            {input}
         </div>
     )
 }

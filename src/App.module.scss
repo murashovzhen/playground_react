@@ -4,4 +4,574 @@
   font-family: Inter;
 }
 
+.content_center {
+  align-self: center;
+  text-align: center;
+}
+
+.bordered_box {
+  border: 1px solid #DADADA;
+  box-sizing: border-box;
+}
+
+.link {
+  text-decoration: none;
+  color: #313037;
+
+  &:hover {
+    color: #2231AA;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+}
+
+.help_text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #8D8E97;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.m_t_5 {
+  margin-top: 5px;
+}
+
+.m_t_10 {
+  margin-top: 10px;
+}
+
+.m_t_15 {
+  margin-top: 15px;
+}
+
+.m_t_25 {
+  margin-top: 25px;
+}
+
+
+a.m_t_5 {
+  position: relative;
+  top: 5px;
+}
+
+a.m_t_10 {
+  position: relative;
+  top: 10px;
+}
+
+a.m_t_15 {
+  position: relative;
+  top: 15px;
+}
+
+a.m_t_25 {
+  position: relative;
+  top: 25px;
+}
+
+
+
+.col_1,
+.col_2,
+.col_3,
+.col_4,
+.col_5,
+.col_6,
+.col_7,
+.col_8,
+.col_9,
+.col_10,
+.col_11,
+.col_12,
+.col_lg_1,
+.col_lg_2,
+.col_lg_3,
+.col_lg_4,
+.col_lg_5,
+.col_lg_6,
+.col_lg_7,
+.col_lg_8,
+.col_lg_9,
+.col_lg_10,
+.col_lg_11,
+.col_lg_12,
+.col_sm_1,
+.col_sm_2,
+.col_sm_3,
+.col_sm_4,
+.col_sm_5,
+.col_sm_6,
+.col_sm_7,
+.col_sm_8,
+.col_sm_9,
+.col_sm_10,
+.col_sm_11,
+.col_sm_12,
+.col_md_1,
+.col_md_2,
+.col_md_3,
+.col_md_4,
+.col_md_5,
+.col_md_6,
+.col_md_7,
+.col_md_8,
+.col_md_9,
+.col_md_10,
+.col_md_11,
+.col_md_12 {
+  position: relative;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+
+.col_1 {
+  flex: 0 0 8.3333333333%;
+  max-width: 8.3333333333%;
+}
+
+.col_2 {
+  flex: 0 0 16.6666666667%;
+  max-width: 16.6666666667%;
+}
+
+.col_3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.col_4 {
+  flex: 0 0 33.3333333333%;
+  max-width: 33.3333333333%;
+}
+
+.col_5 {
+  flex: 0 0 41.6666666667%;
+  max-width: 41.6666666667%;
+}
+
+.col_6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col_7 {
+  flex: 0 0 58.3333333333%;
+  max-width: 58.3333333333%;
+}
+
+.col_8 {
+  flex: 0 0 66.6666666667%;
+  max-width: 66.6666666667%;
+}
+
+.col_9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.col_10 {
+  flex: 0 0 83.3333333333%;
+  max-width: 83.3333333333%;
+}
+
+.col_11 {
+  flex: 0 0 91.6666666667%;
+  max-width: 91.6666666667%;
+}
+
+.col_12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+
+.offset_0 {
+  margin-left: 0;
+}
+
+.offset_1 {
+  margin-left: 8.3333333333%;
+}
+
+.offset_2 {
+  margin-left: 16.6666666667%;
+}
+
+.offset_3 {
+  margin-left: 25%;
+}
+
+.offset_4 {
+  margin-left: 33.3333333333%;
+}
+
+.offset_5 {
+  margin-left: 41.6666666667%;
+}
+
+.offset_6 {
+  margin-left: 50%;
+}
+
+.offset_7 {
+  margin-left: 58.3333333333%;
+}
+
+.offset_8 {
+  margin-left: 66.6666666667%;
+}
+
+.offset_9 {
+  margin-left: 75%;
+}
+
+.offset_10 {
+  margin-left: 83.3333333333%;
+}
+
+.offset_11 {
+  margin-left: 91.6666666667%;
+}
+
+// Малые девайсы («ландшафтные телефоны», >= 767px)
+@media (max-width: 767px) {
+  .col_sm_1 {
+    flex: 0 0 8.3333333333%;
+    max-width: 8.3333333333%;
+  }
+
+  .col_sm_2 {
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+  }
+
+  .col_sm_3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .col_sm_4 {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+  }
+
+  .col_sm_5 {
+    flex: 0 0 41.6666666667%;
+    max-width: 41.6666666667%;
+  }
+
+  .col_sm_6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .col_sm_7 {
+    flex: 0 0 58.3333333333%;
+    max-width: 58.3333333333%;
+  }
+
+  .col_sm_8 {
+    flex: 0 0 66.6666666667%;
+    max-width: 66.6666666667%;
+  }
+
+  .col_sm_9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+
+  .col_sm_10 {
+    flex: 0 0 83.3333333333%;
+    max-width: 83.3333333333%;
+  }
+
+  .col_sm_11 {
+    flex: 0 0 91.6666666667%;
+    max-width: 91.6666666667%;
+  }
+
+  .col_sm_12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+
+  .offset_sm_0 {
+    margin-left: 0;
+  }
+
+  .offset_sm_1 {
+    margin-left: 8.3333333333%;
+  }
+
+  .offset_sm_2 {
+    margin-left: 16.6666666667%;
+  }
+
+  .offset_sm_3 {
+    margin-left: 25%;
+  }
+
+  .offset_sm_4 {
+    margin-left: 33.3333333333%;
+  }
+
+  .offset_sm_5 {
+    margin-left: 41.6666666667%;
+  }
+
+  .offset_sm_6 {
+    margin-left: 50%;
+  }
+
+  .offset_sm_7 {
+    margin-left: 58.3333333333%;
+  }
+
+  .offset_sm_8 {
+    margin-left: 66.6666666667%;
+  }
+
+  .offset_sm_9 {
+    margin-left: 75%;
+  }
+
+  .offset_sm_10 {
+    margin-left: 83.3333333333%;
+  }
+
+  .offset_sm_11 {
+    margin-left: 91.6666666667%;
+  }
+}
+
+// Средние девайсы («таблетки», >= 768px)
+@media (min-width: 768px) and (max-width: 992px) {
+  .col_md_1 {
+    flex: 0 0 8.3333333333%;
+    max-width: 8.3333333333%;
+  }
+
+  .col_md_2 {
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+  }
+
+  .col_md_3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .col_md_4 {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+  }
+
+  .col_md_5 {
+    flex: 0 0 41.6666666667%;
+    max-width: 41.6666666667%;
+  }
+
+  .col_md_6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .col_md_7 {
+    flex: 0 0 58.3333333333%;
+    max-width: 58.3333333333%;
+  }
+
+  .col_md_8 {
+    flex: 0 0 66.6666666667%;
+    max-width: 66.6666666667%;
+  }
+
+  .col_md_9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+
+  .col_md_10 {
+    flex: 0 0 83.3333333333%;
+    max-width: 83.3333333333%;
+  }
+
+  .col_md_11 {
+    flex: 0 0 91.6666666667%;
+    max-width: 91.6666666667%;
+  }
+
+  .col_md_12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .offset_md_0 {
+    margin-left: 0;
+  }
+
+  .offset_md_1 {
+    margin-left: 8.3333333333%;
+  }
+
+  .offset_md_2 {
+    margin-left: 16.6666666667%;
+  }
+
+  .offset_md_3 {
+    margin-left: 25%;
+  }
+
+  .offset_md_4 {
+    margin-left: 33.3333333333%;
+  }
+
+  .offset_md_5 {
+    margin-left: 41.6666666667%;
+  }
+
+  .offset_md_6 {
+    margin-left: 50%;
+  }
+
+  .offset_md_7 {
+    margin-left: 58.3333333333%;
+  }
+
+  .offset_md_8 {
+    margin-left: 66.6666666667%;
+  }
+
+  .offset_md_9 {
+    margin-left: 75%;
+  }
+
+  .offset_md_10 {
+    margin-left: 83.3333333333%;
+  }
+
+  .offset_md_11 {
+    margin-left: 91.6666666667%;
+  }
+}
+
+// Большие девайсы (десктопы, >= 992px)
+@media (min-width: 992px) {
+  .col_lg_1 {
+    flex: 0 0 8.3333333333%;
+    max-width: 8.3333333333%;
+  }
+
+  .col_lg_2 {
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+  }
+
+  .col_lg_3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .col_lg_4 {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+  }
+
+  .col_lg_5 {
+    flex: 0 0 41.6666666667%;
+    max-width: 41.6666666667%;
+  }
+
+  .col_lg_6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .col_lg_7 {
+    flex: 0 0 58.3333333333%;
+    max-width: 58.3333333333%;
+  }
+
+  .col_lg_8 {
+    flex: 0 0 66.6666666667%;
+    max-width: 66.6666666667%;
+  }
+
+  .col_lg_9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+
+  .col_lg_10 {
+    flex: 0 0 83.3333333333%;
+    max-width: 83.3333333333%;
+  }
+
+  .col_lg_11 {
+    flex: 0 0 91.6666666667%;
+    max-width: 91.6666666667%;
+  }
+
+  .col_lg_12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .offset_lg_0 {
+    margin-left: 0;
+  }
+
+  .offset_lg_1 {
+    margin-left: 8.3333333333%;
+  }
+
+  .offset_lg_2 {
+    margin-left: 16.6666666667%;
+  }
+
+  .offset_lg_3 {
+    margin-left: 25%;
+  }
+
+  .offset_lg_4 {
+    margin-left: 33.3333333333%;
+  }
+
+  .offset_lg_5 {
+    margin-left: 41.6666666667%;
+  }
+
+  .offset_lg_6 {
+    margin-left: 50%;
+  }
+
+  .offset_lg_7 {
+    margin-left: 58.3333333333%;
+  }
+
+  .offset_lg_8 {
+    margin-left: 66.6666666667%;
+  }
+
+  .offset_lg_9 {
+    margin-left: 75%;
+  }
+
+  .offset_lg_10 {
+    margin-left: 83.3333333333%;
+  }
+
+  .offset_lg_11 {
+    margin-left: 91.6666666667%;
+  }
+}
 

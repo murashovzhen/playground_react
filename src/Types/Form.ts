@@ -1,4 +1,4 @@
 export type FormType = {
-    login: string
+    email: string
     pass: string
 }

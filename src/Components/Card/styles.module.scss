@@ -140,6 +140,14 @@
         }
     }
 
+    .cardText {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        padding-right: 32px;
+        text-align: left;
+    }
+
     p {
         display: none;
     }

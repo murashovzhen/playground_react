@@ -7,3 +7,8 @@ export type PostType = {
     createdAt: Date
 }
 
+export type CreatePostType = {
+    post: PostType | undefined
+    cardstyle: string
+}
+
