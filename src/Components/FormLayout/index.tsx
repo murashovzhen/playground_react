@@ -1,25 +1,30 @@
 import styles from './styles.module.scss'
+import genericStyles from '../../App.module.scss'
 import { FormLayoutType } from '../../Types/FormLayout'
 
 const FormLayout = (props: FormLayoutType) => {
 
   return (
-    <div className={styles.col}>
-      <div className={styles.row_w_12}>
-        <div>
+    <>
+      <div className={genericStyles.row}>
+        <div className={genericStyles.col_12}>
           {props.breadcrumbs.map(breadcrumb => (
-            <span><a href="#">{breadcrumb}</a>/</span>
+            <span>{breadcrumb} / </span>
           ))}
+          <span className={genericStyles.help_text}>{props.title}</span>
+        </div>
+      </div>
+      <div className={genericStyles.row}>
+        <div className={[genericStyles.col_12, styles.page_title].join(' ')}>
           {props.title}
         </div>
-        <h1>
-          {props.title}
-        </h1>
       </div>
-      <div className={`${styles.row_w_6} ${styles.align_self_center}`}>
-        {props.children}
+      <div className={genericStyles.row}>
+        <div className={genericStyles.col_12}>
+          {props.children}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
