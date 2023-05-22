@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom'
 //   }
 // }
 
-const ResetPass1 = () => {
+const RegistrationConfirmation = () => {
   const [form, setForm] = useState({
     email: '',
   } as FormType)
@@ -34,28 +34,24 @@ const ResetPass1 = () => {
 
   return (
     <FormLayout
-      title={'Reset password'}
+      title={'Registration Confirmation'}
       breadcrumbs={breadcrumbs}>
       <div className={[genericStyles.row].join(' ')}>
         <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
           <form className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')}>
             <div className={genericStyles.row}>
-              <div className={genericStyles.col_12}>
-                <FormElement
-                  // onChangeFunction={handleOnChange}
-                  id={'email'}
-                  type={'text'}
-                  placeholder={'Your email'}
-                  label={'Email'}
-                  value={''}
-                  component='TextBox' />
+              <div className={[genericStyles.col_12, genericStyles.m_t_25, genericStyles.content_center].join(' ')}>
+                <span className={genericStyles.help_text}>
+                  Please activate your account with the activation link in the email
+                  <a href="#" className={genericStyles.link}> example@gmail.com</a>. Please, check your email
+                </span>
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormButton
                   // onClick={handleOnClick}
-                  text="Reset" />
+                  text="Go to home" />
               </div>
             </div>            
           </form>
@@ -65,6 +61,6 @@ const ResetPass1 = () => {
   )
 }
 
-export default ResetPass1
+export default RegistrationConfirmation
 
 

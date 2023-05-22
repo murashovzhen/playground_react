@@ -13,9 +13,10 @@ import { Link } from 'react-router-dom'
 //   }
 // }
 
-const ResetPass1 = () => {
+const NewPass = () => {
   const [form, setForm] = useState({
-    email: '',
+    pass: '',
+    confirmPass: '',
   } as FormType)
 
   // const handleOnClick = useCallback(() => {
@@ -34,7 +35,7 @@ const ResetPass1 = () => {
 
   return (
     <FormLayout
-      title={'Reset password'}
+      title={'New password'}
       breadcrumbs={breadcrumbs}>
       <div className={[genericStyles.row].join(' ')}>
         <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
@@ -43,10 +44,22 @@ const ResetPass1 = () => {
               <div className={genericStyles.col_12}>
                 <FormElement
                   // onChangeFunction={handleOnChange}
-                  id={'email'}
+                  id={'pass'}
                   type={'text'}
-                  placeholder={'Your email'}
-                  label={'Email'}
+                  placeholder={'Your password'}
+                  label={'Password'}
+                  value={''}
+                  component='TextBox' />
+              </div>
+            </div>
+            <div className={genericStyles.row}>
+              <div className={genericStyles.col_12}>
+                <FormElement
+                  // onChangeFunction={handleOnChange}
+                  id={'confirmPass'}
+                  type={'text'}
+                  placeholder={'Confirm your password'}
+                  label={'Confirm password'}
                   value={''}
                   component='TextBox' />
               </div>
@@ -55,9 +68,9 @@ const ResetPass1 = () => {
               <div className={genericStyles.col_12}>
                 <FormButton
                   // onClick={handleOnClick}
-                  text="Reset" />
+                  text="Set password" />
               </div>
-            </div>            
+            </div>
           </form>
         </div>
       </div>
@@ -65,6 +78,6 @@ const ResetPass1 = () => {
   )
 }
 
-export default ResetPass1
+export default NewPass
 
 

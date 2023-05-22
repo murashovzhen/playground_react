@@ -37,9 +37,8 @@ const ResetPass2 = () => {
       title={'Reset password'}
       breadcrumbs={breadcrumbs}>
       <div className={[genericStyles.row].join(' ')}>
-        <div className={[genericStyles.col_lg_6, genericStyles.offset_lg_3, genericStyles.col_12].join(' ')}>
+        <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
           <form className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')}>
-
             <div className={genericStyles.row}>
               <div className={[genericStyles.col_12, genericStyles.m_t_25, genericStyles.content_center].join(' ')}>
                 <span className={genericStyles.help_text}>

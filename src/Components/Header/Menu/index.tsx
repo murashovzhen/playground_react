@@ -25,7 +25,18 @@ const Menu = () => {
                 <li>
                     <Link to='/resetpass2'>ResetPass2</Link>
                 </li>
-
+                <li>
+                    <Link to='/newpass'>New password</Link>
+                </li>
+                <li>
+                    <Link to='/singinNewpass'>Sign Up</Link>
+                </li>
+                <li>
+                    <Link to='/registrationConfirmation'>Registration Confirmation</Link>
+                </li>
+                <li>
+                    <Link to='/success'>Success</Link>
+                </li>
             </ul>
         </div>
     )
