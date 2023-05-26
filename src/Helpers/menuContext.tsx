@@ -14,7 +14,7 @@ type Props = {
 }
 
 const MenuContextProvider = (props: Props) => {
-    const [state, setState] = useState(true)
+    const [state, setState] = useState(false)
 
     const providerValue: ContextType = {
         isOpen: state,

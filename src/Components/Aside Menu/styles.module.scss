@@ -7,8 +7,6 @@
     min-width: 230px;
     position: fixed;
     top: 5.25em;
-    left: -50%;
-    transition: .5s;
 
     @media (max-width: 767px) {
         & {
@@ -80,6 +78,12 @@
     flex-direction: row;
 }
 
-// .open {
-//     left: 50%;
-// }
+.asideMenu_hiden {
+    left: -100%;
+    transition: .5s;
+}
+
+.open {
+    left: 0;
+    transition: .5s;
+}

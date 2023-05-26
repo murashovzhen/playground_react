@@ -7,31 +7,27 @@ import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { MenuContext } from "../../Helpers/menuContext";
 
 const Header = () => {
-  // const [isOpen, setIsOpen] = useState(<FontAwesomeIcon icon={faBars}/>)
-  const { isOpen, setIsOpen } = useContext (MenuContext)
-  const [btnText, setBtnText] = useState('open')
-  
+
+  const { isOpen, setIsOpen } = useContext(MenuContext)
+  const [btnText, setBtnText] = useState(<FontAwesomeIcon icon={faBars} className={styles.burger_img} />)
+
   const onClick = () => {
-    // setIsOpen(isOpen === <FontAwesomeIcon icon={faBars} /> ? <FontAwesomeIcon icon={faXmark}/> : <FontAwesomeIcon icon={faBars} />)
     setIsOpen(!isOpen)
-    setBtnText(!isOpen ? 'close' : 'open')
-    
+    setBtnText(
+      !isOpen
+        ?
+        <FontAwesomeIcon icon={faXmark} className={styles.burger_img} />
+        :
+        <FontAwesomeIcon icon={faBars} className={styles.burger_img} />
+    )
   }
 
   return (
     <header className={styles.header}>
       <div className={styles.header_burger}>
-
         <button onClick={onClick} className={styles.burgerMenu}>
-          {/* <FontAwesomeIcon icon={faBars} className={styles.burger_img} /> */}
           {btnText}
-        </button>
-
-        {/* <button className={styles.burgerClose}>
-          <FontAwesomeIcon icon={faXmark} className={styles.burger_img} />
-        </button> */}
-
-      </div>
+        </button>      </div>
       <HeaderInputSearch
         placeholder={'Search ...'}
         name={'Search'} />

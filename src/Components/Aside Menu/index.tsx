@@ -5,14 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { MenuContext } from '../../Helpers/menuContext';
 
-
-
 const AsideMenu = () => {
   const { isOpen } = useContext(MenuContext)
 
-
   return (
-    <div className={`styles.asideMenu_box  ${isOpen ? 'styles.open' : ''}`}>
+    <div className={[styles.asideMenu_box, styles[`${isOpen ? 'asideMenu_open' : 'asideMenu_hiden'}`]].join(' ')}>
       <ul className={styles.asideMenu_list}>
         <li className={[styles.list_item, styles.list_item_blue].join(' ')}>
           <a href="#" className={[styles.item_link, styles.item_link_blue].join(' ')}>User</a>
