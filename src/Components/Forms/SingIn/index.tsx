@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
 import styles from './styles.module.scss'
-import genericStyles from '../../App.module.scss'
+import genericStyles from '../../../App.module.scss'
 import FormLayout from '../FormLayout'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
-import { FormType } from '../../Types/Form'
+import { FormType } from '../../../Types/Form'
 import { Link } from 'react-router-dom'
 
 const fakeApi = {
@@ -37,7 +37,7 @@ const SingIn = () => {
     <FormLayout
       title={'Sign In'}
       breadcrumbs={breadcrumbs}>
-      <div className={[genericStyles.row].join(' ')}>
+      <div className={genericStyles.row}>
         <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
           <form className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')}>
             <div className={genericStyles.row}>

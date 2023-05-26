@@ -9,7 +9,6 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-
       <div className={styles.header_burger}>
         <button className={styles.burgerMenu}>
           <FontAwesomeIcon icon={faBars} className={styles.burger_img} />
@@ -18,11 +17,9 @@ const Header = () => {
           <FontAwesomeIcon icon={faXmark} className={styles.burger_img} />
         </button>
       </div>
-
       <HeaderInputSearch
         placeholder={'Search ...'}
         name={'Search'} />
-
       <div className={styles.header_search}>
         <button className={styles.searchSearch}>
           <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.search_img} />
@@ -30,7 +27,6 @@ const Header = () => {
         <button className={styles.searchUser}>
           <FontAwesomeIcon icon={faUser} className={styles.search_img} />
         </button>
-
       </div>
     </header>
   )

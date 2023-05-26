@@ -2,16 +2,16 @@ import styles from "./App.module.scss";
 import { Route, Routes } from 'react-router-dom'
 import Layout from './Components/Layout'
 import Body from "./Components/Body";
-import Post from "./Components/Post";
-import SingIn from "./Components/SingIn";
-import PostEdit from "./Components/PostEdit";
-import SingUp from "./Components/SingUp";
-import ResetPass1 from "./Components/Reset password1";
-import ResetPass2 from "./Components/Reset password2";
-import NewPass from "./Components/New Password";
-import SingUpNewPass from "./Components/SingUp New Pass";
-import RegistrationConfirmation from "./Components/Registration Confirmation";
-import Success from "./Components/Success";
+import Post from "./Components/Forms/Post";
+import SingIn from "./Components/Forms/SingIn";
+import PostEdit from "./Components/Forms/PostEdit";
+import SingUp from "./Components/Forms/SingUp";
+import ResetPass1 from "./Components/Forms/Reset password1";
+import ResetPass2 from "./Components/Forms/Reset password2";
+import NewPass from "./Components/Forms/New Password";
+import SingUpNewPass from "./Components/Forms/SingUp New Pass";
+import RegistrationConfirmation from "./Components/Forms/Registration Confirmation";
+import Success from "./Components/Forms/Success";
 
 const App = () => {
   return (

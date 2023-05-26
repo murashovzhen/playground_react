@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
 import styles from './styles.module.scss'
-import genericStyles from '../../App.module.scss'
+import genericStyles from '../../../App.module.scss'
 import FormLayout from '../FormLayout'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
-import { FormType } from '../../Types/Form'
+import { FormType } from '../../../Types/Form'
 import { Link } from 'react-router-dom'
 
 // const fakeApi = {
@@ -57,7 +57,7 @@ const ResetPass1 = () => {
                   // onClick={handleOnClick}
                   text="Reset" />
               </div>
-            </div>            
+            </div>
           </form>
         </div>
       </div>

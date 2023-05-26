@@ -3,6 +3,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import { Outlet } from 'react-router-dom'
 import Menu from "../Header/Menu";
+import AsideMenu from "../Aside Menu";
 
 const Layout = () => {
   return (
@@ -12,6 +13,7 @@ const Layout = () => {
       <div className={styles.content}>
         <Outlet />
       </div>
+      <AsideMenu/>
       <Footer />
     </div>
   );

@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
 import styles from './styles.module.scss'
-import genericStyles from '../../App.module.scss'
+import genericStyles from '../../../App.module.scss'
 import FormLayout from '../FormLayout'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
-import { FormType } from '../../Types/Form'
+import { FormType } from '../../../Types/Form'
 import { Link } from 'react-router-dom'
 
 // const fakeApi = {
@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom'
 //   }
 // }
 
-const ResetPass2 = () => {
+const Success = () => {
   const [form, setForm] = useState({
     email: '',
   } as FormType)
@@ -34,7 +34,7 @@ const ResetPass2 = () => {
 
   return (
     <FormLayout
-      title={'Reset password'}
+      title={'Success'}
       breadcrumbs={breadcrumbs}>
       <div className={[genericStyles.row].join(' ')}>
         <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
@@ -42,21 +42,8 @@ const ResetPass2 = () => {
             <div className={genericStyles.row}>
               <div className={[genericStyles.col_12, genericStyles.m_t_25, genericStyles.content_center].join(' ')}>
                 <span className={genericStyles.help_text}>
-                  You will receive an email
-                  <a href="#" className={genericStyles.link}> example@gmail.com</a> with a link to reset your password!
+                  Email confirmed. <br /> Your registration is now completed
                 </span>
-              </div>
-            </div>
-            <div className={genericStyles.row}>
-              <div className={genericStyles.col_12}>
-                <FormElement
-                  // onChangeFunction={handleOnChange}
-                  id={'email'}
-                  type={'text'}
-                  placeholder={'example@gmail.com'}
-                  label={'Email'}
-                  value={''}
-                  component='TextBox' />
               </div>
             </div>
             <div className={genericStyles.row}>
@@ -65,7 +52,7 @@ const ResetPass2 = () => {
                   // onClick={handleOnClick}
                   text="Go to home" />
               </div>
-            </div>            
+            </div>
           </form>
         </div>
       </div>
@@ -73,6 +60,6 @@ const ResetPass2 = () => {
   )
 }
 
-export default ResetPass2
+export default Success
 
 

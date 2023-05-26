@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
 import styles from './styles.module.scss'
-import genericStyles from '../../App.module.scss'
+import genericStyles from '../../../App.module.scss'
 import FormLayout from '../FormLayout'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
-import { FormType } from '../../Types/Form'
+import { FormType } from '../../../Types/Form'
 import { Link } from 'react-router-dom'
 
 // const fakeApi = {
@@ -53,7 +53,7 @@ const RegistrationConfirmation = () => {
                   // onClick={handleOnClick}
                   text="Go to home" />
               </div>
-            </div>            
+            </div>
           </form>
         </div>
       </div>

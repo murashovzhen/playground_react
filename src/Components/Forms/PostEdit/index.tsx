@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getPost } from '../../Services/PostServise'
-import { PostType } from '../../Types/Post'
+import { getPost } from '../../../Services/PostServise'
+import { PostType } from '../../../Types/Post'
 import { nameof } from 'ts-simple-nameof'
 import FormLayout from '../FormLayout'
-import genericStyles from '../../App.module.scss'
+import genericStyles from '../../../App.module.scss'
 import { Link } from 'react-router-dom'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
@@ -14,7 +14,7 @@ const PostEdit = () => {
 
     const [post, setPost] = useState<PostType>({} as PostType)
 
-    const breadcrumbs= [<Link to="/" className={genericStyles.link}>Back to Home</Link>]
+    const breadcrumbs = [<Link to="/" className={genericStyles.link}>Back to Home</Link>]
 
     useEffect(() => {
         if (params.id != undefined) {

@@ -1,9 +1,17 @@
-import { FormElementType } from '../../Types/FormElement'
+import { useEffect, useRef } from 'react'
+import { FormElementType } from '../../../Types/FormElement'
 import styles from './styles.module.scss'
 
 function FormElement(props: FormElementType): JSX.Element {
 
+    // const inputRef = useRef<HTMLInputElement>(null)
+
+    // useEffect(() => {
+    //     inputRef.current?.focus()
+    // }, [])
+
     let input = <input
+        // ref={inputRef}
         onChange={props.onChangeFunction}
         id={props.id}
         type={props.type}

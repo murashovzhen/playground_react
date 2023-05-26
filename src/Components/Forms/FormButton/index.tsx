@@ -1,4 +1,4 @@
-import { FormButtonType } from "../../Types/FormButton"
+import { FormButtonType } from "../../../Types/FormButton"
 import styles from './styles.module.scss'
 
 const FormButton = (props: FormButtonType) => {
