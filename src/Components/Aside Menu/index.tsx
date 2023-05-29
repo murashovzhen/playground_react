@@ -8,6 +8,8 @@ import { MenuContext } from '../../Helpers/menuContext';
 const AsideMenu = () => {
   const { isOpen } = useContext(MenuContext)
 
+  
+
   return (
     <div className={[styles.asideMenu_box, styles[`${isOpen ? 'asideMenu_open' : 'asideMenu_hiden'}`]].join(' ')}>
       <ul className={styles.asideMenu_list}>
@@ -25,18 +27,25 @@ const AsideMenu = () => {
           </Link>
         </li>
       </ul>
+
+      
+      
       <div>
         <ul className={[styles.asideMenu_list, styles.asideMenu_list_row].join(' ')}>
-          <li className={styles.list_item}>
+          {/* светлая тема */}
+          <li className={styles.list_item}>  
             <a href="#" className={styles.item_link}>
-              <FontAwesomeIcon icon={faSun} />
+              <FontAwesomeIcon icon={faSun} />  
             </a>
           </li>
+          {/* темная тема */}
           <li className={styles.list_item}>
             <a href="#" className={styles.item_link}>
               <FontAwesomeIcon icon={faMoon} />
             </a>
           </li>
+
+          
         </ul>
         <ul className={styles.asideMenu_list}>
           <li className={[styles.list_item, styles.list_item_grey].join(' ')}>

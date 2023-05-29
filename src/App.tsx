@@ -15,22 +15,25 @@ import Success from "./Components/Forms/Success";
 
 const App = () => {
   return (
-    <Routes>
-      <Route path='/' element={<Layout />}>
-        <Route index element={<Body />} />
-        <Route path='posts/:id' element={<Post />} />
-        {/* <Route path='posts/edit/:id' element={<PostEdit />} />
+    <>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Body />} />
+          <Route path='posts/:id' element={<Post />} />
+          {/* <Route path='posts/edit/:id' element={<PostEdit />} />
         <Route path='posts/create' element={<PostEdit />} /> */}
-        <Route path='singin' element={<SingIn />} />
-        <Route path='singup' element={<SingUp />} />
-        <Route path='resetpass1' element={<ResetPass1 />} />
-        <Route path='resetpass2' element={<ResetPass2 />} />
-        <Route path='newpass' element={<NewPass />} />
-        <Route path='singinNewpass' element={<SingUpNewPass />} />
-        <Route path='registrationConfirmation' element={<RegistrationConfirmation />} />
-        <Route path='success' element={<Success />} />
-      </Route>
-    </Routes>
+          <Route path='singin' element={<SingIn />} />
+          <Route path='singup' element={<SingUp />} />
+          <Route path='resetpass1' element={<ResetPass1 />} />
+          <Route path='resetpass2' element={<ResetPass2 />} />
+          <Route path='newpass' element={<NewPass />} />
+          <Route path='singinNewpass' element={<SingUpNewPass />} />
+          <Route path='registrationConfirmation' element={<RegistrationConfirmation />} />
+          <Route path='success' element={<Success />} />
+        </Route>
+      </Routes>
+  </>
+
   )
 }
 

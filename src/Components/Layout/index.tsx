@@ -4,18 +4,22 @@ import Footer from "../Footer";
 import { Outlet } from 'react-router-dom'
 import Menu from "../Header/Menu";
 import AsideMenu from "../Aside Menu";
+import ChangeTheme from "../ChangeTheme";
 
 const Layout = () => {
   return (
+    
     <div className={styles.app}>
-      <Header />
-      <Menu />
+        <Header />
+        <Menu />
       <div className={styles.content}>
-        <Outlet />
+        <ChangeTheme />
+          <Outlet />
+        </div>
+        <AsideMenu />
+        <Footer />
       </div>
-      <AsideMenu/>
-      <Footer />
-    </div>
+
   );
 };
 
