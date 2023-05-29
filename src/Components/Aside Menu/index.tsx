@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { MenuContext } from '../../Helpers/menuContext';
+import ChangeTheme from '../ChangeTheme';
 
 const AsideMenu = () => {
   const { isOpen } = useContext(MenuContext)
-
-  
 
   return (
     <div className={[styles.asideMenu_box, styles[`${isOpen ? 'asideMenu_open' : 'asideMenu_hiden'}`]].join(' ')}>
@@ -27,26 +26,8 @@ const AsideMenu = () => {
           </Link>
         </li>
       </ul>
-
-      
-      
       <div>
-        <ul className={[styles.asideMenu_list, styles.asideMenu_list_row].join(' ')}>
-          {/* светлая тема */}
-          <li className={styles.list_item}>  
-            <a href="#" className={styles.item_link}>
-              <FontAwesomeIcon icon={faSun} />  
-            </a>
-          </li>
-          {/* темная тема */}
-          <li className={styles.list_item}>
-            <a href="#" className={styles.item_link}>
-              <FontAwesomeIcon icon={faMoon} />
-            </a>
-          </li>
-
-          
-        </ul>
+        <ChangeTheme />
         <ul className={styles.asideMenu_list}>
           <li className={[styles.list_item, styles.list_item_grey].join(' ')}>
             <a href="#" className={[styles.item_link, styles.item_link_grey].join(' ')}>Log Out</a>
