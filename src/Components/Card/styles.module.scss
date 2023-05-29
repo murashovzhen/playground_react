@@ -48,7 +48,7 @@
             font-size: 32px;
             line-height: 44px;
             font-weight: 700;
-            color: #313037;
+            
             padding: 8px 0 24px 0;
             margin: 0;
 
@@ -57,7 +57,7 @@
                     font-size: 18px;
                     line-height: 28px;
                     font-weight: 600;
-                    color: #313037;
+                   
                     padding: 8px 0 25px 0;
                     margin: 0;
                 }
@@ -68,14 +68,14 @@
                     font-size: 18px;
                     line-height: 28px;
                     font-weight: 600;
-                    color: #313037;
+                   
                     padding: 8px 0 25px 0;
                     margin: 0;
                 }
             }
 
             &:hover {
-                color: #2231AA;
+                
                 cursor: pointer;
                 transition: all 0.25s;
             }

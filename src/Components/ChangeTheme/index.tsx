@@ -1,41 +1,36 @@
-import { useReducer } from 'react'
-import styles from './styles.module.scss'
-import { ActionType, StateType } from '../../Types/ChangeTheme'
-
-const reducer = (state: StateType, action: ActionType): StateType => {
-    switch (action.type) {
-        case 'SET LIGHT THEME':
-            return {
-                ...state,
-                theme: 'light'
-            }
-        case 'SET DARK THEME':
-            return {
-                theme: 'dark'
-            }
-        default:
-            return state
-    }
-}
+import React, { useEffect, useState } from 'react'
+import styles from '../Aside Menu/styles.module.scss'
+import globalStyles from '../../App.module.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 
 const ChangeTheme = () => {
-    const initialValue: StateType = { theme: 'light' }
-    const [state, dispatch] = useReducer(reducer, initialValue)
-
-    const onClick = (theme: string) => {
-        dispatch({
-            type: theme === 'light' ?
-                'SET LIGHT THEME' :
-                'SET DARK THEME'
-        })
-    }
+    const [theme, setTheme] = useState(globalStyles.light);
+    const toggleTheme = () => {
+      if (theme === globalStyles.light) {
+        setTheme(globalStyles.dark);
+      } else {
+        setTheme(globalStyles.light);
+      }
+    };
+    useEffect(() => {
+      document.body.className = theme ;
+    }, [theme]);
 
 
     return (
-        <div className={[styles.theme_wrapper, styles[state.theme]].join(' ')}>
-            <button className={styles.btn} onClick={() => onClick('light')} >Light</button>
-            <button className={styles.btn} onClick={() => onClick('dark')}>Dark</button>
-        </div>
+        <ul className={[styles.asideMenu_list, styles.asideMenu_list_row].join(' ')}>
+        {/* светлая тема */}
+        <li className={styles.list_item} onClick={toggleTheme}>  
+            <FontAwesomeIcon icon={faSun} />  
+        </li>
+        {/* темная тема */}
+        <li className={styles.list_item} onClick={toggleTheme}>         
+            <FontAwesomeIcon icon={faMoon} />
+        </li>
+
+        
+      </ul>
     )
 }
 

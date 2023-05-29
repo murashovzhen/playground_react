@@ -4,7 +4,6 @@ import Footer from "../Footer";
 import { Outlet } from 'react-router-dom'
 import Menu from "../Header/Menu";
 import AsideMenu from "../Aside Menu";
-import ChangeTheme from "../ChangeTheme";
 
 const Layout = () => {
   return (
@@ -13,7 +12,6 @@ const Layout = () => {
         <Header />
         <Menu />
       <div className={styles.content}>
-        <ChangeTheme />
           <Outlet />
         </div>
         <AsideMenu />
