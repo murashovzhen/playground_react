@@ -8,7 +8,6 @@
         font-size: 16px;
         line-height: 24px;
         font-weight: 600;
-        color: #313037;
         text-decoration: none;
         padding: 0 40px;
         position: relative;
@@ -23,7 +22,7 @@
         }
 
         &:active {
-            color: #313037;
+            color: #373730;
             transition: .3s;
 
             &::after {

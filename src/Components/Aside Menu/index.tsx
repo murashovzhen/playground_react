@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import styles from "./styles.module.scss";
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { MenuContext } from '../../Helpers/menuContext';
 import ChangeTheme from '../ChangeTheme';
 

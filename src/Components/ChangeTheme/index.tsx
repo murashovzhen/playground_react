@@ -1,43 +1,34 @@
-import { useEffect, useReducer } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
-import { ActionType, StateType } from '../../Types/ChangeTheme'
-import { reducer } from './Reducer'
+import globalStyles from '../../App.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 
 const ChangeTheme = () => {
-    const initialValue: StateType = { theme: 'light' }
-    const [state, dispatch] = useReducer(reducer, initialValue)
-
-    const onClickTheme = (theme: string) => {
-        dispatch({
-            type: theme === 'light' ?
-                'SET LIGHT THEME' :
-                'SET DARK THEME'
-        })
-    }
+    const [theme, setTheme] = useState(globalStyles.light);
+    const onClick = () => {
+        if (theme === globalStyles.light) {
+            setTheme(globalStyles.dark);
+        } else {
+            setTheme(globalStyles.light);
+        }
+    };
 
     useEffect(() => {
-        document.body.className = styles[state.theme];
-    }, [state.theme]);
+        document.body.className = theme;
+    }, [theme]);
 
     return (
-        <div className={[styles.theme_wrapper, styles[state.theme]].join(' ')}>
-            <ul className={[styles.asideMenu_list, styles.asideMenu_list_row].join(' ')}>
-                {/* светлая тема  */}
-                <li className={styles.list_item} onClick={() => onClickTheme('light')}>
-                    <a href="#" className={styles.item_link}>
-                        <FontAwesomeIcon icon={faSun} />
-                    </a>
-                </li>
-                {/* темная тема */}
-                <li className={styles.list_item} onClick={() => onClickTheme('dark')}>
-                    <a href="#" className={styles.item_link}>
-                        <FontAwesomeIcon icon={faMoon} />
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <ul className={[styles.asideMenu_list, styles.asideMenu_list_row].join(' ')}>
+            {/* светлая тема  */}
+            <li className={styles.list_item} onClick={onClick}>
+                <FontAwesomeIcon icon={faSun} />
+            </li>
+            {/* темная тема */}
+            <li className={styles.list_item} onClick={onClick}>
+                <FontAwesomeIcon icon={faMoon} />
+            </li>
+        </ul>
     )
 }
 

@@ -23,7 +23,8 @@
             width: 100%;
             background-color: white;
             padding: 30px 0;
-            border: 1px solid #E8E8E8;
+            border-top: 1px solid #E8E8E8;
+            border-bottom: 1px solid #E8E8E8;
             text-decoration: none;
 
             .item_link {
@@ -42,7 +43,8 @@
         }
 
         .list_item_blue {
-            border: 1px solid #5360CD;
+            border-top: 1px solid #5360CD;
+            border-bottom: 1px solid #5360CD;
             background-color: #2231AA;
 
             &:hover {
@@ -86,4 +88,8 @@
 .open {
     left: 0;
     transition: .5s;
+}
+
+li:hover {
+    cursor: pointer;
 }

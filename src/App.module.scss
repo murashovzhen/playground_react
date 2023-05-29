@@ -1,6 +1,15 @@
+.dark {
+  background-color: #313037;
+  color: #F3F3F3;
+}
+
+.light {
+  background-color: #F3F3F3;
+  color: #313037;
+}
+
 .app {
   text-align: center;
-  background: #F3F3F3;
   font-family: Inter;
 }
 
@@ -16,7 +25,6 @@
 
 .link {
   text-decoration: none;
-  color: #313037;
 
   &:hover {
     color: #2231AA;
@@ -25,11 +33,31 @@
   }
 }
 
+.light .link {
+  color: #313037;
+
+//   &:active {
+//       color: #c51963;
+//       transition: .3s;
+// }
+}
+
+.dark .link {
+  color: #F3F3F3;
+}
+
+.light .help_text {
+  color: #8D8E97;
+}
+
+.dark .help_text {
+  color: #d5d5d6;
+}
+
 .help_text {
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-  color: #8D8E97;
 }
 
 .row {

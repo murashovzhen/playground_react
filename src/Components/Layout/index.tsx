@@ -7,16 +7,16 @@ import AsideMenu from "../Aside Menu";
 
 const Layout = () => {
   return (
-    
+
     <div className={styles.app}>
-        <Header />
-        <Menu />
+      <Header />
+      {/* <Menu /> */}
       <div className={styles.content}>
-          <Outlet />
-        </div>
-        <AsideMenu />
-        <Footer />
+        <Outlet />
       </div>
+      <AsideMenu />
+      <Footer />
+    </div>
 
   );
 };
