@@ -1,4 +1,4 @@
-.cardFooter {
+.card_Footer {
     display: flex;
     justify-content: space-between;
     border-bottom: 3px solid #DADADA;
@@ -8,21 +8,24 @@
         & {
             padding-bottom: 30px;
         }
-    }
+    }   
 
-    & span {
+    .card_Footer_Control{
         display: inline-block;
-        font-family: Barlow;
-        font-size: 16px;
-        line-height: 24px;
-        font-weight: 700;
-        padding: 0 25px 0 8px;
-        vertical-align: top;
-        color: #313037;
-    }
+        font-size: 32px;
+        padding-right: 25px;
+        &:last-child{
+            padding-right: 0px;
+        }
 
-    .bookmark {
-        padding-right: 30px;
-        vertical-align: bottom;
+        span {   
+            padding-left: 8px;         
+            font-size: 16px;
+            line-height: 32px;
+            font-weight: 700;   
+        }
     }
+  
+
+   
 }

@@ -1,10 +1,10 @@
 import CardFooter from '../Body/AllCards/CardFooter'
 import styles from '../Card/styles.module.scss'
 import globalStyles from '../../App.module.scss'
-import { PostType, CreatePostType } from '../../Types/Post'
+import { PostCardType } from '../../Types/Post'
 import { Link } from 'react-router-dom'
 
-const Card = (props: CreatePostType) => {
+const Card = (props: PostCardType) => {
   if (props.post == undefined) {
     return <div></div>;
   }
@@ -28,7 +28,7 @@ const Card = (props: CreatePostType) => {
         </div>
         <img className={styles.cardImg} src={props.post.image} alt="Image" />
       </div>
-      <CardFooter />
+      <CardFooter dislikes={props.post.dislikes} likes={props.post.likes} postId={props.post.id} views={props.post.views}/>
     </div>
   );
 }

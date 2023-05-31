@@ -6,12 +6,8 @@ import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 
 const ChangeTheme = () => {
     const [theme, setTheme] = useState(globalStyles.light);
-    const onClick = () => {
-        if (theme === globalStyles.light) {
-            setTheme(globalStyles.dark);
-        } else {
-            setTheme(globalStyles.light);
-        }
+    const onClick = (theme: string) => {
+        setTheme(theme);
     };
 
     useEffect(() => {
@@ -21,11 +17,11 @@ const ChangeTheme = () => {
     return (
         <ul className={[styles.asideMenu_list, styles.asideMenu_list_row].join(' ')}>
             {/* светлая тема  */}
-            <li className={styles.list_item} onClick={onClick}>
+            <li className={styles.list_item} id="lightControl" onClick={()=>onClick(globalStyles.light)}>
                 <FontAwesomeIcon icon={faSun} />
             </li>
             {/* темная тема */}
-            <li className={styles.list_item} onClick={onClick}>
+            <li className={styles.list_item} id="darkControl" onClick={()=>onClick(globalStyles.dark)}>
                 <FontAwesomeIcon icon={faMoon} />
             </li>
         </ul>
