@@ -21,17 +21,12 @@ const SingUp = () => {
     confirmPassword: '',
   })
 
-  //********************************************************************** */
-  //   const [formErrors, setFormErrors] = useState<Partial<FormType>>({
-
-  //   })
-  //   const errors = useSelector((state: AppState) => state.registration.errors)
-
-  //   useEffect(() => {
-  //     const objErrors = //преобразовать еррорс в объект(.reduce)
-
-  //       setFormErrors(objErrors)
-  // },[errors])
+  const [formErrors, setFormErrors] = useState<Partial<FormType>>({})
+  const errors = useSelector((state: AppState) => state.registration.errors)
+  //********************************************** */
+  useEffect(() => {
+    console.log(errors)//преобразовать еррорс в объект(.reduce)
+  }, [errors])
   //*************ошибки в сторе забирать через селектор***************************************
 
   const onChangeFormElement = useCallback(
@@ -45,8 +40,16 @@ const SingUp = () => {
   const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const { email, password, username, confirmPassword } = form
-    //************************************************************** */
-    if (email && password && username && password == confirmPassword) {
+    setFormErrors({})
+
+    if (password !== confirmPassword) {
+      ({
+        ...formErrors,
+        confirmPassword: 'Пароли не совпадают'
+      })
+    }
+
+    if (email && password && username && password === confirmPassword) {
       const regSuccess = () => navigate('/registrationConfirmation')
       dispatch(registrationAction(email, password, username, regSuccess))
     }
@@ -112,6 +115,13 @@ const SingUp = () => {
                   name={'confirmPassword'}
                   component='TextBox'
                 />
+                {
+                  formErrors?.confirmPassword && (
+                    <label className={styles.errors}>
+                      {formErrors.confirmPassword}
+                    </label>
+                  )
+                }
               </div>
             </div>
             <div className={genericStyles.row}>

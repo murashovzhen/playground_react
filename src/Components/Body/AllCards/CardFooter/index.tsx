@@ -17,10 +17,7 @@ const CardFooter = (props: CardFooterType) => {
   }
 
   const dislikeOnClick = () => {
-    setValue(x => {
-      x.dislikes++;
-      return x;
-    })
+    setValue(x => { x.dislikes++; return x; })
   }
 
   return (
