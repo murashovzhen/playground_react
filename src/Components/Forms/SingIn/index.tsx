@@ -16,11 +16,11 @@ const fakeApi = {
 const SingIn = () => {
   const [form, setForm] = useState({
     email: '',
-    pass: ''
+    password: ''
   } as FormType)
 
   const handleOnClick = useCallback(() => {
-    fakeApi.login(form.email, form.pass)
+    fakeApi.login(form.email, form.password)
       .then(result => alert(result ? 'Вы вошли' : 'Поробуйте еще раз'))
   }, [form])
 
@@ -36,30 +36,33 @@ const SingIn = () => {
   return (
     <FormLayout
       title={'Sign In'}
-      breadcrumbs={breadcrumbs}>
+      breadcrumbs={breadcrumbs}
+    >
       <div className={genericStyles.row}>
         <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
           <form className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')}>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormElement onChangeFunction={handleOnChange}
-                  id={'email'}
+                  name={'email'}
                   type={'text'}
                   placeholder={'Your email'}
                   label={'Email'}
                   value={''}
-                  component='TextBox' />
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormElement onChangeFunction={handleOnChange}
-                  id={'pass'}
+                  name={'password'}
                   type={'text'}
                   placeholder={'Your password'}
                   label={'Password'}
                   value={''}
-                  component='TextBox' />
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
@@ -70,7 +73,8 @@ const SingIn = () => {
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormButton onClick={handleOnClick}
-                  text="Sign In" />
+                  text="Sign In"
+                />
               </div>
             </div>
             <div className={genericStyles.row}>

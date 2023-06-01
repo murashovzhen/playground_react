@@ -13,13 +13,13 @@ function FormElement(props: FormElementType): JSX.Element {
     let input = <input
         // ref={inputRef}
         onChange={props.onChangeFunction}
-        id={props.id}
+        name={props.name}
         type={props.type}
         placeholder={props.placeholder} />;
 
     if (props.component == 'TextArea') {
         input = <textarea
-            id={props.id}
+            name={props.name}
             // value={props.value}
             placeholder={props.placeholder} />
     }
@@ -28,7 +28,7 @@ function FormElement(props: FormElementType): JSX.Element {
         <div className={styles.formElement}>
             <label>{props.label}</label>
             {/* <input onChange={props.onChangeFunction}
-                id={props.id}
+                name={props.name}
                 type={props.type}
                 placeholder={props.placeholder}/> */}
             {input}

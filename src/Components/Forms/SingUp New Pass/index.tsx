@@ -16,9 +16,9 @@ import { Link } from 'react-router-dom'
 const SingUpNewPass = () => {
   const [form, setForm] = useState({
     email: '',
-    pass: '',
-    name: '',
-    confirmPass: '',
+    password: '',
+    username: '',
+    confirmPassword: '',
   } as FormType)
 
   // const handleOnClick = useCallback(() => {
@@ -38,7 +38,8 @@ const SingUpNewPass = () => {
   return (
     <FormLayout
       title={'Sign Up'}
-      breadcrumbs={breadcrumbs}>
+      breadcrumbs={breadcrumbs}
+    >
       <div className={[genericStyles.row].join(' ')}>
         <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
           <form className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')}>
@@ -53,55 +54,60 @@ const SingUpNewPass = () => {
               <div className={genericStyles.col_12}>
                 <FormElement
                   // onChangeFunction={handleOnChange}
-                  id={'name'}
+                  name={'name'}
                   type={'text'}
                   placeholder={'Your name'}
                   label={'Name'}
                   value={''}
-                  component='TextBox' />
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormElement
                   // onChangeFunction={handleOnChange}
-                  id={'email'}
+                  name={'email'}
                   type={'text'}
                   placeholder={'Your email'}
                   label={'Email'}
                   value={''}
-                  component='TextBox' />
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormElement
                   // onChangeFunction={handleOnChange}
-                  id={'pass'}
+                  name={'password'}
                   type={'text'}
                   placeholder={'Your password'}
                   label={'Password'}
                   value={''}
-                  component='TextBox' />
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormElement
                   // onChangeFunction={handleOnChange}
-                  id={'confirmPass'}
+                  name={'confirmPasswords'}
                   type={'text'}
                   placeholder={'Confirm password'}
                   label={'Confirm password'}
                   value={''}
-                  component='TextBox' />
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormButton
                   // onClick={handleOnClick}
-                  text="Sign Up" />
+                  text="Sign Up"
+                />
               </div>
             </div>
             <div className={genericStyles.row}>

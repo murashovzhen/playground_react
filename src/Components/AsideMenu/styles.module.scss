@@ -1,4 +1,4 @@
-.asideMenu_box {
+.asideMenuBox {
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
@@ -14,12 +14,12 @@
         }
     }
 
-    .asideMenu_list {
+    .asideMenuList {
         list-style-type: none;
         padding: 0;
         margin: 0;
 
-        .list_item {
+        .listItem {
             width: 100%;
             background-color: white;
             padding: 30px 0;
@@ -27,7 +27,7 @@
             border-bottom: 1px solid #E8E8E8;
             text-decoration: none;
 
-            .item_link {
+            .itemLink {
                 font-weight: 600;
                 font-size: 16px;
                 line-height: 24px;
@@ -42,7 +42,7 @@
             }
         }
 
-        .list_item_blue {
+        .listItemBlue {
             border-top: 1px solid #5360CD;
             border-bottom: 1px solid #5360CD;
             background-color: #2231AA;
@@ -51,7 +51,7 @@
                 background-color: #5360CD;
             }
 
-            .item_link_blue {
+            .itemLinkBlue {
                 color: #FFFFFF;
 
                 &:hover {
@@ -60,7 +60,7 @@
             }
         }
 
-        .list_item_grey {
+        .listItemGrey {
             background-color: #E8E8E8;
             border-bottom: 2px solid #FFFFFF;
 
@@ -68,7 +68,7 @@
                 background-color: #DADADA;
             }
 
-            .item_link_grey {
+            .itemLinkGrey {
                 color: #313037;
             }
         }
@@ -80,14 +80,14 @@
     flex-direction: row;
 }
 
-.asideMenu_hiden {
+.asideMenuHiden {
     left: -100%;
-    transition: .5s;
+    transition: 2s;
 }
 
-.open {
+.asideMenuOpen {
     left: 0;
-    transition: .5s;
+    transition: 1s;
 }
 
 li:hover {

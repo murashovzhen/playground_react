@@ -1,12 +1,7 @@
 import styles from '../HeaderInputSearch/styles.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-
-export type SearchType = {
-    placeholder: string
-    text?: string
-    name: string
-}
+import { SearchType } from '../../../Types/SearchType'
 
 const HeaderInputSearch = (props: SearchType) => {
     const { text, placeholder, name } = props
@@ -17,7 +12,8 @@ const HeaderInputSearch = (props: SearchType) => {
                 type="search"
                 name={name}
                 value={text}
-                placeholder={placeholder} />
+                placeholder={placeholder}
+            />
             <button>
                 <FontAwesomeIcon icon={faXmark} className={styles.searchClose_img} />
             </button>

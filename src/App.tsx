@@ -12,13 +12,14 @@ import NewPass from "./Components/Forms/New Password";
 import SingUpNewPass from "./Components/Forms/SingUp New Pass";
 import RegistrationConfirmation from "./Components/Forms/Registration Confirmation";
 import Success from "./Components/Forms/Success";
+import Home from "./Components/Body";
 
 const App = () => {
   return (
     <>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route index element={<Body />} />
+          <Route index element={<Home />} />
           <Route path='posts/:id' element={<Post />} />
           {/* <Route path='posts/edit/:id' element={<PostEdit />} />
         <Route path='posts/create' element={<PostEdit />} /> */}

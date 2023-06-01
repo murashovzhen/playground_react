@@ -5,7 +5,7 @@ const FormButton = (props: FormButtonType) => {
 
     return (
         <input onClick={props.onClick} className={styles.formButton}
-            type="button"
+            type="submit"
             value={props.text}
         />
     )

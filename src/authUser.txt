@@ -1,0 +1,52 @@
+- POST​/auth​/users​/  (регистрация пользователя)
+    "password": "1311Qwqq!!"
+{
+    "username": "DDDDDD",
+    "email": "woyewis704@cutefier.com",
+    "id": 6329,
+}
+
+
+- ссылка по почте для активации пользователя
+http: //studapi.teachmeskills.by
+//activate/
+NjMyOQ/
+boyyxv-c0f36d8cfdd50203c7bdd061cd469781
+
+
+POST​/auth​/users​/activation​/ (активация пользователя, данные из ссылки по почте)
+{
+  "uid": "NjMyOQ",
+  "token": "boyyxv-c0f36d8cfdd50203c7bdd061cd469781"
+}
+
+
+- POST​/auth​/jwt​/create​/ (Принимает набор учетных данных пользователя
+ и возвращает пару веб-токенов access (доступа) и refresh (обновления) JSON
+  для подтверждения подлинности этих учетных данных. )
+{
+  "email": "woyewis704@cutefier.com",
+  "password": "1311Qwqq!!"
+}
+
+{
+"refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4NTQ2NjA2NSwianRpIjoiMTk3NGQ5NGJlMWQ3NDJkNDllNzQ0M2RiZjEzNTcyNDkiLCJ1c2VyX2lkIjo2MzI5fQ.YRp99lh37xJF5HKLZ7_UnVV23sW0rUvK7ePox64TQJ4",
+"access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1Mzc5OTY1LCJqdGkiOiI4NjYxN2U0MmMyYzE0MzhjYjRlYzA2YTgyY2E4MWYyMSIsInVzZXJfaWQiOjYzMjl9.h2100Blq8VDtpQRxsObYpGjeH6RJGRWG3G9pe8VPve8"
+}
+
+
+- POST​/auth​/jwt​/refresh​/ (Принимает refresh token типа JSON  
+и возвращает access token типа JSON, если refresh token действителен.)
+
+*принимаем 
+"refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4NTQ2NjA2NSwianRpIjoiMTk3NGQ5NGJlMWQ3NDJkNDllNzQ0M2RiZjEzNTcyNDkiLCJ1c2VyX2lkIjo2MzI5fQ.YRp99lh37xJF5HKLZ7_UnVV23sW0rUvK7ePox64TQJ4",
+*получаем в postman новый access token 
+"access":"......."
+
+
+Authorize(кнопка авторизации - вставляем полученный access token)
+
+
+- GET​/auth​/users​/
+(key) Authorization
+(value: Bearer + последний access token) Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1MzgwNTgwLCJqdGkiOiIyYjhmMzY3Mzg0ZGM0NjVhODRjOThhNGU5NGM1MDk3NyIsInVzZXJfaWQiOjYzMjl9.aMMQuBWyL2mkXuhIF1deISrj0TQDW6ThREGfZNSz2ig

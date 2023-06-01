@@ -1,16 +1,16 @@
 import styles from "./styles.module.scss";
 import Header from "../Header";
 import Footer from "../Footer";
-import { Outlet } from 'react-router-dom'
+import { Outlet } from "react-router-dom";
 import Menu from "../Header/Menu";
-import AsideMenu from "../Aside Menu";
+import AsideMenu from "../AsideMenu";
 
 const Layout = () => {
   return (
 
     <div className={styles.app}>
       <Header />
-      {/* <Menu /> */}
+      <Menu />
       <div className={styles.content}>
         <Outlet />
       </div>

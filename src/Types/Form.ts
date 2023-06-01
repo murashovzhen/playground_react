@@ -1,6 +1,6 @@
 export type FormType = {
     email: string
-    pass: string
-    name: string
-    confirmPass: string
+    password: string
+    username: string
+    confirmPassword: string
 }

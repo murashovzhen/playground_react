@@ -32,7 +32,8 @@ const PostEdit = () => {
     return (
         <FormLayout
             title={params.id != undefined ? 'Edit Post' : 'Create Post'}
-            breadcrumbs={breadcrumbs}>
+            breadcrumbs={breadcrumbs}
+        >
             <div className={[genericStyles.row].join(' ')}>
                 <div className={[genericStyles.col_12].join(' ')}>
                     <form className={[genericStyles.bordered_box].join(' ')}>
@@ -56,13 +57,15 @@ const PostEdit = () => {
                                     placeholder={'Content'}
                                     label={'Content'}
                                     name={nameof<PostType>(p => p.text)}
-                                    component='TextArea' />
+                                    component='TextArea'
+                                />
                             </div>
                         </div>
                         <div className={genericStyles.row}>
                             <div className={genericStyles.col_12}>
                                 <FormButton
-                                    text="Create" />
+                                    text="Create"
+                                />
                             </div>
                         </div>
                     </form>

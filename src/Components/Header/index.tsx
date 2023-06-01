@@ -1,42 +1,42 @@
 import React, { useContext, useState } from "react";
 import styles from "./styles.module.scss"
 import HeaderInputSearch from "./HeaderInputSearch"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBars, faXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { faUser } from "@fortawesome/free-regular-svg-icons"
 import { MenuContext } from "../../Helpers/menuContext";
 
 const Header = () => {
-
   const { isOpen, setIsOpen } = useContext(MenuContext)
   const [btnText, setBtnText] = useState(<FontAwesomeIcon icon={faBars} className={styles.burger_img} />)
 
   const onClick = () => {
     setIsOpen(!isOpen)
-    setBtnText(
-      !isOpen
-        ?
-        <FontAwesomeIcon icon={faXmark} className={styles.burger_img} />
-        :
-        <FontAwesomeIcon icon={faBars} className={styles.burger_img} />
+    setBtnText(!isOpen
+      ?
+      <FontAwesomeIcon icon={faXmark} className={styles.burgerImg} />
+      :
+      <FontAwesomeIcon icon={faBars} className={styles.burgerImg} />
     )
   }
 
   return (
     <header className={styles.header}>
-      <div className={styles.header_burger}>
+      <div className={styles.headerBurger}>
         <button onClick={onClick} className={styles.burgerMenu}>
           {btnText}
-        </button>      </div>
+        </button>
+      </div>
       <HeaderInputSearch
-        placeholder={'Search ...'}
-        name={'Search'} />
-      <div className={styles.header_search}>
+        placeholder={"Search ..."}
+        name={"Search"}
+      />
+      <div className={styles.headerSearch}>
         <button className={styles.searchSearch}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.search_img} />
+          <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.searchImg} />
         </button>
         <button className={styles.searchUser}>
-          <FontAwesomeIcon icon={faUser} className={styles.search_img} />
+          <FontAwesomeIcon icon={faUser} className={styles.searchImg} />
         </button>
       </div>
     </header>

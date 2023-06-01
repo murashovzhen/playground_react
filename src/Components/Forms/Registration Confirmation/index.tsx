@@ -6,6 +6,8 @@ import FormElement from '../FormElement'
 import FormButton from '../FormButton'
 import { FormType } from '../../../Types/Form'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { AppState } from '../../../Store' 
 
 // const fakeApi = {
 //   login: async (login: string, password: string) => {
@@ -14,6 +16,10 @@ import { Link } from 'react-router-dom'
 // }
 
 const RegistrationConfirmation = () => {
+  const reg = useSelector((state: AppState) => state.registration.user)
+
+
+
   const [form, setForm] = useState({
     email: '',
   } as FormType)
@@ -35,7 +41,8 @@ const RegistrationConfirmation = () => {
   return (
     <FormLayout
       title={'Registration Confirmation'}
-      breadcrumbs={breadcrumbs}>
+      breadcrumbs={breadcrumbs}
+    >
       <div className={[genericStyles.row].join(' ')}>
         <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
           <form className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')}>
@@ -43,7 +50,7 @@ const RegistrationConfirmation = () => {
               <div className={[genericStyles.col_12, genericStyles.m_t_25, genericStyles.content_center].join(' ')}>
                 <span className={genericStyles.help_text}>
                   Please activate your account with the activation link in the email
-                  <a href="#" className={genericStyles.link}> example@gmail.com</a>. Please, check your email
+                  <a href="#" className={genericStyles.link}> example@gmail.com</a>. Please, check your {reg?.email}
                 </span>
               </div>
             </div>
@@ -51,7 +58,8 @@ const RegistrationConfirmation = () => {
               <div className={genericStyles.col_12}>
                 <FormButton
                   // onClick={handleOnClick}
-                  text="Go to home" />
+                  text="Go to home"
+                />
               </div>
             </div>
           </form>

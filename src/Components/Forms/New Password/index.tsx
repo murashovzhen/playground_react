@@ -15,8 +15,10 @@ import { Link } from 'react-router-dom'
 
 const NewPass = () => {
   const [form, setForm] = useState({
-    pass: '',
-    confirmPass: '',
+    email: '',
+    password: '',
+    username: '',
+    confirmPassword: '',
   } as FormType)
 
   // const handleOnClick = useCallback(() => {
@@ -36,7 +38,8 @@ const NewPass = () => {
   return (
     <FormLayout
       title={'New password'}
-      breadcrumbs={breadcrumbs}>
+      breadcrumbs={breadcrumbs}
+    >
       <div className={[genericStyles.row].join(' ')}>
         <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
           <form className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')}>
@@ -44,31 +47,34 @@ const NewPass = () => {
               <div className={genericStyles.col_12}>
                 <FormElement
                   // onChangeFunction={handleOnChange}
-                  id={'pass'}
+                  name={'password'}
                   type={'text'}
                   placeholder={'Your password'}
                   label={'Password'}
                   value={''}
-                  component='TextBox' />
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormElement
                   // onChangeFunction={handleOnChange}
-                  id={'confirmPass'}
+                  name={'confirmPass'}
                   type={'text'}
                   placeholder={'Confirm your password'}
                   label={'Confirm password'}
                   value={''}
-                  component='TextBox' />
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormButton
                   // onClick={handleOnClick}
-                  text="Set password" />
+                  text="Set password"
+                />
               </div>
             </div>
           </form>

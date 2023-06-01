@@ -21,7 +21,8 @@ const Post = () => {
   return (
     <FormLayout
       title={post.title}
-      breadcrumbs={breadcrumbs}>
+      breadcrumbs={breadcrumbs}
+    >
       <div className={[genericStyles.row, genericStyles.m_t_25].join('')}>
         <div className={[genericStyles.col_12].join(' ')}>
           <Link to={`/posts/edit/${post.id}`}>Edit Post</Link>

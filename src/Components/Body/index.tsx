@@ -1,16 +1,16 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import BodyHeader from "./Body_header";
-import BodyContent from "./Body_content";
+import HomeContent from "./homeContent";
+import HomeHeader from "./homeHeader";
 
 
-const Body = () => {
+const Home = () => {
   return (
     <div className={styles.body}>
-      <BodyHeader />
-      <BodyContent />
+      <HomeHeader />
+      <HomeContent />
     </div>
   );
 };
 
-export default Body;
+export default Home;

@@ -34,8 +34,9 @@ const ResetPass2 = () => {
 
   return (
     <FormLayout
-      title={'Reset password'}
-      breadcrumbs={breadcrumbs}>
+      title={"Reset password"}
+      breadcrumbs={breadcrumbs}
+    >
       <div className={[genericStyles.row].join(' ')}>
         <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
           <form className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')}>
@@ -56,14 +57,16 @@ const ResetPass2 = () => {
                   placeholder={'example@gmail.com'}
                   label={'Email'}
                   value={''}
-                  component='TextBox' />
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormButton
                   // onClick={handleOnClick}
-                  text="Go to home" />
+                  text="Go to home"
+                />
               </div>
             </div>
           </form>

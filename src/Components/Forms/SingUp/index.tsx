@@ -1,100 +1,124 @@
-import React, { useCallback, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import genericStyles from '../../../App.module.scss'
 import FormLayout from '../FormLayout'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
 import { FormType } from '../../../Types/Form'
-import { Link } from 'react-router-dom'
-
-// const fakeApi = {
-//   login: async (login: string, password: string) => {
-//     return login == 'admin' && password == 'admin'
-//   }
-// }
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { registrationAction } from '../../../Store/registration/actions'
+import { AppDispatch, AppState } from '../../../Store'
+import { useSelector } from 'react-redux'
 
 const SingUp = () => {
-  const [form, setForm] = useState({
+  const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
+  const [form, setForm] = useState<FormType>({
     email: '',
-    pass: '',
-    name: '',
-    confirmPass: '',
-  } as FormType)
+    password: '',
+    username: '',
+    confirmPassword: '',
+  })
 
-  // const handleOnClick = useCallback(() => {
-  //   fakeApi.login(form.email, form.pass)
-  //     .then(result => alert(result ? 'Вы вошли' : 'Поробуйте еще раз'))
-  // }, [form])
+  //********************************************************************** */
+  //   const [formErrors, setFormErrors] = useState<Partial<FormType>>({
 
-  // const handleOnChange = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-  //   setForm({
-  //     ...form,
-  //     [e.currentTarget.id]: e.currentTarget.value
   //   })
-  // }, [form])
+  //   const errors = useSelector((state: AppState) => state.registration.errors)
+
+  //   useEffect(() => {
+  //     const objErrors = //преобразовать еррорс в объект(.reduce)
+
+  //       setFormErrors(objErrors)
+  // },[errors])
+  //*************ошибки в сторе забирать через селектор***************************************
+
+  const onChangeFormElement = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setForm({
+        ...form,
+        [e.target.name]: e.target.value
+      })
+    }, [form, setForm])
+
+  const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const { email, password, username, confirmPassword } = form
+    //************************************************************** */
+    if (email && password && username && password == confirmPassword) {
+      const regSuccess = () => navigate('/registrationConfirmation')
+      dispatch(registrationAction(email, password, username, regSuccess))
+    }
+  }
 
   const breadcrumbs = [<Link to="/" className={genericStyles.link}>Back to Home</Link>]
 
   return (
     <FormLayout
       title={'Sign Up'}
-      breadcrumbs={breadcrumbs}>
+      breadcrumbs={breadcrumbs}
+    >
       <div className={[genericStyles.row].join(' ')}>
         <div className={[genericStyles.col_lg_7, genericStyles.offset_lg_2_5, genericStyles.col_12].join(' ')}>
-          <form className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')}>
+          <form onSubmit={onFormSubmit} className={[genericStyles.bordered_box, styles.sing_in_box].join(' ')} >
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormElement
-                  // onChangeFunction={handleOnChange}
-                  id={'name'}
+                  onChangeFunction={onChangeFormElement}
                   type={'text'}
                   placeholder={'Your name'}
                   label={'Name'}
                   value={''}
-                  component='TextBox' />
+                  name={'username'}
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormElement
-                  // onChangeFunction={handleOnChange}
-                  id={'email'}
+                  onChangeFunction={onChangeFormElement}
                   type={'text'}
                   placeholder={'Your email'}
                   label={'Email'}
                   value={''}
-                  component='TextBox' />
+                  name={'email'}
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormElement
-                  // onChangeFunction={handleOnChange}
-                  id={'pass'}
-                  type={'text'}
+                  onChangeFunction={onChangeFormElement}
+                  type={'password'}
                   placeholder={'Your password'}
                   label={'Password'}
                   value={''}
-                  component='TextBox' />
+                  name={'password'}
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormElement
-                  // onChangeFunction={handleOnChange}
-                  id={'confirmPass'}
-                  type={'text'}
+                  onChangeFunction={onChangeFormElement}
+                  type={'password'}
                   placeholder={'Confirm password'}
                   label={'Confirm password'}
                   value={''}
-                  component='TextBox' />
+                  name={'confirmPassword'}
+                  component='TextBox'
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
                 <FormButton
-                  // onClick={handleOnClick}
-                  text="Sign Up" />
+                  text="Sign Up"
+                />
               </div>
             </div>
             <div className={genericStyles.row}>
