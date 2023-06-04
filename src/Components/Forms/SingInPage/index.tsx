@@ -41,17 +41,17 @@ const SingIn = () => {
     const { email, password } = form
     setFormErrors({})
 
-    if (!email) {
+    if (email) {
       setFormErrors({
         ...formErrors,
-        email: 'Электронная почта не совпадает'
+        email: 'Your email is not correct'
       })
     }
 
-    if (!password) {
+    if (password) {
       setFormErrors({
         ...formErrors,
-        password: 'Пароль не совпадает'
+        password: 'Forgot password?'
       })
     }
 
@@ -80,13 +80,17 @@ const SingIn = () => {
                   value={''}
                   component='TextBox'
                 />
-                {
-                  formErrors?.email && (
-                    <label className={styles.errors}>
-                      {formErrors.email}
-                    </label>
-                  )
-                }
+                <div className={genericStyles.row}>
+                  <div className={[genericStyles.col_12, genericStyles.m_t_10].join(" ")}>
+                    {
+                      formErrors?.email && (
+                        <label className={styles.errors}>
+                          {formErrors.email}
+                        </label>
+                      )
+                    }
+                  </div>
+                </div>
               </div>
             </div>
             <div className={genericStyles.row}>
@@ -99,18 +103,17 @@ const SingIn = () => {
                   value={''}
                   component='TextBox'
                 />
-                {
-                  formErrors?.password && (
-                    <label className={styles.errors}>
-                      {formErrors.password}
-                    </label>
-                  )
-                }
               </div>
-            </div>
-            <div className={genericStyles.row}>
-              <div className={[genericStyles.col_12, genericStyles.m_t_10].join(" ")}>
-                <a href="#" className={genericStyles.link}>Forgot password?</a>
+              <div className={genericStyles.row}>
+                <div className={[genericStyles.col_12, genericStyles.m_t_10].join(" ")}>
+                  {
+                    formErrors?.password && (
+                      <label className={styles.errors}>
+                        {formErrors.password}
+                      </label>
+                    )
+                  }
+                </div>
               </div>
             </div>
             <div className={genericStyles.row}>

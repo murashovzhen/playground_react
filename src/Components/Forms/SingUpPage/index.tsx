@@ -45,7 +45,7 @@ const SingUp = () => {
     if (password !== confirmPassword) {
       setFormErrors({
         ...formErrors,
-        confirmPassword: 'Пароли не совпадают'
+        confirmPassword: 'Passwords do not match'
       })
     }
 
@@ -117,6 +117,8 @@ const SingUp = () => {
                   name={'confirmPassword'}
                   component='TextBox'
                 />
+              <div className={genericStyles.row}>
+                <div className={[genericStyles.col_12, genericStyles.m_t_10].join(" ")}>
                 {
                   formErrors?.confirmPassword && (
                     <label className={styles.errors}>
@@ -124,6 +126,8 @@ const SingUp = () => {
                     </label>
                   )
                 }
+                </div>
+              </div>
               </div>
             </div>
             <div className={genericStyles.row}>
