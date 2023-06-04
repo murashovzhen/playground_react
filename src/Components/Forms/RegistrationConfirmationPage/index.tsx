@@ -5,36 +5,20 @@ import FormLayout from '../FormLayout'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
 import { FormType } from '../../../Types/Form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { AppState } from '../../../Store' 
 
-// const fakeApi = {
-//   login: async (login: string, password: string) => {
-//     return login == 'admin' && password == 'admin'
-//   }
-// }
-
-const Success = () => {
-  const [form, setForm] = useState({
-    email: '',
-  } as FormType)
-
-  // const handleOnClick = useCallback(() => {
-  //   fakeApi.login(form.email, form.pass)
-  //     .then(result => alert(result ? 'Вы вошли' : 'Поробуйте еще раз'))
-  // }, [form])
-
-  // const handleOnChange = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-  //   setForm({
-  //     ...form,
-  //     [e.currentTarget.id]: e.currentTarget.value
-  //   })
-  // }, [form])
-
+const RegistrationConfirmation = () => {
+  const reg = useSelector((state: AppState) => state.registration.user)
+  const navigate = useNavigate()
+  const onClickNavigate = () => navigate('/')
+  
   const breadcrumbs = [<Link to="/" className={genericStyles.link}>Back to Home</Link>]
 
   return (
     <FormLayout
-      title={'Success'}
+      title={'Registration Confirmation'}
       breadcrumbs={breadcrumbs}
     >
       <div className={[genericStyles.row].join(' ')}>
@@ -43,14 +27,14 @@ const Success = () => {
             <div className={genericStyles.row}>
               <div className={[genericStyles.col_12, genericStyles.m_t_25, genericStyles.content_center].join(' ')}>
                 <span className={genericStyles.help_text}>
-                  Email confirmed. <br /> Your registration is now completed
+                  Please activate your account with the activation link in the email
+                  <a href="#" className={genericStyles.link}> ....{reg?.email}</a>. Please, check your email
                 </span>
               </div>
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
-                <FormButton
-                  // onClick={handleOnClick}
+                <FormButton onClick={onClickNavigate}
                   text="Go to home"
                 />
               </div>
@@ -62,6 +46,6 @@ const Success = () => {
   )
 }
 
-export default Success
+export default RegistrationConfirmation
 
 

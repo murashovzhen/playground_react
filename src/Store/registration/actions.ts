@@ -1,7 +1,7 @@
 
 import { User } from "../../Types/UserRegistration"
 import { ResponseErrors } from "../../Types/ResponseError"
-import { Registration } from "../../Services/authServise"
+import { Activation, Registration } from "../../Services/authServise"
 import { AppThunk } from ".."
 
 export const RegistrationActionName = {
@@ -23,8 +23,7 @@ const registrationFail = (errors: ResponseErrors | string) => {
     }
 }
 
-export const registrationAction = (username: string, email: string, password: string, cb?: ()=> void): AppThunk => {
-
+export const registrationAction = (username: string, email: string, password: string, cb?: () => void): AppThunk => {
     return (dispatch) => {
         Registration(username, email, password)
             .then(response => {
@@ -33,8 +32,32 @@ export const registrationAction = (username: string, email: string, password: st
                 } else if (!response.ok) {
                     return dispatch(registrationFail(response.data))
                 }
-                
+
                 dispatch(registrationSuccess(response.data))
+                if (cb) {
+                    cb()
+                }
+            })
+    }
+}
+
+export const activationAction = (uid: string, token: string, cb?: () => void): AppThunk => {
+    return (dispatch) => {
+        Activation(uid, token)
+            .then(response => {
+                // if (!response) {
+                //     return dispatch(registrationFail("Неизвестная ошибка"))
+                // } else if (!response.ok) {
+                //     return dispatch(registrationFail(response.data))
+                // }
+
+                //dispatch(registrationSuccess(response.data))
+
+                if (!response.ok) {
+                    console.log(response)
+                    return
+                }
+
                 if (cb) {
                     cb()
                 }

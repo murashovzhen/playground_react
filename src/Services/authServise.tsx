@@ -61,4 +61,35 @@ export const Activation = async (uid: string, token: string) => {
             data: error.message
         }
     }
+}  
+
+export const Login = async (email: string, password: string) => {
+    const url = ("https://studapi.teachmeskills.by/auth/jwt/create/")
+    const option = {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            email,
+            password
+        })
+    }
+    try {
+        const response = await fetch(url, option)
+        const result = await response.json()
+
+        return {
+            ok: response.ok,
+            status: response.status,
+            data: result
+        }
+    } catch (error: any) {
+        return {
+            ok: false,
+            status: 400,
+            data: error.message
+        }
+    }
 }     
+

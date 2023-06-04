@@ -10,14 +10,15 @@ const CardFooter = (props: CardFooterType) => {
   const [cardFooter, setValue] = useState(props)
 
   const likeOnClick = () => {
-    setValue(x => {
-      x.likes++;
-      return x;
-    })
+    setValue(x => Object.assign({},
+      x,
+      { likes: x.likes + 1 }))
   }
 
   const dislikeOnClick = () => {
-    setValue(x => { x.dislikes++; return x; })
+    setValue(x => Object.assign({},
+      x,
+      { dislikes: x.dislikes + 1 }))
   }
 
   return (

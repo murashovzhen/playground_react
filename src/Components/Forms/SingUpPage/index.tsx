@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux'
 const SingUp = () => {
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
+  
   const [form, setForm] = useState<FormType>({
     email: '',
     password: '',
@@ -29,13 +30,12 @@ const SingUp = () => {
   }, [errors])
   //*************ошибки в сторе забирать через селектор***************************************
 
-  const onChangeFormElement = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setForm({
-        ...form,
-        [e.target.name]: e.target.value
-      })
-    }, [form, setForm])
+  const onChangeFormElement = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    })
+  }, [form, setForm])
 
   const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -43,11 +43,13 @@ const SingUp = () => {
     setFormErrors({})
 
     if (password !== confirmPassword) {
-      ({
+      setFormErrors({
         ...formErrors,
         confirmPassword: 'Пароли не совпадают'
       })
     }
+
+    //проверка на другие ошибки *********************************
 
     if (email && password && username && password === confirmPassword) {
       const regSuccess = () => navigate('/registrationConfirmation')

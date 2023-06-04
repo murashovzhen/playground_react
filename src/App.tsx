@@ -2,17 +2,18 @@ import styles from "./App.module.scss";
 import { Route, Routes } from 'react-router-dom'
 import Layout from './Components/Layout'
 import Body from "./Components/Body";
-import Post from "./Components/Forms/Post";
-import SingIn from "./Components/Forms/SingIn";
-import PostEdit from "./Components/Forms/PostEdit";
-import SingUp from "./Components/Forms/SingUp";
-import ResetPass1 from "./Components/Forms/Reset password1";
-import ResetPass2 from "./Components/Forms/Reset password2";
-import NewPass from "./Components/Forms/New Password";
-import SingUpNewPass from "./Components/Forms/SingUp New Pass";
-import RegistrationConfirmation from "./Components/Forms/Registration Confirmation";
-import Success from "./Components/Forms/Success";
+import Post from "./Components/Forms/PostPage";
+import SingIn from "./Components/Forms/SingInPage";
+import PostEdit from "./Components/Forms/PostEditPage";
+import SingUp from "./Components/Forms/SingUpPage";
+import ResetPass1 from "./Components/Forms/ResetPasswordPage1";
+import ResetPass2 from "./Components/Forms/ResetPasswordPage2";
+import NewPass from "./Components/Forms/NewPasswordPage";
+import SingUpNewPass from "./Components/Forms/SingUpNewPassPage";
+import RegistrationConfirmation from "./Components/Forms/RegistrationConfirmationPage";
+import Success from "./Components/Forms/SuccessPage";
 import Home from "./Components/Body";
+import { ActivatePage } from "./Components/Forms/ActivatePage/ActivatePage";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='newpass' element={<NewPass />} />
           <Route path='singinNewpass' element={<SingUpNewPass />} />
           <Route path='registrationConfirmation' element={<RegistrationConfirmation />} />
+          <Route path='activate/:uid/:token' element={<ActivatePage />} />
           <Route path='success' element={<Success />} />
         </Route>
       </Routes>
