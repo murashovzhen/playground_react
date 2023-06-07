@@ -4,6 +4,9 @@ import { PostType } from "../../../Types/Post"
 import Card from "../../Card";
 import cardStyles from "../../Card/styles.module.scss";
 import { getAllPosts } from '../../../Services/PostServise';
+import { Pager } from '../../Paging';
+
+
 
 const HomeContent = () => {
   const [posts, setPosts] = useState<PostType[]>();
@@ -31,7 +34,6 @@ const HomeContent = () => {
           <Card post={posts[2]} cardstyle={cardStyles.smallCard} />
         </div>
       </div>
-
       <div className={styles.middleAndSmallContent}>
         <div className={styles.middleAndMiddleContent} >
           <Card post={posts[3]} cardstyle={cardStyles.middleCard} />
@@ -42,7 +44,6 @@ const HomeContent = () => {
           <Card post={posts[6]} cardstyle={cardStyles.smallCard} />
         </div>
       </div>
-
       <div className={styles.middleAndSmallContent}>
         <div className={styles.middleAndMiddleContent} >
           <Card post={posts[7]} cardstyle={cardStyles.middleCard} />
@@ -53,7 +54,7 @@ const HomeContent = () => {
           <Card post={posts[10]} cardstyle={cardStyles.smallCard} />
         </div>
       </div>
-
+      {/* <Pager total={total} itemPerPage={12} currentPage={currentPage} /> */}
     </div>
   )
 }

@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux'
 const SingUp = () => {
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
-  
+
   const [form, setForm] = useState<FormType>({
     email: '',
     password: '',
@@ -117,17 +117,17 @@ const SingUp = () => {
                   name={'confirmPassword'}
                   component='TextBox'
                 />
-              <div className={genericStyles.row}>
-                <div className={[genericStyles.col_12, genericStyles.m_t_10].join(" ")}>
-                {
-                  formErrors?.confirmPassword && (
-                    <label className={styles.errors}>
-                      {formErrors.confirmPassword}
-                    </label>
-                  )
-                }
+                <div className={genericStyles.row}>
+                  <div className={[genericStyles.col_12, genericStyles.m_t_10].join(" ")}>
+                    {
+                      formErrors?.confirmPassword && (
+                        <label className={styles.errors}>
+                          {formErrors.confirmPassword}
+                        </label>
+                      )
+                    }
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
             <div className={genericStyles.row}>

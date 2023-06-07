@@ -19,7 +19,7 @@ const AsideMenu = () => {
           </Link>
         </li>
         <li className={styles.listItem}>
-          <Link to="/posts/create" className={styles.itemLink}>
+          <Link to="addPost" className={styles.itemLink}>
             Add Post
           </Link>
         </li>

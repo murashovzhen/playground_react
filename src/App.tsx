@@ -4,7 +4,6 @@ import Layout from './Components/Layout'
 import Body from "./Components/Body";
 import Post from "./Components/Forms/PostPage";
 import SingIn from "./Components/Forms/SingInPage";
-import PostEdit from "./Components/Forms/PostEditPage";
 import SingUp from "./Components/Forms/SingUpPage";
 import ResetPass1 from "./Components/Forms/ResetPasswordPage1";
 import ResetPass2 from "./Components/Forms/ResetPasswordPage2";
@@ -14,6 +13,7 @@ import RegistrationConfirmation from "./Components/Forms/RegistrationConfirmatio
 import Success from "./Components/Forms/SuccessPage";
 import Home from "./Components/Body";
 import { ActivatePage } from "./Components/Forms/ActivatePage/ActivatePage";
+import AddPost from "./Components/Forms/AddPostPage";
 
 const App = () => {
   return (
@@ -22,8 +22,8 @@ const App = () => {
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='posts/:id' element={<Post />} />
-          {/* <Route path='posts/edit/:id' element={<PostEdit />} />
-        <Route path='posts/create' element={<PostEdit />} /> */}
+          {/* <Route path='posts/edit/:id' element={<PostEdit />} /> */}
+          <Route path='addPost' element={<AddPost />} />
           <Route path='singin' element={<SingIn />} />
           <Route path='singup' element={<SingUp />} />
           <Route path='resetpass1' element={<ResetPass1 />} />
@@ -35,6 +35,7 @@ const App = () => {
           <Route path='success' element={<Success />} />
         </Route>
       </Routes>
+      
   </>
 
   )

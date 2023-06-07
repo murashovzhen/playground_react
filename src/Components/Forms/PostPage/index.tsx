@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getPost } from '../../../Services/PostServise'
 import { PostType } from '../../../Types/Post'
 import FormLayout from '../FormLayout'
 import genericStyles from '../../../App.module.scss'
+import styles from '../PostPage/styles.module.scss'
 import { Link } from 'react-router-dom'
+import { Pager } from '../../Paging'
 
 const Post = () => {
   const params = useParams()
@@ -23,23 +25,19 @@ const Post = () => {
       title={post.title}
       breadcrumbs={breadcrumbs}
     >
-      <div className={[genericStyles.row, genericStyles.m_t_25].join('')}>
-        <div className={[genericStyles.col_12].join(' ')}>
-          <Link to={`/posts/edit/${post.id}`}>Edit Post</Link>
+      <div className={genericStyles.row}>
+        <div className={styles.cardImgWrappper}>
+          <img className={styles.cardImg} src={post.image} alt='Image' />
+        </div>
+        <div className={[genericStyles.m_t_25].join('')}>
+          <div className={styles.cardTextWrappper}>
+            <p className={styles.cardText}>
+              {post.text}
+            </p>
+          </div>
         </div>
       </div>
-      <div className={[genericStyles.row, genericStyles.m_t_25].join('')}>
-        <div className={[genericStyles.col_lg_6, genericStyles.offset_lg_3, genericStyles.col_12].join(' ')}>
-          <img src={post.image} alt='Image' />
-        </div>
-      </div>
-      <div className={[genericStyles.row, genericStyles.m_t_25].join('')}>
-        <div className={genericStyles.col_12}>
-          <p>
-            {post.text}
-          </p>
-        </div>
-      </div>
+
     </FormLayout >
   )
 }

@@ -1,18 +1,17 @@
-
 .sing_in_box {
-    margin-top: 72px;
-    padding: 0 40px 40px 40px;
+    margin-top: 24px;
+
     @media (min-width: 768px) and (max-width: 1024px) {
-            & {
-                margin-top: 56px;
-            }
+        & {
+            margin-top: 16px;
         }
-    
-        @media (max-width: 767px) {
-            & {
-                margin-top: 48px;
-            }
+    }
+
+    @media (max-width: 767px) {
+        & {
+            margin-top: 8px;
         }
+    }
 
     a {
         font-weight: 400;
@@ -22,6 +21,13 @@
         padding-top: 16px;
         text-align: left;
         text-decoration: none;
+
+        // &:hover {
+        //         color: #2231AA;
+        //         cursor: pointer;
+        //         transition: all 0.25s;
+        //     }
+        // }
     }
 
     span {
@@ -40,5 +46,3 @@
 .errors {
     color: #ff0000;
 }
-
-

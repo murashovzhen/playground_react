@@ -1,0 +1,37 @@
+.cardImgWrappper {
+    text-align: center;
+
+    .cardImg {
+        max-width: 992px;
+        width: 100%;
+        object-fit: contain;
+        margin-top: 48px;
+    }
+}
+
+.cardTextWrappper{
+margin: 0 auto;
+max-width: 992px;
+    width: 100%;
+
+.cardText {
+        
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 400;
+        color: #313037;
+        padding: 0 36px;
+       
+        @media (max-width: 767px) {
+                & {
+                    padding: 0;
+                }
+            }
+        
+            @media (min-width: 768px) and (max-width: 1024px) {
+                & {
+                    padding: 0;
+                }
+            }
+    }
+}
