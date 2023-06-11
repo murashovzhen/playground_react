@@ -34,8 +34,7 @@ const App = () => {
           <Route path='activate/:uid/:token' element={<ActivatePage />} />
           <Route path='success' element={<Success />} />
         </Route>
-      </Routes>
-      
+      </Routes>     
   </>
 
   )

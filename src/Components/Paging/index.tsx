@@ -1,12 +1,14 @@
-import { current } from '@reduxjs/toolkit'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getPages } from './getPages'
+import styles from "./styles.module.scss";
 
 type Props = {
-    total: number,
-    itemPerPage: number,
-    currentPage: number,
+    total: number, // общее кол-во стр
+    itemPerPage: number, // кол-во постов на стр 
+    currentPage: number, // текущая стр
+
+    // endpoint:string или отдельный Pager для Search
 }
 
 export const Pager = ({ total, itemPerPage, currentPage }: Props) => {
@@ -18,16 +20,14 @@ export const Pager = ({ total, itemPerPage, currentPage }: Props) => {
     }, [total, itemPerPage, currentPage])
 
     return (
-        <div>
+        <div className={styles.pagination}>
             {
                 pages.map(item => (
-                    item === ' '
-                        ?
-                        (
-                            <span>{item}</span>
-                        ) :
-                        (
-                            <Link to={'/posts' + item}>{item}</Link>
+                    item === '..'
+                        ? (
+                            <span >{item}</span>
+                        ) : (
+                            <Link to={'/posts/' + item} className={styles.pager}>{item}</Link>
                         )
                 ))
             }

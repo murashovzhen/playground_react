@@ -12,8 +12,10 @@ export const Registration = async (username: string, email: string, password: st
             password
         })
     }
+    const request = new Request(url, option)
+
     try {
-        const response = await fetch(url, option)
+        const response = await fetch(request)
         const result = await response.json()
 
         return {
@@ -45,8 +47,10 @@ export const Activation = async (uid: string, token: string) => {
             token
         })
     }
+    const request = new Request(url, option)
+
     try {
-        const response = await fetch(url, option)
+        const response = await fetch(request)
         const result = await response.json()
 
         return {
@@ -61,7 +65,7 @@ export const Activation = async (uid: string, token: string) => {
             data: error.message
         }
     }
-}  
+}
 
 export const Login = async (email: string, password: string) => {
     const url = ("https://studapi.teachmeskills.by/auth/jwt/create/")
@@ -75,8 +79,10 @@ export const Login = async (email: string, password: string) => {
             password
         })
     }
+    const request = new Request(url, option)
+
     try {
-        const response = await fetch(url, option)
+        const response = await fetch(request)
         const result = await response.json()
 
         return {

@@ -5,10 +5,12 @@ import Card from "../../Card";
 import cardStyles from "../../Card/styles.module.scss";
 import { getAllPosts } from '../../../Services/PostServise';
 import { Pager } from '../../Paging';
+import { useParams } from 'react-router-dom';
 
 
 
 const HomeContent = () => {
+  const {page}=useParams()
   const [posts, setPosts] = useState<PostType[]>();
 
   const getApiData = async () => {
@@ -18,7 +20,7 @@ const HomeContent = () => {
 
   useEffect(() => {
     getApiData();
-  }, []);
+  }, [page]);
 
   if (!posts) {
     return null

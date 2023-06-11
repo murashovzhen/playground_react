@@ -28,7 +28,7 @@ const RegistrationConfirmation = () => {
               <div className={[genericStyles.col_12, genericStyles.m_t_25, genericStyles.content_center].join(' ')}>
                 <span className={genericStyles.help_text}>
                   Please activate your account with the activation link in the email
-                  <a href="#" className={genericStyles.link}> ....{reg?.email}</a>. Please, check your email
+                  <a href="#" className={genericStyles.link}> {reg?.email}</a>. Please, check your email
                 </span>
               </div>
             </div>
