@@ -6,10 +6,9 @@ import FormElement from '../FormElement'
 import FormButton from '../FormButton'
 import { FormType } from '../../../Types/Form'
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { registrationAction } from '../../../Store/registration/actions'
 import { AppDispatch, AppState } from '../../../Store'
-import { useSelector } from 'react-redux'
 
 const SingUp = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -53,7 +52,14 @@ const SingUp = () => {
 
     if (email && password && username && password === confirmPassword) {
       const regSuccess = () => navigate('/registrationConfirmation')
-      dispatch(registrationAction(email, password, username, regSuccess))
+      const regFail = (data: any) => {
+        data.forEach((e: any) => {
+          setFormErrors(e)
+        });
+
+
+      }
+      dispatch(registrationAction(username, email, password, regSuccess, regFail))
     }
   }
 

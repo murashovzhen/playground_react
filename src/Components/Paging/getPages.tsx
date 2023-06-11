@@ -17,7 +17,6 @@ export const getPages = (
 
     // 1
     if (currentPage <= 4) {
-
         pages = getNumbers(1, currentPage >= pageCount - 1 ? pageCount : currentPage + 2)
 
         if (currentPage + 3 < pageCount) {
@@ -44,9 +43,7 @@ export const getPages = (
                 '..',
                 ...getNumbers(currentPage - 2, pageCount)
             )
-
         }
-
     }
     return pages
 }

@@ -23,14 +23,15 @@ const registrationFail = (errors: ResponseErrors | string) => {
     }
 }
 
-export const registrationAction = (username: string, email: string, password: string, cb?: () => void): AppThunk => {
+export const registrationAction = (username: string, email: string, password: string, cb?: () => void, failedCb?: (data: any) => void): AppThunk => {
     return (dispatch) => {
         Registration(username, email, password)
             .then(response => {
-                if (!response) {
-                    return dispatch(registrationFail("Неизвестная ошибка"))
-                } else if (!response.ok) {
-                    return dispatch(registrationFail(response.data))
+                if (!response || !response.ok) {
+                    if (failedCb) {
+                        failedCb(response.data);
+                    }
+                    return dispatch(!response.ok ? registrationFail(response.data) : registrationFail("Неизвестная ошибка"))
                 }
 
                 dispatch(registrationSuccess(response.data))

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AppDispatch } from '../../../Store'
 import { activationAction } from '../../../Store/registration/actions'
-
+//http://localhost:3000/activate/NjQyOA/bpmmfp-31d87108daea025c4534a39be5cbf131
 // - ссылка по почте для активации пользователя
 // http://studapi.teachmeskills.by//activate/NjMyOQ/boyyxv-c0f36d8cfdd50203c7bdd061cd469781
 // подставляем http://localhost:3000/ 
