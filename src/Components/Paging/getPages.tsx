@@ -61,16 +61,3 @@ export const getPages = (
     return pages
 }
 
-export function PageNum() {
-    const currentPage = 2
-
-    return (
-        <div>
-            <h1>currentPage </h1>
-            {
-                getPages(100, 12, currentPage).map((item, index) => (
-                    <span key={index}>{item} </span>))
-            }
-        </div>
-    )
-}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getPages } from './getPages'
 import styles from "./styles.module.scss";
+import globalStyles from "./../../App.module.scss";
 
 type Props = {
     total: number, // общее кол-во стр
@@ -26,8 +27,11 @@ export const Pager = ({ total, itemPerPage, currentPage }: Props) => {
                     item === '..'
                         ? (
                             <span >{item}</span>
-                        ) : (
-                            <Link to={'/posts/' + item} className={styles.pager}>{item}</Link>
+                        ) : 
+                        item ===  currentPage ?
+                        (<span className={styles.current_page}>{item}</span>):
+                        (
+                            <Link to={'?page=' + item} className={[styles.pager, globalStyles.link].join(" ")}>{item}</Link>
                         )
                 ))
             }

@@ -11,6 +11,10 @@ export type PostType = {
     views: number
     isPopular: boolean
 }
+export type PostPageType = {
+    count: number
+    items: PostType[]
+}
 
 export type PostCardType = {
     post: PostType | undefined

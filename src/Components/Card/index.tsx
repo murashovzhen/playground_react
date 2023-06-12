@@ -21,7 +21,7 @@ const Card = (props: PostCardType) => {
               day: "numeric",
             })}
           </span>
-          <Link to={`/posts/${props.post.id}`} className={globalStyles.link}>
+          <Link to={`/post/${props.post.id}`} className={globalStyles.link}>
             <span className={styles.title}>{props.post.title}</span>
           </Link>
           <p>{props.post.text}</p>

@@ -16,9 +16,7 @@ const Layout = () => {
         <Outlet />
       </div>
       <AsideMenu />
-      <div>
-        <Pager total={100} itemPerPage={12} currentPage={2} />
-      </div>
+      
       <Footer />
     </div>
 
