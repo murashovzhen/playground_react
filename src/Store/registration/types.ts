@@ -5,7 +5,7 @@ import { User } from "../../Types/UserRegistration";
 export type RegisterUserState = {
     email?: ReactNode;
     isRegister: boolean
-    errors?: ResponseErrors | string
+    errors?: ResponseErrors 
     user?: User 
 }
 

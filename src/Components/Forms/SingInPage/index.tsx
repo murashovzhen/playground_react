@@ -23,11 +23,9 @@ const SingIn = () => {
   const errors = useSelector((state: AppState) => state.authentication.errors)
   //**** ошибки,если есть, то отобразить, если нет, то переходим на страницу с постами*/
   useEffect(() => {
-    console.log(errors)  //преобразовать еррорс в объект(.reduce)
+    //console.log(errors)  //преобразовать еррорс в объект(.reduce)
   }, [errors])
-  //*************ошибки в сторе забирать через селектор***************************************
-
-  console.log(form)
+ 
 
   const onChangeFormElement = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setForm({

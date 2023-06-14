@@ -34,8 +34,13 @@ const RegistrationConfirmation = () => {
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
-                <FormButton onClick={onClickNavigate}
+                <FormButton onClick={onClickNavigate} disabled={true}
                   text="Go to home"
+                />
+              </div>
+              <div className={genericStyles.col_12}>
+                <FormButton onClick={()=>navigate('/activate')} 
+                  text="Activation work around"
                 />
               </div>
             </div>

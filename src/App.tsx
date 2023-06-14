@@ -31,7 +31,7 @@ const App = () => {
           <Route path='newpass' element={<NewPass />} />
           <Route path='singinNewpass' element={<SingUpNewPass />} />
           <Route path='registrationConfirmation' element={<RegistrationConfirmation />} />
-          <Route path='activate/:uid/:token' element={<ActivatePage />} />
+          <Route path='activate' element={<ActivatePage />} />
           <Route path='success' element={<Success />} />
         </Route>
       </Routes>     

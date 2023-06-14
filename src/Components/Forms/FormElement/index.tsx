@@ -26,12 +26,15 @@ function FormElement(props: FormElementType): JSX.Element {
 
     return (
         <div className={styles.formElement}>
-            <label>{props.label}</label>
-            {/* <input onChange={props.onChangeFunction}
-                name={props.name}
-                type={props.type}
-                placeholder={props.placeholder}/> */}
+            <label>{props.label}</label>            
             {input}
+            
+            {props.error && (
+              <label className={styles.errors}>
+                {props.error}
+              </label>
+            )}
+          
         </div>
     )
 }

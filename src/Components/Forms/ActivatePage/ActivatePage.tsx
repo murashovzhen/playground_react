@@ -1,36 +1,65 @@
-import React, { useEffect } from 'react'
+import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import {Link, useNavigate, useParams } from 'react-router-dom'
 import { AppDispatch } from '../../../Store'
 import { activationAction } from '../../../Store/registration/actions'
-//http://localhost:3000/activate/NjQyOA/bpmmfp-31d87108daea025c4534a39be5cbf131
-// - ссылка по почте для активации пользователя
-// http://studapi.teachmeskills.by//activate/NjMyOQ/boyyxv-c0f36d8cfdd50203c7bdd061cd469781
-// подставляем http://localhost:3000/ 
-// вместо http://studapi.teachmeskills.by//
-// http://localhost:3000/activate/NjMyOQ/boyyxv-c0f36d8cfdd50203c7bdd061cd469781
-
-// POST / auth / users / activation / (активация пользователя, данные из ссылки по почте)
-// {"uid": "NjMyOQ",
-//  "token": "boyyxv-c0f36d8cfdd50203c7bdd061cd469781"}
+import genericStyles from '../../../App.module.scss'
+import FormElement from '../FormElement'
+import FormLayout from '../FormLayout'
+import FormButton from '../FormButton'
 
 export const ActivatePage = () => {
-    const { uid, token } = useParams()
     const dispatch = useDispatch<AppDispatch>()
     const navigate = useNavigate()
 
-    // если есть ошибки, забрать их из стора и показать. если нет, то переходит на 'success'
+    const [link, setlink] = useState<string>("")
+    const onChangeFormElement = useCallback((e: ChangeEvent<HTMLInputElement>) => {        
+        setlink(e.target.value)
+      }, [link])
 
-    useEffect(() => {
-        if (uid && token) {
-            dispatch(activationAction(uid, token, () => navigate('/success')))
+    const onClick = () => {
+        if (link) {
+            var uidToken = link.replace('http://studapi.teachmeskills.by//activate/','').split("/");
+            dispatch(activationAction(uidToken[0], uidToken[1], () => navigate('/success')))
         }
-    }, [uid, token])
+    }
+   
 
-    return (
-        <div>
-            ActivatePage
-        </div>
+const breadcrumbs = [<Link to="/" className={genericStyles.link}>Back to Home</Link>]
+
+  return (
+    <FormLayout
+      title={'Activation work around'}
+      breadcrumbs={breadcrumbs}
+    >
+            <div className={genericStyles.row}>
+              <div className={[genericStyles.col_12, genericStyles.m_t_25, genericStyles.content_center].join(' ')}>
+                <span className={genericStyles.help_text}>
+                  For activate your accoun please insert activation link from email to form bellow
+                </span>
+              </div>
+            </div>
+            <div className={genericStyles.row}>
+              <div className={genericStyles.col_12}>
+                <FormElement  
+                  onChangeFunction={onChangeFormElement}                
+                  type={'text'}
+                  placeholder={'Activation link'}
+                  label={'Activation link'}
+                  value={''}
+                  name={'link'}
+                  component='TextBox'
+                />
+              </div>
+            </div>
+            <div className={genericStyles.row}>
+              <div className={genericStyles.col_12}>
+                <FormButton onClick={onClick}
+                  text="Activate" type='button'
+                />
+              </div>
+            </div>
+        </FormLayout>
     )
 }
 

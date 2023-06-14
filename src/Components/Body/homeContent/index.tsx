@@ -17,8 +17,6 @@ const HomeContent = () => {
     itemPerPage = 11;
   }
   
-  
-
   const [posts, setPosts] = useState<PostPageType>();
 
   const getApiData = async (page:number, limit: number) => {

@@ -20,7 +20,7 @@ export const RegistrationReducer = (
         case RegistrationActionName.REGISTRATION_FAIL:
             return {
                 isRegister: false,
-                errors: action.payload as (string | ResponseErrors)
+                errors: action.payload as ( ResponseErrors)
             }
         default:
             return state

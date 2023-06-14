@@ -51,12 +51,11 @@ export const Activation = async (uid: string, token: string) => {
 
     try {
         const response = await fetch(request)
-        const result = await response.json()
-
+       
         return {
             ok: response.ok,
             status: response.status,
-            data: result
+           
         }
     } catch (error: any) {
         return {

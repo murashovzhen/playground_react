@@ -3,6 +3,7 @@ import { User } from "../../Types/UserRegistration"
 import { ResponseErrors } from "../../Types/ResponseError"
 import { Activation, Registration } from "../../Services/authServise"
 import { AppThunk } from ".."
+import { ReactNotifications, Store } from 'react-notifications-component'
 
 export const RegistrationActionName = {
     REGISTRATION_SUCCESS: "REGISTRATION_SUCCESS",
@@ -23,14 +24,12 @@ const registrationFail = (errors: ResponseErrors | string) => {
     }
 }
 
-export const registrationAction = (username: string, email: string, password: string, cb?: () => void, failedCb?: (data: any) => void): AppThunk => {
+export const registrationAction = (username: string, email: string, password: string, cb?: () => void): AppThunk => {
     return (dispatch) => {
         Registration(username, email, password)
             .then(response => {
                 if (!response || !response.ok) {
-                    if (failedCb) {
-                        failedCb(response.data);
-                    }
+                   
                     return dispatch(!response.ok ? registrationFail(response.data) : registrationFail("Неизвестная ошибка"))
                 }
 
@@ -46,15 +45,17 @@ export const activationAction = (uid: string, token: string, cb?: () => void): A
     return (dispatch) => {
         Activation(uid, token)
             .then(response => {
-                // if (!response) {
-                //     return dispatch(registrationFail("Неизвестная ошибка"))
-                // } else if (!response.ok) {
-                //     return dispatch(registrationFail(response.data))
-                // }
-
-                //dispatch(registrationSuccess(response.data))
-
+                
                 if (!response.ok) {
+
+                    Store.addNotification({
+                        title: "Activation error",
+                        message: response.data.detail ?? response.data,
+                        type: "danger",
+                        insert: "top",
+                        container: "top-right",
+                        
+                      });
                     console.log(response)
                     return
                 }
