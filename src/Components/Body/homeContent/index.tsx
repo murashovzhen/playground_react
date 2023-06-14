@@ -60,26 +60,26 @@ const HomeContent = () => {
       
       <div className={styles.middleAndSmallContent}>
         <div className={styles.middleAndMiddleContent} >
+          <Card post={posts.items[posts.items.length-8]} cardstyle={cardStyles.middleCard} />
           <Card post={posts.items[posts.items.length-7]} cardstyle={cardStyles.middleCard} />
-          <Card post={posts.items[posts.items.length-6]} cardstyle={cardStyles.middleCard} />
         </div>
         <div className={styles.smallAndSmallContent}>
+          <Card post={posts.items[posts.items.length-6]} cardstyle={cardStyles.smallCard} />
           <Card post={posts.items[posts.items.length-5]} cardstyle={cardStyles.smallCard} />
-          <Card post={posts.items[posts.items.length-4]} cardstyle={cardStyles.smallCard} />
         </div>
       </div>
       <div className={styles.middleAndSmallContent}>
         <div className={styles.middleAndMiddleContent} >
+          <Card post={posts.items[posts.items.length-4]} cardstyle={cardStyles.middleCard} />
           <Card post={posts.items[posts.items.length-3]} cardstyle={cardStyles.middleCard} />
-          <Card post={posts.items[posts.items.length-2]} cardstyle={cardStyles.middleCard} />
         </div>
         <div className={styles.smallAndSmallContent}>
+          <Card post={posts.items[posts.items.length-2]} cardstyle={cardStyles.smallCard} />
           <Card post={posts.items[posts.items.length-1]} cardstyle={cardStyles.smallCard} />
-          <Card post={posts.items[posts.items.length]} cardstyle={cardStyles.smallCard} />
         </div>
       </div>
       <div>
-        <Pager total={posts.count} itemPerPage={itemPerPage} currentPage={currentPage} />
+        <Pager total={posts.count} itemPerPage={12} currentPage={currentPage} />
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 const getNumbers = (startPage: number, endPage: number): number[] => {  //массив стр по порядку 1 2 3
     const result: number[] = []
-    for (let i = startPage; i < startPage + endPage; i++) {
+    for (let i = startPage; i < endPage+1; i++) {
         result.push(i)
     }
     return result
