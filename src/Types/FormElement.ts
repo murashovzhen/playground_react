@@ -7,4 +7,5 @@ export type FormElementType = {
     name?: string
     component?: string
     onChangeFunction?: React.ChangeEventHandler<HTMLInputElement>  
+    onChange?: React.ChangeEventHandler<HTMLInputElement>
 }

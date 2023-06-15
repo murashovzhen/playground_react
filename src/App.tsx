@@ -11,8 +11,8 @@ import RegistrationConfirmation from "./Components/Forms/RegistrationConfirmatio
 import Success from "./Components/Forms/SuccessPage";
 import Home from "./Components/Body";
 import { ActivatePage } from "./Components/Forms/ActivatePage/ActivatePage";
-import AddPost from './Components/Forms/AddPostPage';
 import SearchPage from './Components/search/SearchPage';
+import AddPostPage from './Components/Forms/AddPostPage';
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path='post/:id' element={<Post />} />
           {/* <Route path='posts/edit/:id' element={<PostEdit />} /> */}
-          <Route path='addPost' element={<AddPost />} />
+          <Route path='post/add' element={<AddPostPage />} />
           <Route path='singin' element={<SingIn />} />
           <Route path='singup' element={<SingUp />} />
           <Route path='resetpass1' element={<ResetPass1 />} />

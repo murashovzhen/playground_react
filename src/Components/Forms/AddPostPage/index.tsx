@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getPost } from '../../../services/postServise'
+import { createPost, getPost } from '../../../services/postServise'
 import { PostType } from '../../../types/post'
 import { nameof } from 'ts-simple-nameof'
 import FormLayout from '../FormLayout'
@@ -10,7 +10,14 @@ import FormElement from '../FormElement'
 import FormButton from '../FormButton'
 import styles from './styles.module.scss'
 
-const AddPost = () => {
+type FormType = {
+    title: string
+    text: string
+    discription: string
+    lesson_number: string
+}
+
+const AddPostPage = () => {
     const params = useParams()
     const [post, setPost] = useState<PostType>({} as PostType)
     const breadcrumbs = [<Link to="/" className={genericStyles.link}>Back to Home</Link>]
@@ -26,6 +33,44 @@ const AddPost = () => {
             <Link to={`/posts/${post.id}`} className={genericStyles.link}>
                 {post.title}
             </Link>);
+    }
+
+    //******************************************************************** */
+    const [form, setForm] = useState({} as FormType)
+    const [image, setImage] = useState<File | string>('')
+
+    const loadImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0]
+
+        if (file) {
+            setImage(file)
+        }
+    }
+
+    const onChangeFormElement = (e: ChangeEvent<HTMLInputElement>) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const onPostCreatClick = async () => {
+        const { title, text, discription, lesson_number } = form
+        const token = await fetch(new Request('https://studapi.teachmeskills.by/auth/jwt/create/', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                "email": "woyewis704@cutefier.com",
+                "password": "1311Qwqq!!"
+            })
+        }))
+            .then(response => response.json())
+            .then(result => result.access as string)
+
+
+        createPost(title, text, discription, lesson_number, image, token)
     }
 
     return (
@@ -45,30 +90,33 @@ const AddPost = () => {
                                     label={'Title'}
                                     name={nameof<PostType>(p => p.title)}
                                     component='TextBox'
+                                    onChange={onChangeFormElement}
                                 />
                             </div>
                         </div>
                         <div className={genericStyles.row}>
                             <div className={genericStyles.col_12}>
                                 <FormElement
-                                    type={'text'}
+                                    type={'number'}
                                     value={post.title}
                                     placeholder={' '}
                                     label={'Lesson number'}
                                     name={nameof<PostType>(p => p.title)}
                                     component='TextBox'
+                                    onChange={onChangeFormElement}
                                 />
                             </div>
                         </div>
                         <div className={genericStyles.row}>
                             <div className={genericStyles.col_12}>
                                 <FormElement
-                                    type={'text'}
+                                    type={'file'}
                                     value={post.title}
                                     placeholder={'filename.jpeg'}
                                     label={'Image'}
                                     name={nameof<PostType>(p => p.title)}
                                     component='TextBox'
+                                    onChange={loadImageHandler}
                                 />
                             </div>
                         </div>
@@ -81,6 +129,7 @@ const AddPost = () => {
                                     label={'Description'}
                                     name={nameof<PostType>(p => p.text)}
                                     component='TextArea'
+                                    onChange={onChangeFormElement}
                                 />
                             </div>
                         </div>
@@ -93,6 +142,7 @@ const AddPost = () => {
                                     label={'Text'}
                                     name={nameof<PostType>(p => p.text)}
                                     component='TextArea'
+                                    onChange={onChangeFormElement}
                                 />
                             </div>
                         </div>
@@ -110,6 +160,7 @@ const AddPost = () => {
                             <div className={genericStyles.col_12}>
                                 <FormButton
                                     text="Add post"
+                                    onClick={onPostCreatClick}
                                 />
                             </div>
                         </div>
@@ -120,4 +171,4 @@ const AddPost = () => {
     )
 }
 
-export default AddPost
+export default AddPostPage
