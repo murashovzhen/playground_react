@@ -12,7 +12,7 @@ import Success from "./Components/Forms/SuccessPage";
 import Home from "./Components/Body";
 import { ActivatePage } from "./Components/Forms/ActivatePage/ActivatePage";
 import AddPost from './Components/Forms/AddPostPage';
-import SearchPage from './Components/Body/SearchPage';
+import SearchPage from './Components/search/SearchPage';
 
 const App = () => {
   return (

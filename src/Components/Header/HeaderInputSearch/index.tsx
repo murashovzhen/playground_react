@@ -7,12 +7,10 @@ import { ChangeEvent, useCallback } from 'react'
 import { setSearchValueAction } from '../../../Store/search/action'
 
 const HeaderSearchInput = () => {
-    // const { text, placeholder, name } = props
     const dispatch = useDispatch<AppDispatch>()
     const searchValue = useSelector((state: AppState) => state.search.search)
 
     const handleSearchValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        //console.log(e.target)
         const text = e.target.value
         dispatch(setSearchValueAction(text))
     }, [])

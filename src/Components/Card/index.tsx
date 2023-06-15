@@ -10,7 +10,7 @@ const Card = (props: PostCardType) => {
   }
 
   return (
-    <div className={props.cardstyle}>
+    <div key={props.post.id} className={props.cardstyle}>
       <div className={styles.cardContent}>
         <img className={styles.cardImg_Upper} src={props.post.image} alt='Image' />
         <div className={styles.cardText}>
