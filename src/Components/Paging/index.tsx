@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getPages } from './getPages'
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
+import globalStyles from './../../App.module.scss';
 
-type Props = {
+type Props = {   
     total: number, // общее кол-во стр
     itemPerPage: number, // кол-во постов на стр 
-    currentPage: number, // текущая стр
-
-    // endpoint:string или отдельный Pager для Search
+    currentPage: number, // текущая стр 
+    endpoint: string
 }
 
-export const Pager = ({ total, itemPerPage, currentPage }: Props) => {
+export const Pager = ({ total, itemPerPage, currentPage, endpoint }: Props) => {
     const [pages, setPages] = useState<ReturnType<typeof getPages>>([])
 
     useEffect(() => {
@@ -22,12 +22,21 @@ export const Pager = ({ total, itemPerPage, currentPage }: Props) => {
     return (
         <div className={styles.pagination}>
             {
-                pages.map(item => (
+                pages.map((item, i) => (
                     item === '..'
                         ? (
-                            <span >{item}</span>
+                            <span
+                                key={i}
+                                className={styles.current_page}>
+                                {item}
+                            </span>
                         ) : (
-                            <Link to={'/posts/' + item} className={styles.pager}>{item}</Link>
+                            <Link
+                                key={i}
+                                to={`${endpoint}?page=${item}`}
+                                className={[styles.pager, globalStyles.link].join(' ')}>
+                                {item}
+                            </Link>
                         )
                 ))
             }

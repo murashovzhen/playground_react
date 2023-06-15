@@ -1,6 +1,6 @@
 const getNumbers = (startPage: number, endPage: number): number[] => {  //массив стр по порядку 1 2 3
     const result: number[] = []
-    for (let i = startPage; i < startPage + endPage; i++) {
+    for (let i = startPage; i < endPage + 1; i++) {
         result.push(i)
     }
     return result
@@ -61,16 +61,3 @@ export const getPages = (
     return pages
 }
 
-export function PageNum() {
-    const currentPage = 2
-
-    return (
-        <div>
-            <h1>currentPage </h1>
-            {
-                getPages(100, 12, currentPage).map((item, index) => (
-                    <span key={index}>{item} </span>))
-            }
-        </div>
-    )
-}

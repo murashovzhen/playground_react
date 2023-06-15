@@ -2,14 +2,16 @@ import { ThunkAction, configureStore } from "@reduxjs/toolkit";
 import { RegistrationReducer } from "./registration/reducer";
 import { Action, combineReducers } from "redux"
 import { AuthReducer } from "./authentication/reducer";
+import { SearchReducer } from "./search/reducer";
 
 const rootReduser = combineReducers({
     registration: RegistrationReducer,
-    authentication: AuthReducer
+    authentication: AuthReducer,
+    search: SearchReducer
 })
 
 export const store = configureStore({
-    reducer: rootReduser
+    reducer: rootReduser,
 })
 
 export type AppState = ReturnType<typeof store.getState>

@@ -4,7 +4,6 @@ import Footer from "../Footer";
 import { Outlet } from "react-router-dom";
 import Menu from "../Header/Menu";
 import AsideMenu from "../AsideMenu";
-import { Pager } from "../Paging";
 
 const Layout = () => {
   return (
@@ -16,9 +15,6 @@ const Layout = () => {
         <Outlet />
       </div>
       <AsideMenu />
-      <div>
-        <Pager total={100} itemPerPage={12} currentPage={2} />
-      </div>
       <Footer />
     </div>
 

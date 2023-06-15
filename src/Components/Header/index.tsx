@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./styles.module.scss"
-import HeaderInputSearch from "./HeaderInputSearch"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { faUser } from "@fortawesome/free-regular-svg-icons"
 import { MenuContext } from "../../Helpers/menuContext";
+import HeaderSearchInput from "./HeaderInputSearch";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useContext(MenuContext)
@@ -27,9 +27,9 @@ const Header = () => {
           {btnText}
         </button>
       </div>
-      <HeaderInputSearch
-        placeholder={"Search ..."}
-        name={"Search"}
+      <HeaderSearchInput
+        // placeholder={"Search ..."}
+        // name={"Search"}
       />
       <div className={styles.headerSearch}>
         <button className={styles.searchSearch}>

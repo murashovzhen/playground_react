@@ -4,16 +4,16 @@ import genericStyles from '../../../App.module.scss'
 import FormLayout from '../FormLayout'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
-import { FormType } from '../../../Types/Form'
+import { FormType } from '../../../types/form'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { AppState } from '../../../Store' 
+import { AppState } from '../../../Store'
 
 const RegistrationConfirmation = () => {
   const reg = useSelector((state: AppState) => state.registration.user)
   const navigate = useNavigate()
   const onClickNavigate = () => navigate('/')
-  
+
   const breadcrumbs = [<Link to="/" className={genericStyles.link}>Back to Home</Link>]
 
   return (

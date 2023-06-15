@@ -4,7 +4,7 @@ import genericStyles from '../../../App.module.scss'
 import FormLayout from '../FormLayout'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
-import { FormType } from '../../../Types/Form'
+import { FormType } from '../../../types/form'
 import { Link } from 'react-router-dom'
 
 // const fakeApi = {

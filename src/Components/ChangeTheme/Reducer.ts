@@ -1,4 +1,4 @@
-import { ActionType, StateType } from "../../Types/ChangeTheme"
+import { ActionType, StateType } from "../../types/changeTheme"
 
 
 export const reducer = (state: StateType, action: ActionType): StateType => {

@@ -1,5 +1,5 @@
-import { ResponseErrors } from "../../Types/ResponseError";
-import { User } from "../../Types/UserRegistration";
+import { ResponseErrors } from "../../types/responseError";
+import { User } from "../../types/userRegistration";
 import { RegistrationActionName } from "./actions";
 import { RegisterActionType, RegisterUserState } from "./types";
 

@@ -1,5 +1,5 @@
 import { Console } from "console";
-import { ResponseErrors } from "../../Types/ResponseError";
+import { ResponseErrors } from "../../types/responseError";
 import { AuthActionName } from "./actions";
 import { AuthActionType, AuthUserState, Tokens } from "./types";
 

@@ -21,6 +21,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-, "src/Types/ResponseError.ts"  ]
+    "src",
+    "src/types/responseError.ts"
+  ]
 }

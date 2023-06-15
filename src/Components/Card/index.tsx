@@ -1,7 +1,7 @@
 import CardFooter from '../Body/AllCards/CardFooter'
 import styles from '../Card/styles.module.scss'
 import globalStyles from '../../App.module.scss'
-import { PostCardType } from '../../Types/Post'
+import { PostCardType } from '../../types/post'
 import { Link } from 'react-router-dom'
 
 const Card = (props: PostCardType) => {
@@ -21,7 +21,7 @@ const Card = (props: PostCardType) => {
               day: "numeric",
             })}
           </span>
-          <Link to={`/posts/${props.post.id}`} className={globalStyles.link}>
+          <Link to={`/post/${props.post.id}`} className={globalStyles.link}>
             <span className={styles.title}>{props.post.title}</span>
           </Link>
           <p>{props.post.text}</p>

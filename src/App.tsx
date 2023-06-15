@@ -1,7 +1,5 @@
-import styles from "./App.module.scss";
 import { Route, Routes } from 'react-router-dom'
 import Layout from './Components/Layout'
-import Body from "./Components/Body";
 import Post from "./Components/Forms/PostPage";
 import SingIn from "./Components/Forms/SingInPage";
 import SingUp from "./Components/Forms/SingUpPage";
@@ -13,7 +11,8 @@ import RegistrationConfirmation from "./Components/Forms/RegistrationConfirmatio
 import Success from "./Components/Forms/SuccessPage";
 import Home from "./Components/Body";
 import { ActivatePage } from "./Components/Forms/ActivatePage/ActivatePage";
-import AddPost from "./Components/Forms/AddPostPage";
+import AddPost from './Components/Forms/AddPostPage';
+import SearchPage from './Components/Body/SearchPage';
 
 const App = () => {
   return (
@@ -21,7 +20,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path='posts/:id' element={<Post />} />
+          <Route path='post/:id' element={<Post />} />
           {/* <Route path='posts/edit/:id' element={<PostEdit />} /> */}
           <Route path='addPost' element={<AddPost />} />
           <Route path='singin' element={<SingIn />} />
@@ -33,9 +32,10 @@ const App = () => {
           <Route path='registrationConfirmation' element={<RegistrationConfirmation />} />
           <Route path='activate/:uid/:token' element={<ActivatePage />} />
           <Route path='success' element={<Success />} />
+          <Route path='search' element={<SearchPage />} />
         </Route>
-      </Routes>     
-  </>
+      </Routes>
+    </>
 
   )
 }

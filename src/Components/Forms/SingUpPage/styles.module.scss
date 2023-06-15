@@ -1,18 +1,18 @@
-
 .sing_in_box {
     margin-top: 72px;
     padding: 0 40px 40px 40px;
+
     @media (min-width: 768px) and (max-width: 1024px) {
-            & {
-                margin-top: 56px;
-            }
+        & {
+            margin-top: 56px;
         }
-    
-        @media (max-width: 767px) {
-            & {
-                margin-top: 48px;
-            }
+    }
+
+    @media (max-width: 767px) {
+        & {
+            margin-top: 48px;
         }
+    }
 
     a {
         font-weight: 400;

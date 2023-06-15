@@ -1,4 +1,3 @@
-
 export type PostType = {
     id: string
     title: string
@@ -12,7 +11,17 @@ export type PostType = {
     isPopular: boolean
 }
 
+export type PostPageType = {
+    count: number
+    items: PostType[]
+}
+
 export type PostCardType = {
     post: PostType | undefined
     cardstyle: string
+}
+
+export type ResponseType = {
+    count: number
+    results: PostType[]
 }

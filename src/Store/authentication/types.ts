@@ -1,6 +1,6 @@
-import { ResponseErrors } from "../../Types/ResponseError"
+import { ResponseErrors } from "../../types/responseError"
 
-export type Tokens= {
+export type Tokens = {
     access: string
     refresh: string
 }

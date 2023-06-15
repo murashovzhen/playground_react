@@ -1,7 +1,7 @@
 
-import { User } from "../../Types/UserRegistration"
-import { ResponseErrors } from "../../Types/ResponseError"
-import { Activation, Registration } from "../../Services/authServise"
+import { User } from "../../types/userRegistration"
+import { ResponseErrors } from "../../types/responseError"
+import { Activation, Registration } from "../../services/authServise"
 import { AppThunk } from ".."
 
 export const RegistrationActionName = {
