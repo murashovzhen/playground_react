@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { AppState } from "../../../Store"
 import styles from './styles.module.scss';
-import globalStyles from '../../App.module.scss'
+import globalStyles from '../../../App.module.scss'
 import { Link } from 'react-router-dom'
 import CardFooter from "../../Body/AllCards/CardFooter";
 
