@@ -12,6 +12,8 @@ export type PostType = {
 }
 
 export type PostPageType = {
+    currentPage: number
+    term: string
     count: number
     items: PostType[]
 }
@@ -21,7 +23,4 @@ export type PostCardType = {
     cardstyle: string
 }
 
-export type ResponseType = {
-    count: number
-    results: PostType[]
-}
+

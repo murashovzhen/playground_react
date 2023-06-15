@@ -1,41 +1,43 @@
-import { useEffect, useState } from 'react'
+import React from "react";
+import globalStyles from '../../App.module.scss'
+import { Link } from "react-router-dom";
 import styles from './styles.module.scss';
-import { PostPageType } from '../../../types/post';
-import Card from '../../Card';
-import cardStyles from '../../Card/styles.module.scss';
-import { getAllPosts } from '../../../services/postServise';
-import { Pager } from '../../Paging';
+import Card from '../Card';
+import cardStyles from '../Card/styles.module.scss';
+import { Pager } from '../Paging';
 import { useSearchParams } from 'react-router-dom';
+import { AppDispatch, AppState, AppThunk } from '../../Store';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPageValueAction } from '../../Store/post/action';
+import { useEffect } from 'react';
 
-const HomeContent = () => {
-
+const Home = () => {
+  const dispatch = useDispatch<AppDispatch>()
   let [searchParams, setSearchParams] = useSearchParams()
   let currentPage = Number(searchParams.get('page')) || 1;
-  let itemPerPage = 12;
-
-  if (currentPage === 1) {
-    itemPerPage = 11;
-  }
-
-  const [posts, setPosts] = useState<PostPageType>();
-
-  const getApiData = async (page: number, limit: number) => {
-    const data = await getAllPosts(page, limit);
-    setPosts(data);
-  };
-
+  
+  const posts = useSelector((state: AppState) => state.post)
+ 
   useEffect(() => {
-    getApiData(currentPage, itemPerPage);
+    dispatch(setPageValueAction(currentPage));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  }, [currentPage]);
+  }, [currentPage])
 
   if (!posts) {
     return null
   }
 
   return (
-    <div>
-      {currentPage === 1 &&
+    <div className={styles.body}>
+     <h1 className={styles.headerTitle}>
+            Blog
+        </h1>
+        <nav className={styles.navigation}>
+      <Link className={[styles.navTabs, globalStyles.link].join(' ')} to="#">All</Link>
+      <Link className={[styles.navTabs, globalStyles.link].join(' ')} to="#">My favorites</Link>
+      <Link className={[styles.navTabs, globalStyles.link].join(' ')} to="#"> My posts</Link>
+    </nav>
+    {currentPage === 1 &&
         <div className={styles.bigAndSmallContent}>
           <Card post={posts.items[0]} cardstyle={cardStyles.bigCard} />
           <div className={styles.smallAndSmallContent}>
@@ -80,7 +82,7 @@ const HomeContent = () => {
         <Pager total={posts.count} itemPerPage={12} currentPage={currentPage} endpoint='' />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomeContent;
+export default Home;

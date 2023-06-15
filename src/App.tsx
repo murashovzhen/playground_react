@@ -9,10 +9,10 @@ import NewPass from "./Components/Forms/NewPasswordPage";
 import SingUpNewPass from "./Components/Forms/SingUpNewPassPage";
 import RegistrationConfirmation from "./Components/Forms/RegistrationConfirmationPage";
 import Success from "./Components/Forms/SuccessPage";
-import Home from "./Components/Body";
+import Home from "./Components/PostsIndex";
 import { ActivatePage } from "./Components/Forms/ActivatePage/ActivatePage";
 import AddPost from './Components/Forms/AddPostPage';
-import SearchPage from './Components/search/SearchPage';
+import SearchPosts from './Components/PostsSearch';
 
 const App = () => {
   return (
@@ -32,7 +32,7 @@ const App = () => {
           <Route path='registrationConfirmation' element={<RegistrationConfirmation />} />
           <Route path='activate/:uid/:token' element={<ActivatePage />} />
           <Route path='success' element={<Success />} />
-          <Route path='search' element={<SearchPage />} />
+          <Route path='search' element={<SearchPosts />} />
         </Route>
       </Routes>
     </>

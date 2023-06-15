@@ -3,7 +3,7 @@ import { AppState } from "../../../Store"
 import SearchPosts from "../SearchPosts"
 
 const SearchPage = () => {
-    const searchValue = useSelector((state: AppState) => state.search.search)
+    const searchValue = useSelector((state: AppState) => state.post.term)
 
     return (
         <>

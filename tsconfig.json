@@ -22,6 +22,6 @@
   },
   "include": [
     "src",
-    "src/types/responseError.ts"
+    "src/Types/ResponseError1.ts"
   ]
 }

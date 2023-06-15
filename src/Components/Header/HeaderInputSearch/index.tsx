@@ -4,15 +4,19 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '../../../Store'
 import { ChangeEvent, useCallback } from 'react'
-import { setSearchValueAction } from '../../../Store/search/action'
+import { setSearchValueAction } from '../../../Store/post/action'
+import { useNavigate } from 'react-router-dom'
 
 const HeaderSearchInput = () => {
     const dispatch = useDispatch<AppDispatch>()
-    const searchValue = useSelector((state: AppState) => state.search.search)
+    const navigate = useNavigate()
+    const searchValue = useSelector((state: AppState) => state.post.term)
 
     const handleSearchValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        const text = e.target.value
-        dispatch(setSearchValueAction(text))
+        if(e.target.value){ 
+            dispatch(setSearchValueAction(e.target.value))
+            navigate('/search')
+        }       
     }, [])
 
     return (

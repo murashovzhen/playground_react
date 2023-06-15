@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import { CardFooterType } from '../../../../types/cardFooterType'
+import { CardFooterType } from '../../Types/CardFooterType'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsDown, faThumbsUp, faBookmark } from '@fortawesome/free-regular-svg-icons';

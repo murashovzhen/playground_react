@@ -1,4 +1,4 @@
-import { ResponseErrors } from "../../types/responseError"
+import { ResponseErrors } from "../../Types/ResponseError1"
 
 export type Tokens = {
     access: string

@@ -3,15 +3,15 @@ import { AppState } from "../../../Store"
 import styles from './styles.module.scss';
 import globalStyles from '../../../App.module.scss'
 import { Link } from 'react-router-dom'
-import CardFooter from "../../Body/AllCards/CardFooter";
+import CardFooter from "../../CardFooter";
 
 
 const SearchPosts = () => {
-    const posts = useSelector((state: AppState) => state.search.list)
+    const posts = useSelector((state: AppState) => state.post.items)
 
     return (
         <>
-            {
+           {/*  {
                 posts.map(post => (
                     <div key={post.id} className={styles.searchCard}>
                         <div className={styles.cardContent}>
@@ -32,7 +32,7 @@ const SearchPosts = () => {
                         <CardFooter dislikes={post.dislikes} likes={post.likes} postId={post.id} views={post.views} />
                     </div>
                 ))
-            }
+            } */}
         </>
     )
 }

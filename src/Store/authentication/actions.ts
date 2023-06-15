@@ -1,6 +1,6 @@
 
-import { ResponseErrors } from "../../types/responseError"
-import { Login } from "../../services/authServise"
+import { ResponseErrors } from "../../Types/ResponseError1"
+import { Login } from "../../Services/AuthServise"
 import { AppThunk } from ".."
 import { Tokens } from "./types"
 import { access } from "fs"

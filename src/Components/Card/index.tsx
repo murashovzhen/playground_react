@@ -1,7 +1,7 @@
-import CardFooter from '../Body/AllCards/CardFooter'
+import CardFooter from '../CardFooter'
 import styles from '../Card/styles.module.scss'
 import globalStyles from '../../App.module.scss'
-import { PostCardType } from '../../types/post'
+import { PostCardType } from '../../Types/Post'
 import { Link } from 'react-router-dom'
 
 const Card = (props: PostCardType) => {

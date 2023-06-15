@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { FormElementType } from '../../../types/formElement'
+import { FormElementType } from '../../../Types/FormElement'
 import styles from './styles.module.scss'
 
 function FormElement(props: FormElementType): JSX.Element {
