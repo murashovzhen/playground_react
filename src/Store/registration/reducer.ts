@@ -1,5 +1,5 @@
-import { ResponseErrors } from "../../types/responseError";
-import { User } from "../../types/userRegistration";
+import { ResponseErrors } from "../../Types/ResponseError1";
+import { User } from "../../Types/UserRegistration";
 import { RegistrationActionName } from "./actions";
 import { RegisterActionType, RegisterUserState } from "./types";
 
@@ -20,7 +20,7 @@ export const RegistrationReducer = (
         case RegistrationActionName.REGISTRATION_FAIL:
             return {
                 isRegister: false,
-                errors: action.payload as (string | ResponseErrors)
+                errors: action.payload as (ResponseErrors)
             }
         default:
             return state

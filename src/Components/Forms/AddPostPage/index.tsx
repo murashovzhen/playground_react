@@ -1,7 +1,7 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { createPost, getPost } from '../../../services/postServise'
-import { PostType } from '../../../types/post'
+import { createPost, getPost } from '../../../Services/PostServise'
+import { PostType } from '../../../Types/Post'
 import { nameof } from 'ts-simple-nameof'
 import FormLayout from '../FormLayout'
 import genericStyles from '../../../App.module.scss'
@@ -9,13 +9,9 @@ import { Link } from 'react-router-dom'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
 import styles from './styles.module.scss'
+import { useSelector } from 'react-redux'
+import { AppState } from '../../../Store'
 
-type FormType = {
-    title: string
-    text: string
-    discription: string
-    lesson_number: string
-}
 
 const AddPostPage = () => {
     const params = useParams()
@@ -35,9 +31,10 @@ const AddPostPage = () => {
             </Link>);
     }
 
-    //******************************************************************** */
-    const [form, setForm] = useState({} as FormType)
     const [image, setImage] = useState<File | string>('')
+
+    const [formErrors, setFormErrors] = useState<Partial<PostType>>({})
+    const errors = useSelector((state: AppState) => state.post.errors)
 
     const loadImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
@@ -48,30 +45,45 @@ const AddPostPage = () => {
     }
 
     const onChangeFormElement = (e: ChangeEvent<HTMLInputElement>) => {
-        setForm({
-            ...form,
+        setPost({
+            ...post,
             [e.target.name]: e.target.value
         })
     }
+    const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const { title, text, discription, lesson_number } = post
+        setFormErrors({
+            ...formErrors,
+            // : !password ? 'Password is requed' : "",
+            // email: !email ? 'email is requed' : "",
+            // username: !username ? 'username is requed' : "",
+            // confirmPassword: !password ? 'confirmPassword is requed' : password !== confirmPassword ? 'Passwords do not match' : "",
+        })
 
-    const onPostCreatClick = async () => {
-        const { title, text, discription, lesson_number } = form
-        const token = await fetch(new Request('https://studapi.teachmeskills.by/auth/jwt/create/', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                "email": "woyewis704@cutefier.com",
-                "password": "1311Qwqq!!"
-            })
-        }))
-            .then(response => response.json())
-            .then(result => result.access as string)
+        // if (email && password && username && password === confirmPassword) {
+        //     const regSuccess = () => navigate('/registrationConfirmation')
 
-
-        createPost(title, text, discription, lesson_number, image, token)
+        //     dispatch(registrationAction(username, email, password, regSuccess))
+        // }
     }
+    // const onPostCreatClick = async () => {
+    //     const { title, text, discription, lesson_number } = form
+    //     const token = await fetch(new Request('https://studapi.teachmeskills.by/auth/jwt/create/', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             "email": "woyewis704@cutefier.com",
+    //             "password": "1311Qwqq!!"
+    //         })
+    //     }))
+    //         .then(response => response.json())
+    //         .then(result => result.access as string)
+
+    //     createPost(title, text, discription, lesson_number, image, token)
+    // }
 
     return (
         <FormLayout
@@ -90,7 +102,8 @@ const AddPostPage = () => {
                                     label={'Title'}
                                     name={nameof<PostType>(p => p.title)}
                                     component='TextBox'
-                                    onChange={onChangeFormElement}
+                                    onChangeFunction={onChangeFormElement}
+                                    error={formErrors.title}
                                 />
                             </div>
                         </div>
@@ -98,12 +111,13 @@ const AddPostPage = () => {
                             <div className={genericStyles.col_12}>
                                 <FormElement
                                     type={'number'}
-                                    value={post.title}
+                                    value={post.lesson_number}
                                     placeholder={' '}
                                     label={'Lesson number'}
-                                    name={nameof<PostType>(p => p.title)}
+                                    name={nameof<PostType>(p => p.lesson_number)}
                                     component='TextBox'
-                                    onChange={onChangeFormElement}
+                                    onChangeFunction={onChangeFormElement}
+                                    error={formErrors.lesson_number}
                                 />
                             </div>
                         </div>
@@ -111,12 +125,13 @@ const AddPostPage = () => {
                             <div className={genericStyles.col_12}>
                                 <FormElement
                                     type={'file'}
-                                    value={post.title}
+                                    value={post.image}
                                     placeholder={'filename.jpeg'}
                                     label={'Image'}
-                                    name={nameof<PostType>(p => p.title)}
+                                    name={nameof<PostType>(p => p.image)}
                                     component='TextBox'
-                                    onChange={loadImageHandler}
+                                    onChangeFunction={loadImageHandler}
+                                    error={formErrors.image}
                                 />
                             </div>
                         </div>
@@ -124,12 +139,13 @@ const AddPostPage = () => {
                             <div className={genericStyles.col_12}>
                                 <FormElement
                                     type={'text'}
-                                    value={post.text}
+                                    value={post.discription}
                                     placeholder={'Add your text'}
                                     label={'Description'}
-                                    name={nameof<PostType>(p => p.text)}
+                                    name={nameof<PostType>(p => p.discription)}
                                     component='TextArea'
-                                    onChange={onChangeFormElement}
+                                    onChangeFunction={onChangeFormElement}
+                                    error={formErrors.discription}
                                 />
                             </div>
                         </div>
@@ -142,7 +158,8 @@ const AddPostPage = () => {
                                     label={'Text'}
                                     name={nameof<PostType>(p => p.text)}
                                     component='TextArea'
-                                    onChange={onChangeFormElement}
+                                    onChangeFunction={onChangeFormElement}
+                                    error={formErrors.text}
                                 />
                             </div>
                         </div>
@@ -153,6 +170,7 @@ const AddPostPage = () => {
                             <div className={genericStyles.col_12}>
                                 <FormButton
                                     text="Cancel"
+                                    type='button'
                                 />
                             </div>
                         </div>
@@ -160,7 +178,6 @@ const AddPostPage = () => {
                             <div className={genericStyles.col_12}>
                                 <FormButton
                                     text="Add post"
-                                    onClick={onPostCreatClick}
                                 />
                             </div>
                         </div>

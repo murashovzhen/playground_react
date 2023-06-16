@@ -1,10 +1,10 @@
-import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import genericStyles from '../../../App.module.scss'
 import FormLayout from '../FormLayout'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
-import { FormType } from '../../../types/form'
+import { FormType } from '../../../Types/Form'
 import { Link, useNavigate } from 'react-router-dom'
 import { AppDispatch, AppState } from '../../../Store'
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,44 +21,37 @@ const SingIn = () => {
 
   const [formErrors, setFormErrors] = useState<Partial<FormType>>({})
   const errors = useSelector((state: AppState) => state.authentication.errors)
-  //**** ошибки,если есть, то отобразить, если нет, то переходим на страницу с постами*/
-  useEffect(() => {
-    console.log(errors)  //преобразовать еррорс в объект(.reduce)
-  }, [errors])
-  //*************ошибки в сторе забирать через селектор***************************************
 
-  console.log(form)
+  useEffect(() => {
+    setFormErrors({
+      ...formErrors,
+      email: (errors?.detail ?? "") + (errors?.email?.join("; ") ?? ""),
+      password: errors?.password?.join("; "),
+    })
+
+  }, [errors])
 
   const onChangeFormElement = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setFormErrors({})
     setForm({
       ...form,
       [e.target.name]: e.target.value
     })
   }, [form, setForm])
 
-  const onFormSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
+  const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const { email, password } = form
-    setFormErrors({})
-
-    if (email) {
-      setFormErrors({
-        ...formErrors,
-        email: 'Your email is not correct'
-      })
-    }
-
-    if (password) {
-      setFormErrors({
-        ...formErrors,
-        password: 'Forgot password?'
-      })
-    }
+    setFormErrors({
+      ...formErrors,
+      password: !password ? 'Password is requed' : "",
+      email: !email ? 'email is requed' : "",
+    })
 
     if (email && password) {
       dispatch(loginAction(email, password, () => navigate('/')))
     }
-  }, [dispatch, navigate, form])
+  }
 
   const breadcrumbs = [<Link to="/" className={genericStyles.link}>Back to Home</Link>]
 

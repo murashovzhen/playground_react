@@ -3,17 +3,23 @@ export type PostType = {
     title: string
     text: string
     image: string
-    createdAt: Date
+    date: Date
     authorId: string
     likes: number
     dislikes: number
     views: number
     isPopular: boolean
+    lesson_number: string
+    discription: string
 }
 
+
+
 export type PostPageType = {
+    currentPage: number
+    search: string
     count: number
-    items: PostType[]
+    results: PostType[]
 }
 
 export type PostCardType = {
@@ -21,7 +27,4 @@ export type PostCardType = {
     cardstyle: string
 }
 
-export type ResponseType = {
-    count: number
-    results: PostType[]
-}
+

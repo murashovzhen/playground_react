@@ -9,10 +9,10 @@ import NewPass from "./Components/Forms/NewPasswordPage";
 import SingUpNewPass from "./Components/Forms/SingUpNewPassPage";
 import RegistrationConfirmation from "./Components/Forms/RegistrationConfirmationPage";
 import Success from "./Components/Forms/SuccessPage";
-import Home from "./Components/Body";
+import Home from "./Components/PostsIndex";
 import { ActivatePage } from "./Components/Forms/ActivatePage/ActivatePage";
-import SearchPage from './Components/search/SearchPage';
-import AddPostPage from './Components/Forms/AddPostPage';
+import AddPost from './Components/Forms/AddPostPage';
+import SearchPosts from './Components/PostsSearch/index';
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path='post/:id' element={<Post />} />
           {/* <Route path='posts/edit/:id' element={<PostEdit />} /> */}
-          <Route path='post/add' element={<AddPostPage />} />
+          <Route path='addPost' element={<AddPost />} />
           <Route path='singin' element={<SingIn />} />
           <Route path='singup' element={<SingUp />} />
           <Route path='resetpass1' element={<ResetPass1 />} />
@@ -30,9 +30,9 @@ const App = () => {
           <Route path='newpass' element={<NewPass />} />
           <Route path='singinNewpass' element={<SingUpNewPass />} />
           <Route path='registrationConfirmation' element={<RegistrationConfirmation />} />
-          <Route path='activate/:uid/:token' element={<ActivatePage />} />
+          <Route path='activate' element={<ActivatePage />} />
           <Route path='success' element={<Success />} />
-          <Route path='search' element={<SearchPage />} />
+          <Route path='search' element={<SearchPosts />} />
         </Route>
       </Routes>
     </>

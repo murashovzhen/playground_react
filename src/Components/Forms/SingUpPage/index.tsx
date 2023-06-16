@@ -1,13 +1,13 @@
-import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import genericStyles from '../../../App.module.scss'
 import FormLayout from '../FormLayout'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
-import { FormType } from '../../../types/form'
+import { FormType } from '../../../Types/Form'
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
 import { registrationAction } from '../../../Store/registration/actions'
+import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '../../../Store'
 
 const SingUp = () => {
@@ -23,13 +23,19 @@ const SingUp = () => {
 
   const [formErrors, setFormErrors] = useState<Partial<FormType>>({})
   const errors = useSelector((state: AppState) => state.registration.errors)
-  //********************************************** */
+
   useEffect(() => {
-    console.log(errors)//преобразовать еррорс в объект(.reduce)
+    setFormErrors({
+      ...formErrors,
+      email: errors?.email?.join("; "),
+      password: errors?.password?.join("; "),
+      username: errors?.username?.join("; ")
+    })
+
   }, [errors])
-  //*************ошибки в сторе забирать через селектор***************************************
 
   const onChangeFormElement = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setFormErrors({})
     setForm({
       ...form,
       [e.target.name]: e.target.value
@@ -39,27 +45,18 @@ const SingUp = () => {
   const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const { email, password, username, confirmPassword } = form
-    setFormErrors({})
-
-    if (password !== confirmPassword) {
-      setFormErrors({
-        ...formErrors,
-        confirmPassword: 'Passwords do not match'
-      })
-    }
-
-    //проверка на другие ошибки *********************************
+    setFormErrors({
+      ...formErrors,
+      password: !password ? 'Password is requed' : "",
+      email: !email ? 'email is requed' : "",
+      username: !username ? 'username is requed' : "",
+      confirmPassword: !password ? 'confirmPassword is requed' : password !== confirmPassword ? 'Passwords do not match' : "",
+    })
 
     if (email && password && username && password === confirmPassword) {
       const regSuccess = () => navigate('/registrationConfirmation')
-      const regFail = (data: any) => {
-        data.forEach((e: any) => {
-          setFormErrors(e)
-        });
 
-
-      }
-      dispatch(registrationAction(username, email, password, regSuccess, regFail))
+      dispatch(registrationAction(username, email, password, regSuccess))
     }
   }
 
@@ -83,6 +80,7 @@ const SingUp = () => {
                   value={''}
                   name={'username'}
                   component='TextBox'
+                  error={formErrors.username}
                 />
               </div>
             </div>
@@ -96,6 +94,7 @@ const SingUp = () => {
                   value={''}
                   name={'email'}
                   component='TextBox'
+                  error={formErrors.email}
                 />
               </div>
             </div>
@@ -109,6 +108,7 @@ const SingUp = () => {
                   value={''}
                   name={'password'}
                   component='TextBox'
+                  error={formErrors.password}
                 />
               </div>
             </div>
@@ -122,18 +122,8 @@ const SingUp = () => {
                   value={''}
                   name={'confirmPassword'}
                   component='TextBox'
+                  error={formErrors.confirmPassword}
                 />
-                <div className={genericStyles.row}>
-                  <div className={[genericStyles.col_12, genericStyles.m_t_10].join(" ")}>
-                    {
-                      formErrors?.confirmPassword && (
-                        <label className={styles.errors}>
-                          {formErrors.confirmPassword}
-                        </label>
-                      )
-                    }
-                  </div>
-                </div>
               </div>
             </div>
             <div className={genericStyles.row}>

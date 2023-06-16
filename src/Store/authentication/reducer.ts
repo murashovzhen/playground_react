@@ -1,7 +1,7 @@
 import { Console } from "console";
-import { ResponseErrors } from "../../types/responseError";
+import { ResponseErrors } from "../../Types/ResponseError1";
 import { AuthActionName } from "./actions";
-import { AuthActionType, AuthUserState, Tokens } from "./types";
+import { AuthActionType, AuthUserState, Tokens, UserInfoType } from "./types";
 
 const initValue: AuthUserState = {
     isAuthenticated: false,
@@ -23,7 +23,17 @@ export const AuthReducer = (
         case AuthActionName.AUTH_FAIL:
             return {
                 isAuthenticated: false,
-                errors: action.payload as (string | ResponseErrors)
+                errors: action.payload as (ResponseErrors)
+            }
+        case AuthActionName.LOGOUT:
+            return {
+                isAuthenticated: false,
+                tokens: undefined
+            }
+        case AuthActionName.SET_USER_INFO:
+            return {
+                isAuthenticated: true,
+                user: action.payload as (UserInfoType)
             }
         default:
             return state
