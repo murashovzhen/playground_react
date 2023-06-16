@@ -1,4 +1,4 @@
-import { ResponseErrors } from "../../types/responseError"
+import { ResponseErrors } from "../../Types/ResponseError1"
 
 export type Tokens = {
     access: string
@@ -7,8 +7,8 @@ export type Tokens = {
 
 export type AuthUserState = {
     isAuthenticated: boolean
-    errors?: ResponseErrors | string
-    tokens?: Tokens
+    errors?: ResponseErrors
+    tokens?: Tokens | undefined
 }
 
 export type AuthActionType = {

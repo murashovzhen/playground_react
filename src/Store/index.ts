@@ -2,12 +2,12 @@ import { ThunkAction, configureStore } from "@reduxjs/toolkit";
 import { RegistrationReducer } from "./registration/reducer";
 import { Action, combineReducers } from "redux"
 import { AuthReducer } from "./authentication/reducer";
-import { SearchReducer } from "./search/reducer";
+import { PostReducer } from "./post/reducer";
 
 const rootReduser = combineReducers({
     registration: RegistrationReducer,
     authentication: AuthReducer,
-    search: SearchReducer
+    post: PostReducer
 })
 
 export const store = configureStore({

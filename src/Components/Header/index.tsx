@@ -28,16 +28,17 @@ const Header = () => {
         </button>
       </div>
       <HeaderSearchInput
-        // placeholder={"Search ..."}
-        // name={"Search"}
       />
       <div className={styles.headerSearch}>
         <button className={styles.searchSearch}>
           <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.searchImg} />
         </button>
+
+
         <button className={styles.searchUser}>
           <FontAwesomeIcon icon={faUser} className={styles.searchImg} />
         </button>
+
       </div>
     </header>
   )

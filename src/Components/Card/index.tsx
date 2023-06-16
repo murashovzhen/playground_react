@@ -1,7 +1,7 @@
-import CardFooter from '../Body/AllCards/CardFooter'
+import CardFooter from '../CardFooter'
 import styles from '../Card/styles.module.scss'
 import globalStyles from '../../App.module.scss'
-import { PostCardType } from '../../types/post'
+import { PostCardType } from '../../Types/Post'
 import { Link } from 'react-router-dom'
 
 const Card = (props: PostCardType) => {
@@ -15,7 +15,7 @@ const Card = (props: PostCardType) => {
         <img className={styles.cardImg_Upper} src={props.post.image} alt='Image' />
         <div className={styles.cardText}>
           <span className={styles.cardDate}>
-            {new Date(props.post.createdAt).toLocaleString("en-US", {
+            {new Date(props.post.date).toLocaleString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",

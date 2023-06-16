@@ -2,10 +2,8 @@ import React, { useCallback, useState } from 'react'
 import styles from './styles.module.scss'
 import genericStyles from '../../../App.module.scss'
 import FormLayout from '../FormLayout'
-import FormElement from '../FormElement'
 import FormButton from '../FormButton'
-import { FormType } from '../../../types/form'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { AppState } from '../../../Store'
 
@@ -34,8 +32,13 @@ const RegistrationConfirmation = () => {
             </div>
             <div className={genericStyles.row}>
               <div className={genericStyles.col_12}>
-                <FormButton onClick={onClickNavigate}
+                <FormButton onClick={onClickNavigate} disabled={true}
                   text="Go to home"
+                />
+              </div>
+              <div className={genericStyles.col_12}>
+                <FormButton onClick={() => navigate('/activate')}
+                  text="Activation work around"
                 />
               </div>
             </div>

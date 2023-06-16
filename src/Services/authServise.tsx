@@ -51,12 +51,11 @@ export const Activation = async (uid: string, token: string) => {
 
     try {
         const response = await fetch(request)
-        const result = await response.json()
 
         return {
             ok: response.ok,
             status: response.status,
-            data: result
+
         }
     } catch (error: any) {
         return {
@@ -68,7 +67,7 @@ export const Activation = async (uid: string, token: string) => {
 }
 
 export const Login = async (email: string, password: string) => {
-    const url = ("https://studapi.teachmeskills.by/auth/jwt/create/")
+    const url = ("https://studapi.teachmeskills.by/auth/jwt/create")
     const option = {
         method: "POST",
         headers: {
@@ -97,5 +96,5 @@ export const Login = async (email: string, password: string) => {
             data: error.message
         }
     }
-}     
+}
 

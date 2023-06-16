@@ -1,7 +1,7 @@
 
-import { User } from "../../types/userRegistration"
-import { ResponseErrors } from "../../types/responseError"
-import { Activation, Registration } from "../../services/authServise"
+import { User } from "../../Types/UserRegistration"
+import { ResponseErrors } from "../../Types/ResponseError1"
+import { Activation, Registration } from "../../Services/authServise"
 import { AppThunk } from ".."
 
 export const RegistrationActionName = {
@@ -46,14 +46,7 @@ export const activationAction = (uid: string, token: string, cb?: () => void): A
     return (dispatch) => {
         Activation(uid, token)
             .then(response => {
-                // if (!response) {
-                //     return dispatch(registrationFail("Неизвестная ошибка"))
-                // } else if (!response.ok) {
-                //     return dispatch(registrationFail(response.data))
-                // }
-
-                //dispatch(registrationSuccess(response.data))
-
+                
                 if (!response.ok) {
                     console.log(response)
                     return

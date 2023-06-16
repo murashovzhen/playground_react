@@ -1,13 +1,14 @@
 
-import { ResponseErrors } from "../../types/responseError"
-import { Login } from "../../services/authServise"
+import { ResponseErrors } from "../../Types/ResponseError1"
+import { Login } from "../../Services/authServise"
 import { AppThunk } from ".."
 import { Tokens } from "./types"
 import { access } from "fs"
 
 export const AuthActionName = {
     AUTH_SUCCESS: "AUTH_SUCCESS",
-    AUTH_FAIL: "AUTH_FAIL"
+    AUTH_FAIL: "AUTH_FAIL",
+    LOGOUT: "LOGOUT"
 } as const
 
 const authSuccess = (tokens: Tokens) => {
