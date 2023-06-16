@@ -52,7 +52,7 @@ const AddPostPage = () => {
     }
     const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const { title, text, discription, lesson_number } = post
+
         setFormErrors({
             ...formErrors,
             // : !password ? 'Password is requed' : "",
@@ -64,26 +64,10 @@ const AddPostPage = () => {
         // if (email && password && username && password === confirmPassword) {
         //     const regSuccess = () => navigate('/registrationConfirmation')
 
-        //     dispatch(registrationAction(username, email, password, regSuccess))
+        dispatch(createPost(post, image))
         // }
     }
-    // const onPostCreatClick = async () => {
-    //     const { title, text, discription, lesson_number } = form
-    //     const token = await fetch(new Request('https://studapi.teachmeskills.by/auth/jwt/create/', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             "email": "woyewis704@cutefier.com",
-    //             "password": "1311Qwqq!!"
-    //         })
-    //     }))
-    //         .then(response => response.json())
-    //         .then(result => result.access as string)
-
-    //     createPost(title, text, discription, lesson_number, image, token)
-    // }
+    // 
 
     return (
         <FormLayout

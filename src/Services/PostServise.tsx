@@ -16,15 +16,14 @@ export const getAllPosts = (page: number, limit: number, search?: string) => {
 }
 
 export const createPost = async (
-    title: string, text: string, discription: string,
-    lesson_number: string, image: File | string, token: string
+    form: PostType, image: File | string, token?: string
 ) => {
 
     const formData = new FormData()
-    formData.append('title', title)
-    formData.append('text', text)
-    formData.append('discription', discription)
-    formData.append('lesson_number', lesson_number)
+    formData.append('title', form.title)
+    formData.append('text', form.text)
+    formData.append('discription', form.discription)
+    formData.append('lesson_number', form.lesson_number)
     formData.append('image', image)
     debugger
     try {

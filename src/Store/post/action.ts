@@ -1,5 +1,6 @@
 import { AppThunk } from '..'
-import { getAllPosts } from "../../Services/PostServise"
+import { createPost, getAllPosts } from "../../Services/PostServise"
+import { PostType } from '../../Types/Post'
 import { RegistrationActionName } from './types'
 
 
@@ -35,14 +36,24 @@ export const setSearchValueAction = (search: string): AppThunk => {
 }
 
 export const setPageValueAction = (currentPage: number): AppThunk => {
-  return (dispatch) => {   
+  return (dispatch) => {
 
     dispatch({
       type: RegistrationActionName.SET_PAGE_VALUE,
       payload: currentPage
     })
-   dispatch(loadPostsAction())
-    
+    dispatch(loadPostsAction())
+  }
+}
+
+export const creatPostAction = (form: PostType, image:File): AppThunk => {
+  return (dispatch, getState) => {
+    const token = getState().authentication.tokens?.access
+      createPost (form ,image, token)
+      // .then(items => dispatch({
+      //   type: RegistrationActionName.LOAD_POSTS,
+      //   payload: items
+      }))
   }
 }
 
