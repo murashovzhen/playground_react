@@ -7,7 +7,7 @@ import { RegistrationActionName } from './types'
 const loadPostsAction = (): AppThunk => {
   return (dispatch, getState) => {
     const state = getState().post
-    getAllPosts(state.currentPage, 12, state.term)
+    getAllPosts(state.currentPage, 12, state.search)
         .then(items => dispatch({
         type: RegistrationActionName.LOAD_POSTS,
         payload: items

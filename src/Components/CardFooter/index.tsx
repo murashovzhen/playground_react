@@ -8,7 +8,16 @@ import { faThumbsDown, faThumbsUp, faBookmark } from '@fortawesome/free-regular-
 
 const CardFooter = (props: CardFooterType) => {
   const [cardFooter, setValue] = useState(props)
-
+  if(!cardFooter.dislikes){
+    setValue(x => Object.assign({},
+      x,
+      { likes: Math.floor(Math.random() * (1000 - 2)) + 1 }))
+  }
+  if(!cardFooter.dislikes){
+    setValue(x => Object.assign({},
+      x,
+      { dislikes: Math.floor(Math.random() * (1000 - 2)) + 2 }))
+  }
   const likeOnClick = () => {
     setValue(x => Object.assign({},
       x,

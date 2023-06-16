@@ -4,9 +4,9 @@ import {PostActionType, RegistrationActionName } from "./types";
 
 
 const initialValue: PostPageType = {
-  term: "",
+  search: "",
   count: 0,
-  items: [],
+  results: [],
   currentPage: 1
 }
 
@@ -15,7 +15,7 @@ export const PostReducer = (state: PostPageType = initialValue, action: PostActi
     case RegistrationActionName.SET_SEARCH_VALUE:
       return {
         ...state, 
-      term:action.payload as string
+      search:action.payload as string
       }
     case RegistrationActionName.SET_PAGE_VALUE:
         return {
@@ -26,7 +26,7 @@ export const PostReducer = (state: PostPageType = initialValue, action: PostActi
       return {
         ...state,
         count: (action.payload as PostPageType).count,
-        items: (action.payload as PostPageType).items
+        results: (action.payload as PostPageType).results
       }
     
     case RegistrationActionName.CLEAR_SEARCH:

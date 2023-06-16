@@ -11,11 +11,13 @@ export type PostType = {
     isPopular: boolean
 }
 
+
+
 export type PostPageType = {
     currentPage: number
-    term: string
+    search: string
     count: number
-    items: PostType[]
+    results: PostType[]
 }
 
 export type PostCardType = {

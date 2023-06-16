@@ -8,10 +8,11 @@ type Props = {
     total: number, // общее кол-во стр
     itemPerPage: number, // кол-во постов на стр 
     currentPage: number, // текущая стр 
-    endpoint: string
+    endpoint: string,
+    searchTerm?: string
 }
 
-export const Pager = ({ total, itemPerPage, currentPage, endpoint }: Props) => {
+export const Pager = ({ total, itemPerPage, currentPage, searchTerm, endpoint }: Props) => {
     const [pages, setPages] = useState<ReturnType<typeof getPages>>([])
 
     useEffect(() => {
@@ -33,7 +34,7 @@ export const Pager = ({ total, itemPerPage, currentPage, endpoint }: Props) => {
                         ) : (
                             <Link
                                 key={i}
-                                to={`${endpoint}?page=${item}`}
+                                to={`${endpoint}?page=${item}${searchTerm?`&search=${searchTerm}`:""}`}
                                 className={[styles.pager, globalStyles.link].join(' ')}>
                                 {item}
                             </Link>

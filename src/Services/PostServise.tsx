@@ -1,6 +1,6 @@
 import { PostPageType, PostType } from '../Types/Post'
 
-const postsEndpoint = "https://mockside.vercel.app/api/posts";
+const postsEndpoint = "https://studapi.teachmeskills.by/blog/posts";
 
 export const getPost = (id: string | undefined) => {
     return fetch(`${postsEndpoint}/${id}`)

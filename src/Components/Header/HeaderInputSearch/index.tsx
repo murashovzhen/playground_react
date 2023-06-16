@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 const HeaderSearchInput = () => {
     const dispatch = useDispatch<AppDispatch>()
     const navigate = useNavigate()
-    const searchValue = useSelector((state: AppState) => state.post.term)
+    const searchValue = useSelector((state: AppState) => state.post.search)
 
     const handleSearchValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         if(e.target.value){ 

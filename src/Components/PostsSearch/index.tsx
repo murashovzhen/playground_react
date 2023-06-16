@@ -43,10 +43,8 @@ const SearchPosts = () => {
           </h1>
         </div>
       </div>
-     
-    
-    {
-                posts.items.map(post => (
+         {
+                posts.results.map(post => (
                   <Card post={post} cardstyle={cardStyles.smallCard} />
                 ))
             }
