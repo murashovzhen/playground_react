@@ -1,3 +1,6 @@
+import { useSelector } from "react-redux"
+import { store } from "../Store"
+
 
 export const Registration = async (username: string, email: string, password: string) => {
     const url = ("https://studapi.teachmeskills.by/auth/users/")
@@ -77,6 +80,37 @@ export const Login = async (email: string, password: string) => {
             email,
             password
         })
+    }
+    const request = new Request(url, option)
+
+    try {
+        const response = await fetch(request)
+        const result = await response.json()
+
+        return {
+            ok: response.ok,
+            status: response.status,
+            data: result
+        }
+    } catch (error: any) {
+        return {
+            ok: false,
+            status: 400,
+            data: error.message
+        }
+    }
+}
+
+export const GetUserName = async () => {
+    const url = ("https://studapi.teachmeskills.by/auth/users/me/")
+
+    //const tokens = store.getState().authentication.tokens
+    const option = {
+        method: "GET",
+        headers: {
+            "Content-type": "application/json",
+            // "Authorization": `Bearer ${tokens?.access}`
+        }
     }
     const request = new Request(url, option)
 

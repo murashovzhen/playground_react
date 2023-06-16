@@ -9,9 +9,16 @@ export type AuthUserState = {
     isAuthenticated: boolean
     errors?: ResponseErrors
     tokens?: Tokens | undefined
+    user?: UserInfoType
 }
 
 export type AuthActionType = {
     type: string
-    payload: Tokens | ResponseErrors
+    payload: Tokens | ResponseErrors | UserInfoType
+}
+
+export type UserInfoType = {
+    username: string
+    id: number
+    email: string
 }

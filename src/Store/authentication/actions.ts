@@ -1,20 +1,28 @@
 
 import { ResponseErrors } from "../../Types/ResponseError1"
-import { Login } from "../../Services/authServise"
+import { GetUserName, Login } from "../../Services/authServise"
 import { AppThunk } from ".."
-import { Tokens } from "./types"
+import { Tokens, UserInfoType } from "./types"
 import { access } from "fs"
 
 export const AuthActionName = {
     AUTH_SUCCESS: "AUTH_SUCCESS",
     AUTH_FAIL: "AUTH_FAIL",
-    LOGOUT: "LOGOUT"
+    LOGOUT: "LOGOUT",
+    SET_USER_INFO: "SET_USER_INFO",
 } as const
 
 const authSuccess = (tokens: Tokens) => {
     return {
         type: AuthActionName.AUTH_SUCCESS,
         payload: tokens
+    }
+}
+
+const setUserInfo = (user: UserInfoType) => {
+    return {
+        type: AuthActionName.SET_USER_INFO,
+        payload: user
     }
 }
 
@@ -42,6 +50,13 @@ export const loginAction = (email: string, password: string, cb?: () => void): A
                 }
 
                 dispatch(authSuccess(response.data))
+                GetUserName().then(userResponse => {
+                    if (userResponse.ok) {
+                        dispatch(setUserInfo(response.data))
+                    }
+                })
+
+
                 if (cb) {
                     cb()
                 }

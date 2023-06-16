@@ -12,7 +12,11 @@ const AsideMenu = () => {
   const dispatch = useDispatch<AppDispatch>()
   const isAuthenticated = useSelector((state: AppState) => state.authentication.isAuthenticated)
 
-
+  const logoutOnclick = () => {
+    dispatch({
+      type: AuthActionName.LOGOUT
+  })
+}
 
   return (
     <div className={[styles.asideMenuBox, styles[`${isOpen ? "asideMenuOpen" : "asideMenuHiden"}`]].join(' ')}>
@@ -37,10 +41,9 @@ const AsideMenu = () => {
 
           {isAuthenticated &&
             <li className={[styles.listItem, styles.listItemGrey].join(' ')}
-              onClick={() => dispatch({ type: AuthActionName.LOGOUT })}>
+              onClick={logoutOnclick}>
               Log Out
             </li>
-
           }
           {!isAuthenticated &&
             <li className={[styles.listItem, styles.listItemGrey].join(' ')}>

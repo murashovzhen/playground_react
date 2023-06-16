@@ -5,10 +5,13 @@ import { faBars, faXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-
 import { faUser } from "@fortawesome/free-regular-svg-icons"
 import { MenuContext } from "../../Helpers/menuContext";
 import HeaderSearchInput from "./HeaderInputSearch";
+import { useSelector } from "react-redux";
+import { AppState } from "../../Store";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useContext(MenuContext)
   const [btnText, setBtnText] = useState(<FontAwesomeIcon icon={faBars} className={styles.burger_img} />)
+  const authentificationState = useSelector((state: AppState) => state.authentication)
 
   const onClick = () => {
     setIsOpen(!isOpen)
@@ -34,10 +37,18 @@ const Header = () => {
           <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.searchImg} />
         </button>
 
+        {!authentificationState.isAuthenticated &&
+          <button className={styles.searchUser}>
+            <FontAwesomeIcon icon={faUser} className={styles.searchImg} />
+          </button>
+        }
+        {authentificationState.isAuthenticated &&
+          <button className={styles.searchUser}>
+            {authentificationState.user?.username ?? authentificationState.user?.email}
+          </button>
+        }
 
-        <button className={styles.searchUser}>
-          <FontAwesomeIcon icon={faUser} className={styles.searchImg} />
-        </button>
+
 
       </div>
     </header>
