@@ -1,6 +1,6 @@
 
 import { ResponseErrors } from "../../Types/ResponseError1"
-import { GetUserName, Login } from "../../Services/authServise"
+import { GetUserName, Login, RefreshTocken } from "../../Services/authServise"
 import { AppThunk } from ".."
 import { Tokens, UserInfoType } from "./types"
 import { access } from "fs"
@@ -33,12 +33,6 @@ const authFail = (errors: ResponseErrors | string) => {
     }
 }
 
-// const updateAccessTokenAction = (access) => {
-//     return {
-//         type: 'Update access'
-//     }
-// }
-
 export const loginAction = (email: string, password: string, cb?: () => void): AppThunk => {
     return (dispatch, getState) => {
         Login(email, password)
@@ -61,25 +55,27 @@ export const loginAction = (email: string, password: string, cb?: () => void): A
 
                 if (cb) {
                     cb()
-                }
-
-                //dispatch(getMeUserDataAction() )
-                //https://studapi.teachmeskills.by/auth/users/me/
-                //вызываем dispatch, кот. вызывает action для получения данных по пользователю (данные записать в отдельный state, сделать отдельный reducer по данным пользователя)
-
+                }              
             })
     }
 }
 
-// export const refreshAction = (): AppThunk => {
-//     return async (dispatch, getState) => {
-//         const tokens = getState().authentication.tokens?.refresh
-//         if (!refresh) {
-//             return
-//         }
+export const refreshTockenAction = (token:  string, cb?: () => void): AppThunk => {
+    return  (dispatch, getState) => {
+         RefreshTocken(token)
+            .then(response => {
+                if (!response ||  !response.ok) {
+                    return dispatch({
+                        type: AuthActionName.LOGOUT
+                    })
+                }
 
-//         refreshFetch(tokens.refresh)
+                dispatch(authSuccess({
+                    access: response.data,
+                    refresh: token
+                } as Tokens))
+     
+            })
+    }
+}
 
-//         dispatch(updateAccessTokenAction())
-//     }
-// }

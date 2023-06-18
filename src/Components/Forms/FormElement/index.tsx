@@ -20,6 +20,7 @@ function FormElement(props: FormElementType): JSX.Element {
     if (props.component == 'TextArea') {
         input = <textarea
             name={props.name}
+            onChange={props.onChangeFunction}
             // value={props.value}
             placeholder={props.placeholder} />
     }

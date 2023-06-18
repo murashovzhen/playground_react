@@ -23,18 +23,18 @@ export const AuthReducer = (
         case AuthActionName.AUTH_FAIL:
             return {
                 isAuthenticated: false,
-                errors: action.payload as (ResponseErrors)
+                errors: action.payload as (ResponseErrors)            
             }
         case AuthActionName.LOGOUT:
             return {
-                isAuthenticated: false,
-                tokens: undefined
+                isAuthenticated: false
             }
         case AuthActionName.SET_USER_INFO:
             return {
-                isAuthenticated: true,
+                ...state, 
                 user: action.payload as (UserInfoType)
-            }
+              }
+            
         default:
             return state
     }

@@ -6,6 +6,6 @@ export type FormElementType = {
     value?: string
     name?: string
     component?: string
-    onChangeFunction?: React.ChangeEventHandler<HTMLInputElement>
+    onChangeFunction?: React.ChangeEventHandler<HTMLElement>
     error?: string | undefined
 }
