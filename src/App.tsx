@@ -3,12 +3,13 @@ import Layout from './Components/Layout'
 import Post from "./Components/Forms/PostPage";
 import SingIn from "./Components/Forms/SingInPage";
 import SingUp from "./Components/Forms/SingUpPage";
-import RegistrationConfirmation from "./Components/Forms/RegistrationConfirmationPage";
+import RegistrationConfirmation from "./Components/Forms/SingUpConfirmationPage";
 import Success from "./Components/Forms/SuccessPage";
 import Home from "./Components/PostsIndex";
 import { ActivatePage } from "./Components/Forms/ActivatePage/ActivatePage";
 import AddPost from './Components/Forms/AddPostPage';
 import SearchPosts from './Components/PostsSearch/index';
+import { RoutesConstants } from './Constants/Routes';
 
 const App = () => {
   return (

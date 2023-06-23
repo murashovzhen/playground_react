@@ -20,7 +20,7 @@ function FormElement(props: FormElementType): JSX.Element {
     if (props.component == 'TextArea') {
         input = <textarea
             name={props.name}
-            // value={props.value}
+            onChange={props.onChangeFunction}
             placeholder={props.placeholder} />
     }
 
@@ -28,7 +28,6 @@ function FormElement(props: FormElementType): JSX.Element {
         <div className={styles.formElement}>
             <label>{props.label}</label>
             {input}
-
             {props.error && (
                 <label className={styles.errors}>
                     {props.error}

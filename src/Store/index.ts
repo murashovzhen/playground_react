@@ -3,6 +3,7 @@ import { RegistrationReducer } from "./registration/reducer";
 import { Action, combineReducers } from "redux"
 import { AuthReducer } from "./authentication/reducer";
 import { PostReducer } from "./post/reducer";
+//import jwtRefreshMiddleware from '../midddleware/jwtRefreshMiddleware';
 
 const rootReduser = combineReducers({
     registration: RegistrationReducer,
@@ -12,6 +13,7 @@ const rootReduser = combineReducers({
 
 export const store = configureStore({
     reducer: rootReduser,
+    //middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(jwtRefreshMiddleware),
 })
 
 export type AppState = ReturnType<typeof store.getState>

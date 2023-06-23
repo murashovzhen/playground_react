@@ -1,17 +1,12 @@
-import { Console } from "console";
-import { ResponseErrors } from "../../Types/ResponseError1";
-import { AuthActionName } from "./actions";
-import { AuthActionType, AuthUserState, Tokens, UserInfoType } from "./types";
+import { ResponseErrors } from '../../Types/ResponseError1';
+import { AuthActionName } from './actions';
+import { AuthActionType, AuthUserState, Tokens, UserInfoType } from './types';
 
 const initValue: AuthUserState = {
     isAuthenticated: false,
 }
 
-export const AuthReducer = (
-    state: AuthUserState = initValue,
-    action: AuthActionType
-): AuthUserState => {
-
+export const AuthReducer = (state: AuthUserState = initValue, action: AuthActionType): AuthUserState => {
     console.log(action.type);
     console.log(action.payload);
     switch (action.type) {
@@ -27,14 +22,14 @@ export const AuthReducer = (
             }
         case AuthActionName.LOGOUT:
             return {
-                isAuthenticated: false,
-                tokens: undefined
+                isAuthenticated: false
             }
         case AuthActionName.SET_USER_INFO:
             return {
-                isAuthenticated: true,
+                ...state,
                 user: action.payload as (UserInfoType)
             }
+
         default:
             return state
     }

@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from '../../../Store'
 import { creatPostAction } from '../../../Store/post/action'
 
-
 const AddPostPage = () => {
     const params = useParams()
     const [post, setPost] = useState<PostType>({} as PostType)

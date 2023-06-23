@@ -1,15 +1,13 @@
-
-import { ResponseErrors } from "../../Types/ResponseError1"
-import { GetUserName, Login } from "../../Services/authServise"
-import { AppThunk } from ".."
-import { Tokens, UserInfoType } from "./types"
-import { access } from "fs"
+import { ResponseErrors } from '../../Types/ResponseError1'
+import { GetUserName, Login, RefreshTocken } from '../../Services/authServise'
+import { AppThunk } from '..'
+import { Tokens, UserInfoType } from './types'
 
 export const AuthActionName = {
-    AUTH_SUCCESS: "AUTH_SUCCESS",
-    AUTH_FAIL: "AUTH_FAIL",
-    LOGOUT: "LOGOUT",
-    SET_USER_INFO: "SET_USER_INFO",
+    AUTH_SUCCESS: 'AUTH_SUCCESS',
+    AUTH_FAIL: 'AUTH_FAIL',
+    LOGOUT: 'LOGOUT',
+    SET_USER_INFO: 'SET_USER_INFO',
 } as const
 
 const authSuccess = (tokens: Tokens) => {
@@ -33,18 +31,12 @@ const authFail = (errors: ResponseErrors | string) => {
     }
 }
 
-// const updateAccessTokenAction = (access) => {
-//     return {
-//         type: 'Update access'
-//     }
-// }
-
 export const loginAction = (email: string, password: string, cb?: () => void): AppThunk => {
     return (dispatch, getState) => {
         Login(email, password)
             .then(response => {
                 if (!response) {
-                    return dispatch(authFail("Неизвестная ошибка"))
+                    return dispatch(authFail('Неизвестная ошибка'))
                 } else if (!response.ok) {
                     return dispatch(authFail(response.data))
                 }
@@ -58,28 +50,28 @@ export const loginAction = (email: string, password: string, cb?: () => void): A
                     }
                 })
 
-
                 if (cb) {
                     cb()
                 }
-
-                //dispatch(getMeUserDataAction() )
-                //https://studapi.teachmeskills.by/auth/users/me/
-                //вызываем dispatch, кот. вызывает action для получения данных по пользователю (данные записать в отдельный state, сделать отдельный reducer по данным пользователя)
-
             })
     }
 }
 
-// export const refreshAction = (): AppThunk => {
-//     return async (dispatch, getState) => {
-//         const tokens = getState().authentication.tokens?.refresh
-//         if (!refresh) {
-//             return
-//         }
+export const refreshTockenAction = (token: string, cb?: () => void): AppThunk => {
+    return (dispatch) => {
+        RefreshTocken(token)
+            .then(response => {
+                if (!response || !response.ok) {
+                    return dispatch({
+                        type: AuthActionName.LOGOUT
+                    })
+                }
 
-//         refreshFetch(tokens.refresh)
+                dispatch(authSuccess({
+                    access: response.data,
+                    refresh: token
+                } as Tokens))
 
-//         dispatch(updateAccessTokenAction())
-//     }
-// }
+            })
+    }
+}
