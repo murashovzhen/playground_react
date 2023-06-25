@@ -50,7 +50,7 @@ export const createPost = async (
     const formData = new FormData()
     formData.append('title', form.title)
     formData.append('text', form.text)
-    formData.append('discription', form.discription)
+    formData.append('discription', form.description)
     formData.append('lesson_num', form.lesson_number)
     formData.append('image', image)
 

@@ -1,7 +1,7 @@
 const authBaseUrl = 'https://studapi.teachmeskills.by/auth/';
 
 export const Registration = async (username: string, email: string, password: string) => {
-    const url = (`${authBaseUrl}users/authBaseUrl`)
+    const url = (`${authBaseUrl}users/`)
     const option = {
         method: 'POST',
         headers: {

@@ -1,8 +1,8 @@
 import globalStyles from '../../App.module.scss'
 import { Link } from 'react-router-dom';
 import styles from './styles.module.scss';
-import Card from '../Card';
-import cardStyles from '../Card/styles.module.scss';
+import Card from '../MainCard';
+import cardStyles from '../MainCard/styles.module.scss';
 import { Pager } from '../Paging';
 import { useSearchParams } from 'react-router-dom';
 import { AppDispatch, AppState, AppThunk } from '../../Store';
@@ -10,9 +10,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setListTypeValueAction, setPageValueAction, setSearchValueAction } from '../../Store/post/action';
 import { useEffect } from 'react';
 import { RoutesConstants } from '../../Constants/Routes';
-import { PostListType } from "../../Store/post/types";
+import { PostListType } from '../../Store/post/types';
 
-const Home = (props: { listType?: PostListType }) => {
+const HomePage = (props: { listType?: PostListType }) => {
   const dispatch = useDispatch<AppDispatch>()
   let [searchParams, setSearchParams] = useSearchParams()
   let currentPage = Number(searchParams.get('page')) || 1;
@@ -23,7 +23,7 @@ const Home = (props: { listType?: PostListType }) => {
 
   useEffect(() => {
     dispatch(setSearchValueAction(''));
-    dispatch(setListTypeValueAction(props?.listType ?? "allPosts"));
+    dispatch(setListTypeValueAction(props?.listType ?? 'allPosts'));
     dispatch(setPageValueAction(currentPage));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [currentPage, props.listType])
@@ -41,7 +41,7 @@ const Home = (props: { listType?: PostListType }) => {
       </h1>
       {authentificationState.isAuthenticated &&
         <nav className={styles.navigation}>
-          <Link className={[styles.navTabs, globalStyles.link].join(' ')} to="/">All</Link>
+          <Link className={[styles.navTabs, globalStyles.link].join(' ')} to='/'>All</Link>
           <Link className={[styles.navTabs, globalStyles.link].join(' ')} to={RoutesConstants.PostsMy}> My posts</Link>
         </nav>
       }
@@ -93,4 +93,4 @@ const Home = (props: { listType?: PostListType }) => {
   );
 };
 
-export default Home;
+export default HomePage;

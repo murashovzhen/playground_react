@@ -13,7 +13,7 @@ export type PostType = {
     views: number
     isPopular: boolean
     lesson_number: string
-    discription: string
+    description: string
 }
 
 export type PostPageType = {

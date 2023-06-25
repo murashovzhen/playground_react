@@ -5,22 +5,26 @@ import { PostType } from '../../../Types/Post'
 import { nameof } from 'ts-simple-nameof'
 import FormLayout from '../FormLayout'
 import genericStyles from '../../../App.module.scss'
+import styles from '../AddPostPage/styles.module.scss'
 import FormElement from '../FormElement'
 import FormButton from '../FormButton'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from '../../../Store'
 import { creatPostAction } from '../../../Store/post/action'
+import ImageUploading, { ImageListType } from 'react-images-uploading'
+import React from 'react'
 
 const AddPostPage = () => {
-    const params = useParams()
-    const [post, setPost] = useState<PostType>({} as PostType)
     const breadcrumbs = [<Link to="/" className={genericStyles.link}>Back to Home</Link>]
+
+    const params = useParams()
     const dispatch = useDispatch<AppDispatch>()
     const navigate = useNavigate()
+    const [post, setPost] = useState<PostType>({} as PostType)
 
     useEffect(() => {
-        if (!params.id) {
+        if (params.id != undefined) {
             getPost(params.id)
                 .then(post => setPost(post))
         }
@@ -32,17 +36,20 @@ const AddPostPage = () => {
             </Link>);
     }
 
-    const [image, setImage] = useState<File | string>('')
+    // const [image, setImage] = useState<File | string>('')
+    const [image, setImage] = React.useState<ImageListType>([]);
 
-    const [formErrors, setFormErrors] = useState<Partial<PostType>>({})
+    // const loadImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    //     const file = e.target.files?.[0]
+    //     if (file) {
+    //         setImage(file)
+    //     }
+    // }
 
-    const loadImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]
-
-        if (file) {
-            setImage(file)
-        }
-    }
+    const loadImageHandler = (imageList: ImageListType, addUpdateIndex?: number[]) => {
+        console.log(imageList, addUpdateIndex);
+        setImage(imageList);
+    };
 
     const onChangeFormElement = (e: ChangeEvent<HTMLInputElement>) => {
         setPost({
@@ -51,19 +58,20 @@ const AddPostPage = () => {
         })
     }
 
+    const [formErrors, setFormErrors] = useState<Partial<PostType>>({})
+
     const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
         setFormErrors({
             ...formErrors,
-            title: !post.title ? 'title is requed' : "",
-            lesson_number: !post.lesson_number ? 'lesson_number is requed' : "",
-            discription: !post.discription ? 'description is requed' : "",
-            text: !post.text ? 'text is requed' : "",
-            image: !image ? 'image is requed' : "",
+            title: !post.title ? 'title is requed' : '',
+            lesson_number: !post.lesson_number ? 'lesson_number is requed' : '',
+            description: !post.description ? 'description is requed' : '',
+            text: !post.text ? 'text is requed' : '',
+            image: !image ? 'image is requed' : '',
         })
 
-        if (post.title && post.lesson_number && post.discription && post.text && image) {
+        if (post.title && post.lesson_number && post.description && post.text && image) {
 
             dispatch(creatPostAction(post, image as File, () => navigate('/')))
         }
@@ -73,7 +81,7 @@ const AddPostPage = () => {
         <FormLayout
             title={params.id != undefined ? 'Edit Post' : 'Add Post'}
             breadcrumbs={breadcrumbs}>
-            <form onSubmit={onFormSubmit} >
+            <form className={styles.singInBox} onSubmit={onFormSubmit} >
                 <div className={genericStyles.row}>
                     <div className={genericStyles.col_12}>
                         <FormElement
@@ -88,8 +96,8 @@ const AddPostPage = () => {
                         />
                     </div>
                 </div>
-                <div className={genericStyles.row}>
-                    <div className={[genericStyles.col_lg_6, genericStyles.col_md_12, , genericStyles.col_sm_12].join(' ')}>
+                <div className={styles.buttonBox}>
+                    <div className={[genericStyles.col_lg_5, genericStyles.col_md_12, , genericStyles.col_sm_12].join(' ')}>
                         <FormElement
                             type={'number'}
                             value={post.lesson_number}
@@ -101,7 +109,7 @@ const AddPostPage = () => {
                             error={formErrors.lesson_number}
                         />
                     </div>
-                    <div className={[genericStyles.col_lg_6, genericStyles.col_md_12, , genericStyles.col_sm_12].join(' ')}>
+                    {/* <div className={[genericStyles.col_lg_5, genericStyles.col_md_12, , genericStyles.col_sm_12].join(' ')}>
                         <FormElement
                             type={'file'}
                             value={post.image}
@@ -112,19 +120,58 @@ const AddPostPage = () => {
                             onChangeFunction={loadImageHandler}
                             error={formErrors.image}
                         />
-                    </div>
+                    </div> */}
+                    <ImageUploading
+                        multiple
+                        value={image}
+                        onChange={loadImageHandler}
+                        maxNumber={2}
+                        dataURLKey="data_url"
+                    >
+                        {({
+                            imageList,
+                            onImageUpload,
+                            onImageRemoveAll,
+                            onImageUpdate,
+                            onImageRemove,
+                            isDragging,
+                            dragProps,
+                        }) => (
+                            <div className="upload__image-wrapper">
+                                <button
+                                    style={isDragging ? { color: 'red' } : undefined}
+                                    onClick={onImageUpload}
+                                    {...dragProps}
+                                >
+                                    Click or Drop here
+                                </button>
+                                &nbsp;
+                                <button onClick={onImageRemoveAll}>Remove all images</button>
+                                {imageList.map((image, index) => (
+                                    <div key={index} className="image-item">
+                                        <img src={image['data_url']} alt="" width="100" />
+                                        <div className="image-item__btn-wrapper">
+                                            <button onClick={() => onImageUpdate(index)}>Update</button>
+                                            <button onClick={() => onImageRemove(index)}>Remove</button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </ImageUploading>
+
                 </div>
                 <div className={genericStyles.row}>
                     <div className={genericStyles.col_12}>
                         <FormElement
                             type={'text'}
-                            value={post.discription}
+                            value={post.description}
                             placeholder={'Add your text'}
                             label={'Description'}
-                            name={nameof<PostType>(p => p.discription)}
+                            name={nameof<PostType>(p => p.description)}
                             component='TextArea'
                             onChangeFunction={onChangeFormElement}
-                            error={formErrors.discription}
+                            error={formErrors.description}
                         />
                     </div>
                 </div>
@@ -142,33 +189,23 @@ const AddPostPage = () => {
                         />
                     </div>
                 </div>
-                <div>
-                    <a href="#" className={genericStyles.link}> Delete post</a>
-                </div>
-                <div className={genericStyles.row}>
-                    <div className={genericStyles.col_1}>
+                <div className={styles.buttonBox}>
+                    <div>
                         <FormButton
-                            text="Cancel"
+                            text='Cancel'
                             type='button'
                         />
                     </div>
-                    <div className={genericStyles.col_12}>
-                        <FormButton
-                            text="Cancel"
-                            type='button'
-                        />
-                    </div>
-                </div>
-                <div className={genericStyles.row}>
-                    <div className={genericStyles.col_12}>
-                        <FormButton
-                            text="Add post"
-                        />
+                    <div >
+                        <div>
+                            <FormButton
+                                text='Add post'
+                            />
+                        </div>
                     </div>
                 </div>
             </form>
         </FormLayout >
     )
 }
-
 export default AddPostPage

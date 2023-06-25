@@ -1,4 +1,4 @@
-.sing_in_box {
+.singInBox {
     margin-top: 24px;
 
     @media (min-width: 768px) and (max-width: 1024px) {
@@ -14,35 +14,32 @@
     }
 
     a {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 20px;
-        color: #313037;
-        padding-top: 16px;
-        text-align: left;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150px;
+        color: red;
         text-decoration: none;
 
-        // &:hover {
-        //         color: #2231AA;
-        //         cursor: pointer;
-        //         transition: all 0.25s;
-        //     }
-        // }
-    }
-
-    span {
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 20px;
-        color: #8D8E97;
-        padding-top: 24px;
-
-        a {
-            color: #2231aa;
+        @media (max-width: 767px) {
+            & {
+                line-height: 24px;
+            }
         }
     }
 }
 
 .errors {
     color: #ff0000;
+}
+
+.buttonBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (max-width: 767px) {
+        & {
+            flex-direction: column;
+        }
+    }
 }

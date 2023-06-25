@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from './styles.module.scss';
-import cardStyles from '../Card/styles.module.scss';
+import cardStyles from '../MainCard/styles.module.scss';
 import { Pager } from '../Paging';
 import { useSearchParams } from 'react-router-dom';
 import { AppDispatch, AppState, AppThunk } from '../../Store';
@@ -8,16 +8,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setPageValueAction } from '../../Store/post/action';
 import { useEffect } from 'react';
 import genericStyles from '../../App.module.scss'
-import CardSearch from "../cardSearch";
+import SearchPost from "../SearchPost";
 
-const SearchPosts = () => {
+const SearchPostsPage = () => {
   const dispatch = useDispatch<AppDispatch>()
   let [searchParams, setSearchParams] = useSearchParams()
   let currentPage = Number(searchParams.get('page')) || 1;
 
   const posts = useSelector((state: AppState) => state.post)
 
-  const searchValue = useSelector((state: AppState) => state.search.search)
+  const searchValue = useSelector((state: AppState) => state.post.search)
 
   useEffect(() => {
     dispatch(setPageValueAction(currentPage));
@@ -44,7 +44,7 @@ const SearchPosts = () => {
       </div>
       {
         posts.results.map(post => (
-          <CardSearch post={post} cardstyle={cardStyles.smallCard} />
+          <SearchPost post={post} cardstyle={cardStyles.smallCard} />
         ))
       }
       <div>
@@ -54,4 +54,4 @@ const SearchPosts = () => {
   );
 };
 
-export default SearchPosts;
+export default SearchPostsPage;

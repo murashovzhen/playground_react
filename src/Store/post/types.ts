@@ -19,3 +19,7 @@ export type PostActionType = {
   type: string;
   payload?: PostPageType | ResponseErrors | string | number | PostListType
 }
+
+export type SearchStateType = {
+  search: string
+}
