@@ -22,7 +22,9 @@ export const getAllPosts = async (
     if (postListType === "myPosts") {
         endpoint = `${endpoint}/my_posts/`
     }
-
+    if (postListType === "allPosts") {
+        offset = offset-1;
+    }
     let headers = {};
     if (token) {
         headers = {

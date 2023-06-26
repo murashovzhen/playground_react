@@ -73,7 +73,7 @@ const AddPostPage = () => {
 
         if (post.title && post.lesson_number && post.description && post.text && image) {
 
-            dispatch(creatPostAction(post, image as File, () => navigate('/')))
+            dispatch(creatPostAction(post, image[0].file as File, () => navigate('/')))
         }
     }
 
@@ -96,8 +96,8 @@ const AddPostPage = () => {
                         />
                     </div>
                 </div>
-                <div className={styles.buttonBox}>
-                    <div className={[genericStyles.col_lg_5, genericStyles.col_md_12, , genericStyles.col_sm_12].join(' ')}>
+                <div className={genericStyles.row}>
+                    <div className={[genericStyles.col_lg_6, genericStyles.col_md_12, , genericStyles.col_sm_12].join(' ')}>
                         <FormElement
                             type={'number'}
                             value={post.lesson_number}
@@ -109,23 +109,12 @@ const AddPostPage = () => {
                             error={formErrors.lesson_number}
                         />
                     </div>
-                    {/* <div className={[genericStyles.col_lg_5, genericStyles.col_md_12, , genericStyles.col_sm_12].join(' ')}>
-                        <FormElement
-                            type={'file'}
-                            value={post.image}
-                            placeholder={'filename.jpeg'}
-                            label={'Image'}
-                            name={nameof<PostType>(p => p.image)}
-                            component='TextBox'
-                            onChangeFunction={loadImageHandler}
-                            error={formErrors.image}
-                        />
-                    </div> */}
+                    <div className={[genericStyles.col_lg_6, genericStyles.col_md_12, , genericStyles.col_sm_12].join(' ')}>
                     <ImageUploading
-                        multiple
+                        multiple={false}
                         value={image}
                         onChange={loadImageHandler}
-                        maxNumber={2}
+                        maxNumber={1}
                         dataURLKey="data_url"
                     >
                         {({
@@ -139,26 +128,27 @@ const AddPostPage = () => {
                         }) => (
                             <div className="upload__image-wrapper">
                                 <button
+                                type='button'
                                     style={isDragging ? { color: 'red' } : undefined}
                                     onClick={onImageUpload}
                                     {...dragProps}
                                 >
                                     Click or Drop here
                                 </button>
-                                &nbsp;
-                                <button onClick={onImageRemoveAll}>Remove all images</button>
                                 {imageList.map((image, index) => (
                                     <div key={index} className="image-item">
                                         <img src={image['data_url']} alt="" width="100" />
                                         <div className="image-item__btn-wrapper">
-                                            <button onClick={() => onImageUpdate(index)}>Update</button>
-                                            <button onClick={() => onImageRemove(index)}>Remove</button>
+                                            <button  type='button' onClick={() => onImageUpdate(index)}>Update</button>
+                                            <button  type='button' onClick={() => onImageRemove(index)}>Remove</button>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         )}
                     </ImageUploading>
+                    </div>
+                   
 
                 </div>
                 <div className={genericStyles.row}>

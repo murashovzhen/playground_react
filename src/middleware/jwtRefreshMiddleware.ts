@@ -1,30 +1,25 @@
 import { refreshTockenAction } from '../Store/authentication/actions';
 import { Action, Dispatch, Middleware, Store, applyMiddleware } from "redux";
 import { AppState } from '../Store';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 
 export const jwtRefreshMiddleware: Middleware = (store) => (next) => (action) => {
-    if (typeof action === 'function') {
-        var authState = store.getState().authentication;
+    var authState = store.getState().authentication;
         if (authState.isAuthenticated) {
 
             if (authState.tokens.access) {
-                // const decoded = jwtDecode(authState.tokens.access) as JwtPayload;
+                 const decoded = jwtDecode(authState.tokens.access) as JwtPayload;
 
-
-                // store.dispatch<any>(refreshTockenAction(authState.tokens.refresh))
-                // .then(()=>{
-                //     return next(action);   
-                // })
+                 refreshTockenAction(authState.tokens.refresh);
+                 return next(action);   
+                 
 
                 // if (decoded && decoded.exp && decoded.exp - moment().unix() < 10) {
 
                 // }
             }
         }
-    }
-    return next(action);
-
-
+    return next(action);  
 };
 
 
