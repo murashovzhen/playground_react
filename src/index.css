@@ -37,4 +37,5 @@ code {
       rgba(0, 0, 0, 0.6),
       rgba(0, 0, 0, 0.0)),
     url('Content/img/background.png');
+    background-size: cover;
 }

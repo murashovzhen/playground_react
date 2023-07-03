@@ -12,7 +12,7 @@ const Header = () => {
 
 
     return (
-        <nav className="navbar navbar-dark bg-dark flex-grow-1 text-right">
+        <nav className="navbar navbar-dark bg-dark flex-grow-1 text-right position-fixed start-0 end-0">
 
             {!authentificationState.isAuthenticated &&
                 <Link to={RoutesConstants.SignIn} className="btn btn-primary float-end ms-auto flex-nowrap"> Sign In</Link>

@@ -14,7 +14,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import MenuContextProvider from './Helpers/menuContext';
 import { store, persistor } from './Store';
-import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
