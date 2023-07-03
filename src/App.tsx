@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './Pages/Layout';
+import SingIn from './Pages/signIn';
+import { RoutesConstants } from './Constants/RouteConstants';
+import SingUp from './Pages/singUpPage';
+import { ActivatePage } from './Pages/activate';
+import SignUpConfirmation from './Pages/singUpConfirmation';
+import ActivationSuccess from './Pages/activationSuccess';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path={RoutesConstants.Home} element={<Layout />}>
+        <Route path={RoutesConstants.SignIn} element={<SingIn />} />
+        <Route path={RoutesConstants.SignUp} element={<SingUp />} />
+        <Route path={RoutesConstants.SignUpConfirmation} element={<SignUpConfirmation />} />
+        <Route path={RoutesConstants.Activation} element={<ActivatePage />} />
+        <Route path={RoutesConstants.ActivationSuccess} element={<ActivationSuccess />} />
+      </Route>
+    </Routes>
   );
 }
 
