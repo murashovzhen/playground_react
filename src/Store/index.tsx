@@ -13,6 +13,7 @@ import {
     REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { FilmsReducer } from './film/reducer';
 
 const persistConfig = {
     key: 'root',
@@ -23,6 +24,7 @@ const persistConfig = {
 const rootReduser = combineReducers({
     authentication: AuthReducer,
     registration: RegistrationReducer,
+    films: FilmsReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReduser)

@@ -1,4 +1,4 @@
-import './App.css';
+import './App.module.scss';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Pages/Layout';
 import SingIn from './Pages/signIn';
@@ -7,11 +7,13 @@ import SingUp from './Pages/singUpPage';
 import { ActivatePage } from './Pages/activate';
 import SignUpConfirmation from './Pages/singUpConfirmation';
 import ActivationSuccess from './Pages/activationSuccess';
+import Films from './Pages/films';
 
 function App() {
   return (
     <Routes>
       <Route path={RoutesConstants.Home} element={<Layout />}>
+        <Route path={RoutesConstants.Home} element={<Films />} />
         <Route path={RoutesConstants.SignIn} element={<SingIn />} />
         <Route path={RoutesConstants.SignUp} element={<SingUp />} />
         <Route path={RoutesConstants.SignUpConfirmation} element={<SignUpConfirmation />} />
