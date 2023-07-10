@@ -18,7 +18,7 @@ export const loadFilmsAction = (): AppThunk => {
             state.filter.sortingField
         )
             .then(items => dispatch({
-                type: FilmActionName.LOAD_FILMS,
+                type: state.filter.page >1 ? FilmActionName.LOAD_MORE_FILMS : FilmActionName.LOAD_FILMS,
                 payload: items.data
             }))
     }

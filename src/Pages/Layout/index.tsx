@@ -8,9 +8,7 @@ const Layout = () => {
 
     <div className="bg-dark">
       <Header />
-      <div>  <div className={styles.content1}>
-        <Outlet />
-      </div></div>
+      <Outlet />
 
 
       {/* <AsideMenu />
