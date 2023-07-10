@@ -1,13 +1,11 @@
 import { AllFields, MovieDocsResponseDtoV13, MovieFields } from "@openmoviedb/kinopoiskdev_client"
 import { FilmListConstants } from "../../Constants/FilmListConstants"
-
 export const FilmActionName = {
     LOAD_FILMS: "LOAD_FILMS",
     SET_SEARCH_VALUE: "SET_SEARCH_VALUE",
-    CLEAR_SEARCH: "CLEAR_SEARCH"
+    CLEAR_SEARCH: "CLEAR_SEARCH",
+    LOAD_MORE_FILMS: "LOAD_MORE_FILMS"
 } as const
-
-
 
 export type FilmsSearchFilterType = {
     filmListType: string
@@ -19,18 +17,14 @@ export type FilmsSearchFilterType = {
     genres: string[] | undefined
     searchterm: string | undefined
     sortingField: AllFields<MovieFields> | undefined
-
 }
-
-
 export type FilmsPageType = {
     filter: FilmsSearchFilterType
     items: MovieDocsResponseDtoV13
 }
 
-
 const filtersInitialValue: FilmsSearchFilterType = {
-    page: 0,
+    page: 1,
     limit: 10,
     country: undefined,
     filmListType: FilmListConstants.Default,
@@ -39,7 +33,6 @@ const filtersInitialValue: FilmsSearchFilterType = {
     searchterm: undefined,
     sortingField: undefined,
     year: undefined
-
 }
 
 const initialValue: FilmsPageType = {
@@ -63,6 +56,18 @@ export const FilmsReducer = (state: FilmsPageType = initialValue, action: FilmAc
             return {
                 ...state,
                 items: (action.payload as MovieDocsResponseDtoV13),
+            }
+        case FilmActionName.LOAD_MORE_FILMS:
+            var data = (action.payload as MovieDocsResponseDtoV13)
+            return {
+                ...state,
+                items: {
+                    limit: data.limit,
+                    page: data.page,
+                    pages: data.pages,
+                    total: data.total,
+                    docs: [...state.items.docs, ...data.docs]
+                },
             }
         case FilmActionName.CLEAR_SEARCH:
             return {

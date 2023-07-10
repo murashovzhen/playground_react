@@ -1,13 +1,13 @@
-
-const apiTocken = "7341R46-0RBM1RF-NQSMYD2-HBVV0DQ"
+//const apiTocken = "7341R46-0RBM1RF-NQSMYD2-HBVV0DQ"
+const apiTocken = "95Z8FG4-FRWMZGT-K9ZZ0PC-P853D4V"
 
 import {
     KinopoiskDev,
     MovieQueryBuilder,
-    SPECIAL_VALUE,
-    SORT_TYPE,
-    MovieFields,
-    AllFields,
+        SPECIAL_VALUE,
+        SORT_TYPE,
+        MovieFields,
+        AllFields,
 } from '@openmoviedb/kinopoiskdev_client';
 
 const kp = new KinopoiskDev(apiTocken);
@@ -15,13 +15,11 @@ const kp = new KinopoiskDev(apiTocken);
 export const getFilm = async (id: number) => {
     return await kp.movie.getById(id);
 }
-
 export const getFilms = async (filmListType: string, page: number, limit: number, year: [number, number] | undefined,
     rating: [number, number] | undefined, country: string | undefined,
     genres: string[] | undefined, searchterm: string | undefined, sortingField: AllFields<MovieFields> | undefined) => {
     // Создаем билдер запросов для фильмов
     let queryBuilder = new MovieQueryBuilder();
-
     // Выбираем поля, которые мы хотим получить в ответе
     // Полный список полей можно посмотреть в документации
     // https://api.kinopoisk.dev/v1/documentation для метода /v1.3/movie
@@ -30,7 +28,6 @@ export const getFilms = async (filmListType: string, page: number, limit: number
         // Добавляем фильтр для поиска фильмов с постером
         .filterExact('poster.url', SPECIAL_VALUE.NOT_NULL)
         .paginate(page, limit);
-
     // Добавляем фильтр поиска по указанному диапазону года если он установлен
     if (year) {
         queryBuilder = queryBuilder.filterRange('year', year);
@@ -55,19 +52,17 @@ export const getFilms = async (filmListType: string, page: number, limit: number
         queryBuilder = queryBuilder.sort(sortingField, SORT_TYPE.DESC);
     }
     else {
-        queryBuilder = queryBuilder.sort('rating.kp', SORT_TYPE.DESC);
+        queryBuilder = queryBuilder.sort('year', SORT_TYPE.DESC);
     }
 
     return await kp.movie.getByFilters(queryBuilder.build());
 };
-
 // Получить все возможные жанры
 export const getGenres = async () => {
     return await kp.movie.getPossibleValuesByField(
         'genres.name',
     );
 };
-
 // Получить все возможные страны
 export const getCountries = async () => {
     return await kp.movie.getPossibleValuesByField(

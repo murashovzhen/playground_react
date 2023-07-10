@@ -6,13 +6,12 @@ import styles from './styles.module.scss';
 const Layout = () => {
   return (
 
-    <div className="bg-dark">
+    <div className={["bg-dark", styles.app].join(' ')}>
       <Header />
-      <div>  <div className={styles.content1}>
+      <div className={styles.content}>
         <Outlet />
-      </div></div>
-
-
+      </div>
+        
       {/* <AsideMenu />
       <Footer /> */}
     </div>
