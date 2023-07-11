@@ -4,6 +4,8 @@ import { AppDispatch, AppState } from '../../Store';
 import { changePageAction, loadFilmsAction } from '../../Store/film/actions';
 import FilmCard from '../../Components/filmCard';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import styles from './styles.module.scss';
+import { Col, Row } from 'react-bootstrap';
 
 function Films() {
     const dispatch = useDispatch<AppDispatch>()
@@ -17,9 +19,9 @@ function Films() {
     }, [])
 
     const filmsItems = films.items.docs ? films.items.docs.map((item) =>
-        <div className='col'>
+        <Col >
             <FilmCard film={item} key={item.id} />
-        </div>
+        </Col>
 
     ) : "";
 
@@ -28,7 +30,8 @@ function Films() {
     }
 
     return (
-        <div>  <InfiniteScroll
+        <div className={styles.films_container}>
+              <InfiniteScroll
             dataLength={films.items.docs.length} //This is important field to render the next data
             next={() => dispatch(changePageAction())}
             hasMore={true}
@@ -38,10 +41,11 @@ function Films() {
                     <b>Yay! You have seen it all</b>
                 </p>
             }>
-            <div className='row row-cols-sm-1 row-cols-md-2 row-cols-lg-5'>
+            <Row sm={1} md={2} lg={5}>
                 {filmsItems}
-            </div>
-        </InfiniteScroll></div>
+            </Row>
+        </InfiniteScroll>
+        </div>
     )
 }
 
