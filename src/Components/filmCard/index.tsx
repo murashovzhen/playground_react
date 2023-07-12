@@ -26,7 +26,7 @@ const FilmCard = (props: { film: MovieDtoV13 }) => {
             <Image className={styles.filmCardImg} src={props.film.poster?.previewUrl} alt="" />
            
             <span className={styles.filmCardTitle}>{props.film.name}</span>
-            <span className={styles.filmCardText}>{props.film.genres?.map(x => x.name)?.join(' • ')}</span>
+            <span className={styles.filmCardText}>{props.film.genres?.map(x =>x.name === undefined? "" : x.name.charAt(0).toUpperCase() + x.name.slice(1))?.join(' • ')}</span>
         </div>
     )
 }

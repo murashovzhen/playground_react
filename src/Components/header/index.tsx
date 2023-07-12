@@ -1,21 +1,23 @@
 
 import { RoutesConstants } from '../../Constants/RouteConstants'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { AppState } from '../../Store'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, AppState } from '../../Store'
 import styles from './styles.module.scss'
 import { Button, ButtonGroup, Offcanvas, ToggleButton, Form, CloseButton } from 'react-bootstrap'
-import { useState } from 'react'
+import { ChangeEvent, useCallback, useState } from 'react'
+import { setFilter } from '../../Store/film/actions'
 
 
 
 const Header = () => {
-
+    const dispatch = useDispatch<AppDispatch>()
     const authentificationState = useSelector((state: AppState) => state.authentication)
+    const filtersState = useSelector((state: AppState) => state.films)
+    const searchValue = useSelector((state: AppState) => filtersState.filter.searchterm ?? "")
 
     const [showFilters, setShowFilters] = useState(false);
     
-    const [searchValue, setSearchValue] = useState<string>("");
 
     const handleCloseFilters = () => setShowFilters(false);
     const handleShowFilters = () => setShowFilters(true);
@@ -23,10 +25,15 @@ const Header = () => {
     const handleClearButtonClick = () => 
     {
       handleCloseFilters();
-      setSearchValue("");
     };
 
-   
+    const handleSearchValueChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+      if(e.target.value){ 
+         
+          dispatch(setFilter({...filtersState.filter, searchterm : e.target.value}))
+          
+      }       
+  }, [])
 
 
     
@@ -36,7 +43,7 @@ const Header = () => {
     
         <nav className={[styles.header, "navbar text-right fixed-top "].join(' ')}>
          <Form className={[styles.search, "flex-grow-1"].join(' ')}>
-         <Form.Control type="text" placeholder="Фильмы и сериалы" onChange={(e) => { setSearchValue(e.target.value); }} onClick={handleCloseFilters} value={searchValue} />
+         <Form.Control type="text" placeholder="Фильмы и сериалы" onChange={handleSearchValueChange} onClick={handleCloseFilters} value={searchValue} />
          {searchValue ? 
               (<CloseButton  className={styles.clear_button}  onClick={handleClearButtonClick}> </CloseButton>) : 
               ( <Button className={styles.filter_button}  onClick={handleShowFilters} >
@@ -100,3 +107,7 @@ const Header = () => {
 }
 
 export default Header
+function dispatch(arg0: any) {
+  throw new Error('Function not implemented.')
+}
+
