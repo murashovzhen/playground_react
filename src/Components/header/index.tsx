@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { AppState } from '../../Store'
 import styles from './styles.module.scss'
-import { Button, ButtonGroup, Offcanvas, ToggleButton, Form } from 'react-bootstrap'
+import { Button, ButtonGroup, Offcanvas, ToggleButton, Form, CloseButton } from 'react-bootstrap'
 import { useState } from 'react'
 
 
@@ -14,34 +14,49 @@ const Header = () => {
     const authentificationState = useSelector((state: AppState) => state.authentication)
 
     const [showFilters, setShowFilters] = useState(false);
+    
+    const [searchValue, setSearchValue] = useState<string>("");
 
     const handleCloseFilters = () => setShowFilters(false);
     const handleShowFilters = () => setShowFilters(true);
 
-    const handleToggleTheme = () => {
-        if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
-            document.documentElement.setAttribute('data-bs-theme','light')
-        }
-        else {
-            document.documentElement.setAttribute('data-bs-theme','dark')
-        }
+    const handleClearButtonClick = () => 
+    {
+      handleCloseFilters();
+      setSearchValue("");
     };
 
-    return (
-<>
-        <nav className={[styles.header, "navbar  flex-grow-1 text-right position-fixed start-0 end-0"].join(' ')}>
-        <Button variant='dark' className="shadow" onClick={handleToggleTheme}>Toggle theme</Button>
+   
+
+
     
-     <Button variant="primary" onClick={handleShowFilters}>Launch</Button>
-            {!authentificationState.isAuthenticated &&
-                <Link to={RoutesConstants.SignIn} className="btn btn-primary float-end ms-auto flex-nowrap"> Sign In</Link>
+
+    return (
+    <>
+    
+        <nav className={[styles.header, "navbar d-flex flex-grow-1 text-right fixed-top start-0 end-0"].join(' ')}>
+         <Form className={[styles.search, "flex-grow-1"].join(' ')}>
+         <Form.Control type="text" placeholder="Фильмы и сериалы" onChange={(e) => { setSearchValue(e.target.value); }} onClick={handleCloseFilters} value={searchValue} />
+         {searchValue ? 
+              (<CloseButton  className={styles.clear_button}  onClick={handleClearButtonClick}> </CloseButton>) : 
+              ( <Button className={styles.filter_button}  onClick={handleShowFilters} >
+                 <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"  > <path  d="M5 6L19 6M10 12H19M14 18H19" stroke="#AFB2B6"
+              strokeWidth="2" strokeLinecap="round" /> </svg>
+                </Button>)}
+         </Form>
+         <div className=''>
+         {!authentificationState.isAuthenticated &&
+                <Link to={RoutesConstants.SignIn} className="btn btn-primary"> Sign In</Link>
+                
 
             }
             {authentificationState.isAuthenticated &&
-                <span className="float-end ms-auto flex-nowrap">
+                <span className="">
                     {authentificationState.user?.username ?? authentificationState.user?.email}
                 </span>
             }
+         </div>
+           
 
         </nav>
         <Offcanvas show={showFilters} onHide={handleCloseFilters} placement="end" >

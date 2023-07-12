@@ -52,7 +52,7 @@ export const getFilms = async (filmListType: string, page: number, limit: number
         queryBuilder = queryBuilder.sort(sortingField, SORT_TYPE.DESC);
     }
     else {
-        queryBuilder = queryBuilder.sort('year', SORT_TYPE.DESC);
+        queryBuilder = queryBuilder.sort('rating.kp', SORT_TYPE.DESC);
     }
 
     return await kp.movie.getByFilters(queryBuilder.build());

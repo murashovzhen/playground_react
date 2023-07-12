@@ -5,17 +5,12 @@ import styles from './styles.module.scss'
 
 //import AsideMenu from "../AsideMenu";
 
-const Layout = () => {
+const LayoutAuthorization = () => {
   return (
 
-    <div className={styles.main}>
-      <SideBar/>
-      <Header />      
-      <Outlet />
-      
-    </div>
+    <Outlet />
 
   );
 };
 
-export default Layout;
+export default LayoutAuthorization;
