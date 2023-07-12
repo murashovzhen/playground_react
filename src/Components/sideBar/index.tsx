@@ -16,11 +16,12 @@ const SideBar = () => {
       }
   };
 
-    
-
+  
     return (
-      <div className={[styles.sideBar, "d-none d-lg-flex flex-column flex-shrink-0 p-3 text-white position-fixed "].join(' ')} >
-      <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto  text-decoration-none">
+    
+      <div className={[styles.sideBar, "flex-column flex-shrink-0 p-3 text-white sticky-top "].join(' ')} >
+        
+        <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto  text-decoration-none">
         <svg className="bi me-2" width="40" height="32"></svg>
         <span className="fs-4">PIXEMA</span>
       </a>

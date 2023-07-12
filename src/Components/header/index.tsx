@@ -34,7 +34,7 @@ const Header = () => {
     return (
     <>
     
-        <nav className={[styles.header, "navbar d-flex flex-grow-1 text-right fixed-top start-0 end-0"].join(' ')}>
+        <nav className={[styles.header, "navbar text-right fixed-top "].join(' ')}>
          <Form className={[styles.search, "flex-grow-1"].join(' ')}>
          <Form.Control type="text" placeholder="Фильмы и сериалы" onChange={(e) => { setSearchValue(e.target.value); }} onClick={handleCloseFilters} value={searchValue} />
          {searchValue ? 

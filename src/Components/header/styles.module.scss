@@ -1,11 +1,17 @@
 .header{
-    padding-left: 18px;
+    padding-left: 60px;
     padding-top: 20px;
     padding-right: 60px;
     padding-bottom: 20px;
-    margin-left: 220px;
 }
 
+
+@media (min-width: 992px)
+{.header {
+    flex: 0 0 auto;
+    margin-left: 16.66666667%;
+}
+}
 
 .search {
     height: 56px;

@@ -2,18 +2,23 @@ import { Outlet } from "react-router-dom";
 import Header from "../../Components/header";
 import SideBar from "../../Components/sideBar";
 import styles from './styles.module.scss'
+import { Col, Container, Row } from "react-bootstrap";
 
 //import AsideMenu from "../AsideMenu";
 
 const Layout = () => {
   return (
 
-    <div className={styles.main}>
-      <SideBar/>
-      <Header />      
-      <Outlet />
+    <Container fluid={true} className="overflow-auto">
+      <Row className="">
+        
+        <Col sm="2" className="d-none d-lg-flex sticky-top"><SideBar/></Col>
+        <Col className="overflow-auto h-100"><Header/><Outlet /></Col>
+        
+      </Row>
       
-    </div>
+      
+    </Container>
 
   );
 };
