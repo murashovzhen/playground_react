@@ -1,10 +1,12 @@
-import { AllFields, MovieDocsResponseDtoV13, MovieFields } from "@openmoviedb/kinopoiskdev_client"
+import { AllFields, MovieDocsResponseDtoV13, MovieFields, PossibleValueDto } from "@openmoviedb/kinopoiskdev_client"
 import { FilmListConstants } from "../../Constants/FilmListConstants"
 export const FilmActionName = {
     LOAD_FILMS: "LOAD_FILMS",
     SET_SEARCH_VALUE: "SET_SEARCH_VALUE",
     CLEAR_SEARCH: "CLEAR_SEARCH",
-    LOAD_MORE_FILMS: "LOAD_MORE_FILMS"
+    LOAD_MORE_FILMS: "LOAD_MORE_FILMS",
+    LOAD_GENRES: "LOAD_GENRES",
+    LOAD_CONTRIES: "LOAD_CONTRIES",
 } as const
 
 export type FilmsSearchFilterType = {
@@ -21,6 +23,8 @@ export type FilmsSearchFilterType = {
 export type FilmsPageType = {
     filter: FilmsSearchFilterType
     items: MovieDocsResponseDtoV13
+    genres: PossibleValueDto[]
+    contries: PossibleValueDto[],
 }
 
 const filtersInitialValue: FilmsSearchFilterType = {
@@ -37,7 +41,9 @@ const filtersInitialValue: FilmsSearchFilterType = {
 
 const initialValue: FilmsPageType = {
     filter: filtersInitialValue,
-    items: {} as MovieDocsResponseDtoV13
+    items: {} as MovieDocsResponseDtoV13,
+    genres: [] as PossibleValueDto[],
+    contries: [] as PossibleValueDto[],
 }
 
 export type FilmActionType = {
@@ -56,6 +62,16 @@ export const FilmsReducer = (state: FilmsPageType = initialValue, action: FilmAc
             return {
                 ...state,
                 items: (action.payload as MovieDocsResponseDtoV13),
+            }
+        case FilmActionName.LOAD_CONTRIES:
+            return {
+                ...state,
+                contries: (action.payload as PossibleValueDto[]),
+            }
+        case FilmActionName.LOAD_GENRES:
+            return {
+                ...state,
+                genres: (action.payload as PossibleValueDto[]),
             }
         case FilmActionName.LOAD_MORE_FILMS:
             var data = (action.payload as MovieDocsResponseDtoV13)

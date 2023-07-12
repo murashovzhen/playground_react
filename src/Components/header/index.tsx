@@ -4,17 +4,27 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '../../Store'
 import styles from './styles.module.scss'
-import { Button, ButtonGroup, Offcanvas, ToggleButton, Form, CloseButton } from 'react-bootstrap'
-import { ChangeEvent, useCallback, useState } from 'react'
-import { setFilter } from '../../Store/film/actions'
+import { Button, ButtonGroup, Offcanvas, ToggleButton, Form, CloseButton, ToggleButtonGroup } from 'react-bootstrap'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
+import { loadDictionaries, setFilter } from '../../Store/film/actions'
+import { AllFields, MovieFields } from '@openmoviedb/kinopoiskdev_client'
 
 
 
 const Header = () => {
-    const dispatch = useDispatch<AppDispatch>()
+   const dispatch = useDispatch<AppDispatch>()
+    useEffect(() => {
+    dispatch(loadDictionaries());
+   }, [])
+
+   
     const authentificationState = useSelector((state: AppState) => state.authentication)
     const filtersState = useSelector((state: AppState) => state.films)
     const searchValue = useSelector((state: AppState) => filtersState.filter.searchterm ?? "")
+    const genres = useSelector((state: AppState) => filtersState.genres ?? "")
+    const contries = useSelector((state: AppState) => filtersState.contries ?? "")
+   
+
 
     const [showFilters, setShowFilters] = useState(false);
     
@@ -34,7 +44,13 @@ const Header = () => {
           
       }       
   }, [])
-
+  const handleSortValueChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    if(e.target.value){ 
+       
+        dispatch(setFilter({...filtersState.filter, sortingField : e.target.value as AllFields<MovieFields>}))
+        
+    }       
+}, [])
 
     
 
@@ -74,25 +90,31 @@ const Header = () => {
         <Form>
       <Form.Group className="mb-3" controlId="sortby">
         <Form.Label>Sort by</Form.Label>
-        <ButtonGroup className="mb-2">
-        <ToggleButton value="rating" key="rating" id="radio-rating" type="radio"  variant="secondary"  name="sortby" >
-            Rating
-          </ToggleButton>
-          <ToggleButton value="rating" key="year" id="radio-year" type="radio"  variant="secondary"  name="sortby" >
-          Year
-          </ToggleButton>
-      </ButtonGroup>
+        <ToggleButtonGroup  type="radio" name="options" defaultValue={filtersState.filter.sortingField} >
+        <ToggleButton id="tbg-radio-1" value="rating.kp" variant="secondary" onChange={handleSortValueChange}>
+        Rating
+        </ToggleButton>
+        <ToggleButton id="tbg-radio-2" value="year" variant="secondary" onChange={handleSortValueChange}>
+        Year
+        </ToggleButton>
+      </ToggleButtonGroup>
+       
        
       </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label>Full or short movie name</Form.Label>
-        <Form.Control placeholder="Your text" />
+        <Form.Control placeholder="Your text" onChange={handleSearchValueChange} value={searchValue} />
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Genre</Form.Label>
-        <Form.Select >
-          <option>Disabled select</option>
+        <Form.Select size="lg" value={filtersState.filter.genres} multiple>
+        <option  disabled={true} ></option>
+        {genres.map((genre, idx) => (
+           <option value={genre.name} >{genre.name}</option>
+          
+        ))}
+         
         </Form.Select>
       </Form.Group>
       <Button variant="primary" type="submit">
@@ -107,7 +129,5 @@ const Header = () => {
 }
 
 export default Header
-function dispatch(arg0: any) {
-  throw new Error('Function not implemented.')
-}
+
 

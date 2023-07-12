@@ -1,9 +1,9 @@
-//const apiTocken = "7341R46-0RBM1RF-NQSMYD2-HBVV0DQ"
+const apiTocken = "7341R46-0RBM1RF-NQSMYD2-HBVV0DQ"
 //const apiTocken = "95Z8FG4-FRWMZGT-K9ZZ0PC-P853D4V"
 //const apiTocken = "ZYSDF6P-RR1M2M0-NPCSTNE-XRB3CDR"
  
 
-export const apiTocken = 'NCBXJG2-F1C47T5-NQE7THH-5C5ZDD7'
+//export const apiTocken = 'NCBXJG2-F1C47T5-NQE7THH-5C5ZDD7'
 import {
     KinopoiskDev,
     MovieQueryBuilder,
@@ -27,7 +27,7 @@ export const getFilms = async (filmListType: string, page: number, limit: number
     // Полный список полей можно посмотреть в документации
     // https://api.kinopoisk.dev/v1/documentation для метода /v1.3/movie
     queryBuilder = queryBuilder
-        .select(['id', 'name', 'rating', 'poster', 'genres'])
+        .select(['id', 'name', 'rating', 'poster', 'genres', 'year'])
         // Добавляем фильтр для поиска фильмов с постером
         .filterExact('poster.url', SPECIAL_VALUE.NOT_NULL)
         .paginate(page, limit);

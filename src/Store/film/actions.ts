@@ -1,5 +1,5 @@
 import { AppThunk } from ".."
-import { getFilms } from "../../Services/filmServise"
+import { getCountries, getFilms } from "../../Services/filmServise"
 import { FilmActionName, FilmsSearchFilterType } from "./reducer"
 
 
@@ -21,6 +21,24 @@ export const loadFilmsAction = (): AppThunk => {
                 type: state.filter.page > 1 ? FilmActionName.LOAD_MORE_FILMS : FilmActionName.LOAD_FILMS,
                 payload: items.data
             }))
+    }
+}
+
+export const loadDictionaries = (): AppThunk => {
+    return (dispatch, getState) => {
+        if(getState().films.contries.length === 0){
+            getCountries().then(items => dispatch({
+                type: FilmActionName.LOAD_CONTRIES ,
+                payload: items.data
+            }))
+        }
+        if(getState().films.genres.length === 0){
+            getCountries().then(items => dispatch({
+                type: FilmActionName.LOAD_GENRES ,
+                payload: items.data
+            }))
+        }
+       
     }
 }
 

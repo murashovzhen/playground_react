@@ -23,6 +23,7 @@ const FilmCard = (props: { film: MovieDtoV13 }) => {
     return (
         <div className={styles.filmCard}>
             <Badge bg={badgeStyle} className={styles.badge}>{props.film.rating?.kp === undefined ? "" : Number((props.film.rating?.kp).toFixed(1))}</Badge>
+            <Badge bg="secondary" className={styles.badgeYear}>{props.film.year === undefined ? "" : props.film.year}</Badge>
             <Image className={styles.filmCardImg} src={props.film.poster?.previewUrl} alt="" />
            
             <span className={styles.filmCardTitle}>{props.film.name}</span>
