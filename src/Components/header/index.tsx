@@ -5,10 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '../../Store'
 import styles from './styles.module.scss'
 import { Button, ButtonGroup, Offcanvas, ToggleButton, Form, CloseButton, ToggleButtonGroup } from 'react-bootstrap'
-import { ChangeEvent, useCallback, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 import { loadDictionaries, setFilter } from '../../Store/film/actions'
 import { AllFields, MovieFields } from '@openmoviedb/kinopoiskdev_client'
-
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated';
+import { MultiValue, ActionMeta, InputActionMeta } from 'react-select'
+import { FilmsSearchFilterType } from '../../Store/film/reducer'
 
 
 const Header = () => {
@@ -20,10 +23,11 @@ const Header = () => {
    
     const authentificationState = useSelector((state: AppState) => state.authentication)
     const filtersState = useSelector((state: AppState) => state.films)
-    const searchValue = useSelector((state: AppState) => filtersState.filter.searchterm ?? "")
+    const [form, setForm] = useState<FilmsSearchFilterType>(filtersState.filter)
+   
     const genres = useSelector((state: AppState) => filtersState.genres ?? "")
     const contries = useSelector((state: AppState) => filtersState.contries ?? "")
-   
+    const animatedComponents = makeAnimated();
 
 
     const [showFilters, setShowFilters] = useState(false);
@@ -40,27 +44,33 @@ const Header = () => {
     const handleSearchValueChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
       if(e.target.value){ 
          
-          dispatch(setFilter({...filtersState.filter, searchterm : e.target.value}))
+        setForm({...form, searchterm : e.target.value})
           
       }       
   }, [])
   const handleSortValueChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     if(e.target.value){ 
-       
-        dispatch(setFilter({...filtersState.filter, sortingField : e.target.value as AllFields<MovieFields>}))
+      setForm({...form, sortingField : e.target.value as AllFields<MovieFields>})
         
     }       
 }, [])
 
-    
+const handleGenresChange = (newValue: MultiValue<string>, actionMeta: ActionMeta<string>) => {
+  setForm({...form, genres : newValue.map(x=>x.value)})
+       
+};
+const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault()
+  dispatch(setFilter(form))
+} 
 
     return (
     <>
     
         <nav className={[styles.header, "navbar text-right fixed-top "].join(' ')}>
          <Form className={[styles.search, "flex-grow-1"].join(' ')}>
-         <Form.Control type="text" placeholder="Фильмы и сериалы" onChange={handleSearchValueChange} onClick={handleCloseFilters} value={searchValue} />
-         {searchValue ? 
+         <Form.Control type="text" placeholder="Фильмы и сериалы" onChange={handleSearchValueChange} onClick={handleCloseFilters} value={filtersState.filter.searchterm } />
+         {filtersState.filter.searchterm ? 
               (<CloseButton  className={styles.clear_button}  onClick={handleClearButtonClick}> </CloseButton>) : 
               ( <Button className={styles.filter_button}  onClick={handleShowFilters} >
                  <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"  > <path  d="M5 6L19 6M10 12H19M14 18H19" stroke="#AFB2B6"
@@ -84,13 +94,13 @@ const Header = () => {
         </nav>
         <Offcanvas show={showFilters} onHide={handleCloseFilters} placement="end" >
         <Offcanvas.Header closeButton >
-          <Offcanvas.Title>Filters</Offcanvas.Title>
+          <Offcanvas.Title>Фильтры</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body >
-        <Form>
+        <Form onSubmit={onFormSubmit}>
       <Form.Group className="mb-3" controlId="sortby">
-        <Form.Label>Sort by</Form.Label>
-        <ToggleButtonGroup  type="radio" name="options" defaultValue={filtersState.filter.sortingField} >
+        <Form.Label>Сортировка по</Form.Label>
+        <ToggleButtonGroup  type="radio" name="options" defaultValue={form.sortingField} >
         <ToggleButton id="tbg-radio-1" value="rating.kp" variant="secondary" onChange={handleSortValueChange}>
         Rating
         </ToggleButton>
@@ -103,19 +113,16 @@ const Header = () => {
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label>Full or short movie name</Form.Label>
-        <Form.Control placeholder="Your text" onChange={handleSearchValueChange} value={searchValue} />
+        <Form.Label>Фильм ли сериал</Form.Label>
+        <Form.Control placeholder="Your text" onChange={handleSearchValueChange} value={form.searchterm } />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Genre</Form.Label>
-        <Form.Select size="lg" value={filtersState.filter.genres} multiple>
-        <option  disabled={true} ></option>
-        {genres.map((genre, idx) => (
-           <option value={genre.name} >{genre.name}</option>
-          
-        ))}
-         
-        </Form.Select>
+        <Form.Label>Жанр</Form.Label>
+        <Select closeMenuOnSelect={false} components={animatedComponents} defaultValue={form.genres}
+                onChange={handleGenresChange}
+                isMulti={true} options={genres.map((genre, idx) => ({value: genre.name, label: genre.name}))}  />
+        
+       
       </Form.Group>
       <Button variant="primary" type="submit">
         Show results

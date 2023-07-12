@@ -1,5 +1,5 @@
 import { AppThunk } from ".."
-import { getCountries, getFilms } from "../../Services/filmServise"
+import { getCountries, getFilms, getGenres } from "../../Services/filmServise"
 import { FilmActionName, FilmsSearchFilterType } from "./reducer"
 
 
@@ -33,7 +33,7 @@ export const loadDictionaries = (): AppThunk => {
             }))
         }
         if(getState().films.genres.length === 0){
-            getCountries().then(items => dispatch({
+            getGenres().then(items => dispatch({
                 type: FilmActionName.LOAD_GENRES ,
                 payload: items.data
             }))
