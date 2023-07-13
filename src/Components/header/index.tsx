@@ -50,25 +50,26 @@ const Header = () => {
     };
     const handleShowFilters = () => setShowFilters(true);
 
-    const handleCloseBudge =(name: string, value: any) => {
-      //dispatch(setFilter(form))
+    const handleCloseBudge = (name: string, value: any) => {     
       setForm({...form, [name]: value})
-   };
+      dispatch(setFilter({...filtersState.filter, [name]: value}))
+    }
    
     const handleClearFilters = useCallback(() => {
     
       setForm(filtersInitialValue)
-      dispatch(setFilter(form))
+      dispatch(setFilter(filtersInitialValue))
       setShowFilters(false)
                  
    },[]);
 
     const handleSearchValueChangeHeader = (e: ChangeEvent<HTMLInputElement>) => {
+      setForm({...form, searchterm : e.target.value.trim() === '' ? undefined : e.target.value})
        dispatch(setFilter({...filtersState.filter, searchterm : e.target.value}))             
     };
    
   const handleSearchValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setForm({...form, searchterm : e.target.value})   
+    setForm({...form, searchterm : e.target.value.trim() === '' ? undefined : e.target.value})   
          
   };
 
@@ -111,7 +112,7 @@ const Header = () => {
         <nav className={[styles.header, "fixed-top "].join(' ')}>
           <div className='navbar text-right '>
           <Form className={[styles.search, "flex-grow-1"].join(' ')}>
-         <Form.Control type="text" placeholder="Фильмы и сериалы" onChange={handleSearchValueChangeHeader} onClick={handleCloseFilters} value={filtersState.filter.searchterm } />
+         <Form.Control type="text" placeholder="Фильмы и сериалы" onChange={handleSearchValueChangeHeader} onClick={handleCloseFilters} value={form.searchterm } />
         
              <Button className={styles.filter_button}  onClick={handleShowFilters} >
              <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"  > <path  d="M5 6L19 6M10 12H19M14 18H19" stroke="#AFB2B6"
