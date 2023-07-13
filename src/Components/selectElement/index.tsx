@@ -1,97 +1,109 @@
 
-import { useState } from 'react';
-import { FormControl, InputGroup } from 'react-bootstrap';
-import { Range, getTrackBackground } from 'react-range';
+import { ActionMeta, MultiValue } from 'react-select';
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated';
+
+export type SelectOptionType = {
+  value: string;
+  label: string;
+};
 
 
-const RangeElement = (rangeProps: {value:[number,number], min:number, max:number, step:number, roundeCount: number, onChange: (values: [number, number]) => void}) => {
-    const [values, setValues] = useState(rangeProps.value);
-     
+
+
+
+
+const SelectElement = (props: { options:SelectOptionType[], value:SelectOptionType[], 
+  onChange: (newValue: MultiValue<SelectOptionType>, actionMeta: ActionMeta<SelectOptionType>) => void }) => {
+  const animatedComponents = makeAnimated();
+
+     //https://react-select.com/styles
+     //https://github.com/JedWatson/react-select/issues/2345
     return (
-      <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexWrap: 'wrap'
-      }}
-    >
-       <output id="output">
-       <InputGroup >
-           <FormControl className='p-2 text-center' type='text' readOnly value={values[0].toFixed(rangeProps.roundeCount)}></FormControl>
-          <span className="input-group-text">-</span>
-          <FormControl className='p-2 text-center' type='text' readOnly value={values[1].toFixed(rangeProps.roundeCount)}></FormControl>
-        </InputGroup>
-       
-      </output>
-    <Range
-        step={rangeProps.step}
-        min={rangeProps.min}
-        max={rangeProps.max}
-        values={values}
-        onChange={(values) => {
-          rangeProps.onChange([values[0], values[1]]);
-          setValues([values[0], values[1]]);
-        }}
-        renderTrack={({ props, children }) => (
-          <div
-            onMouseDown={props.onMouseDown}
-            onTouchStart={props.onTouchStart}
-            style={{
-              ...props.style,
-              height: '36px',
-              display: 'flex',
-              width: '100%'
-            }}
-          >
-            <div
-              ref={props.ref}
-              style={{
-                height: '5px',
-                width: '100%',
-                borderRadius: '4px',
-                background: getTrackBackground({
-                  values,                
-                  colors: ["#323537", "#7b61ff", "#323537"],
-                  min: rangeProps.min,
-                  max: rangeProps.max,
-                }),
-                alignSelf: 'center'
-              }}
-            >
-              {children}
-            </div>
-          </div>
-        )}
-        renderThumb={({ props, isDragged }) => (
-          <div
-            {...props}
-            style={{
-              ...props.style,
-              height: '20px',
-              width: '20px',
-              borderRadius: '4px',
-              backgroundColor: '#7b61ff',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              
-            }}
-          >
-            <div
-              style={{
-                height: '5px',
-                width: '5px',
-                backgroundColor: isDragged ? '#548BF4' : '#CCC'
-              }}
-            />
-          </div>
-        )}
-      />
      
-    </div>
+        <Select  
+               closeMenuOnSelect={false}  defaultValue={props.value}
+               onChange={props.onChange}
+               isMulti={true} options={props.options}  
+               theme={(theme) => ({
+                ...theme,
+                
+                colors: {
+                  ...theme.colors,
+                  primary: "var(--bs-primary)",
+                  danger: "var(--bs-danger)",
+                },
+              })}
+                styles={{
+                  control: (provided, { isDisabled, isFocused }) => ({
+                    ...provided,
+                    backgroundColor: `var(--bs-body-bg)`,
+                    borderColor: `var(--bs-border-color)`,
+                    borderWidth: "var(--bs-border-width)",
+                    lineHeight: "1.5",
+                    fontSize: `1rem`,
+                    fontWeight: "400",
+                    padding: "0.375rem 0.375rem 0.375rem 0.75rem",
+                    minHeight: `42px`,
+                    ':hover': {
+                      borderColor: "var(--bs-select-focus-border-color)",
+                    },
+                  }),
+                  singleValue: ({marginLeft, marginRight, ...provided}, { isDisabled }) => ({
+                    ...provided,
+                    color: `var(--bs-select${isDisabled ? '-disabled' : ''}-color)`,
+                  }),
+                  valueContainer: (provided, state) => ({
+                    ...provided,
+                    padding: `3px`,
+                  }),
+                  dropdownIndicator: (provided, state) => ({
+                    height: "100%",
+                    width: "var(--bs-select-indicator-padding)",
+                    backgroundImage: "var(--bs-select-indicator)",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: `right var(--bs-select-padding-x) center`,
+                    backgroundSize: "var(--bs-select-bg-size)",			
+                  }),
+                  input: ({margin, paddingTop, paddingBottom, ...provided}, state) => ({
+                    ...provided
+                  }),
+                  option: (provided, state) => ({
+                    ...provided,
+                    margin: `2px`,
+                   
+                  }),
+                  menu: ({marginTop, ...provided}, state) => ({
+                    ...provided,
+                    backgroundColor: `var(--bs-body-bg)`,
+                  }),
+                  multiValue: (provided, state) => ({
+                    ...provided,
+                    margin: `2px`,
+                    
+                  }),
+                  clearIndicator: ({padding, ...provided}, state) => ({
+                    ...provided,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "100%",
+                    width: "var(--bs-select-indicator-padding)"
+                  }),
+                  multiValueLabel: ({padding, paddingLeft, fontSize, ...provided}, state) => ({
+                    ...provided,
+                    padding: `0 2px`,
+                    whiteSpace: "normal"
+                  }),
+                  indicatorSeparator:({padding, ...provided}, state) => ({
+                   display:"none"
+                  }),
+                }}/>
+        
     )
 }
 
-export default RangeElement
+export default SelectElement
+
+
 
 

@@ -8,18 +8,13 @@ import { Button, ButtonGroup, Offcanvas, ToggleButton, Form, CloseButton, Toggle
 import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 import { setFilter } from '../../Store/film/actions'
 import { AllFields, MovieFields } from '@openmoviedb/kinopoiskdev_client'
-import Select from 'react-select'
-import makeAnimated from 'react-select/animated';
+
 import { MultiValue, ActionMeta, InputActionMeta } from 'react-select'
 import { FilmsSearchFilterType, filtersInitialValue } from '../../Store/film/reducer'
 import { loadDictionaries } from '../../Store/dictionary/actions'
-import { Range } from 'react-range';
 import RangeElement from '../rangeElement'
+import SelectElement, { SelectOptionType } from '../selectElement'
 
-type SelectOptionType = {
-  value: string;
-  label: string;
-};
 
 const Header = () => {
    const dispatch = useDispatch<AppDispatch>()
@@ -37,8 +32,7 @@ const Header = () => {
    
     const genres = useSelector((state: AppState) => dictionariesState.genres ?? "")
     const contries = useSelector((state: AppState) => dictionariesState.contries ?? "")
-    const animatedComponents = makeAnimated();
-
+   
 
     const [showFilters, setShowFilters] = useState(false);
     
@@ -194,13 +188,11 @@ const Header = () => {
         
        
       </Form.Group>
+      
       <Form.Group className="mb-3">
         <Form.Label>Жанр</Form.Label>
-        <Select  
-                closeMenuOnSelect={false} components={animatedComponents} defaultValue={form.genres.map((genre, idx) => ({value: genre, label: genre} as SelectOptionType))}
-                onChange={handleGenresChange}
-                isMulti={true} options={genres.map((genre, idx) => ({value: genre.name, label: genre.name} as SelectOptionType))}  />
-        
+       <SelectElement onChange={handleGenresChange} options={genres.map((genre, idx) => ({value: genre.name, label: genre.name} as SelectOptionType))}
+                      value={form.genres.map((genre, idx) => ({value: genre, label: genre} as SelectOptionType))}></SelectElement>
        
       </Form.Group>
      
