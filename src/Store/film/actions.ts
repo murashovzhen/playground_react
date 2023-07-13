@@ -24,29 +24,12 @@ export const loadFilmsAction = (): AppThunk => {
     }
 }
 
-export const loadDictionaries = (): AppThunk => {
-    return (dispatch, getState) => {
-        if(getState().films.contries.length === 0){
-            getCountries().then(items => dispatch({
-                type: FilmActionName.LOAD_CONTRIES ,
-                payload: items.data
-            }))
-        }
-        if(getState().films.genres.length === 0){
-            getGenres().then(items => dispatch({
-                type: FilmActionName.LOAD_GENRES ,
-                payload: items.data
-            }))
-        }
-       
-    }
-}
 
-export const setFilter = (filter: FilmsSearchFilterType): AppThunk => {
+export const setFilter = (filter: FilmsSearchFilterType | undefined): AppThunk => {
     return (dispatch, getState) => {
         dispatch({
             type:  FilmActionName.SET_SEARCH_VALUE,
-            payload: {
+            payload: filter === undefined ? undefined: {
                 ...filter,
                 page: 1,
             }
@@ -54,6 +37,8 @@ export const setFilter = (filter: FilmsSearchFilterType): AppThunk => {
         dispatch(loadFilmsAction())
     }
 }
+
+
 
 export const changePageAction = (): AppThunk => {
     return (dispatch, getState) => {

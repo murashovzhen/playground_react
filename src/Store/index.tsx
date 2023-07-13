@@ -14,17 +14,19 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { FilmsReducer } from './film/reducer';
+import { DictionaryReducer } from './dictionary/reducer';
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['authentication']
+    whitelist: ['authentication', 'dictionaries']
 }
 
 const rootReduser = combineReducers({
     authentication: AuthReducer,
     registration: RegistrationReducer,
     films: FilmsReducer,
+    dictionaries: DictionaryReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReduser)

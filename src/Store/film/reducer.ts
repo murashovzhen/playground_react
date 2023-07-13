@@ -5,45 +5,39 @@ export const FilmActionName = {
     SET_SEARCH_VALUE: "SET_SEARCH_VALUE",
     CLEAR_SEARCH: "CLEAR_SEARCH",
     LOAD_MORE_FILMS: "LOAD_MORE_FILMS",
-    LOAD_GENRES: "LOAD_GENRES",
-    LOAD_CONTRIES: "LOAD_CONTRIES",
 } as const
 
 export type FilmsSearchFilterType = {
     filmListType: string
     page: number
     limit: number
-    year: [number, number] | undefined
-    rating: [number, number] | undefined
+    year: [number, number]
+    rating: [number, number]
     country: string | undefined
-    genres: string[] | undefined
+    genres: string[]
     searchterm: string | undefined
     sortingField: AllFields<MovieFields> | undefined
 }
 export type FilmsPageType = {
     filter: FilmsSearchFilterType
     items: MovieDocsResponseDtoV13
-    genres: PossibleValueDto[]
-    contries: PossibleValueDto[],
 }
 
-const filtersInitialValue: FilmsSearchFilterType = {
+export const filtersInitialValue: FilmsSearchFilterType = {
     page: 1,
     limit: 10,
     country: undefined,
     filmListType: FilmListConstants.Default,
-    genres: undefined,
-    rating: undefined,
+    genres: [],
+    rating: [0,10],
     searchterm: undefined,
-    sortingField: undefined,
-    year: undefined
+    sortingField: 'rating.kp',
+    year: [new Date().getFullYear(),new Date().getFullYear()],
 }
 
 const initialValue: FilmsPageType = {
     filter: filtersInitialValue,
-    items: {} as MovieDocsResponseDtoV13,
-    genres: [] as PossibleValueDto[],
-    contries: [] as PossibleValueDto[],
+    items: {} as MovieDocsResponseDtoV13   
 }
 
 export type FilmActionType = {
@@ -56,23 +50,13 @@ export const FilmsReducer = (state: FilmsPageType = initialValue, action: FilmAc
         case FilmActionName.SET_SEARCH_VALUE:
             return {
                 ...state,
-                filter: action.payload as FilmsSearchFilterType
+                filter: action.payload === undefined ? filtersInitialValue : action.payload as FilmsSearchFilterType
             }
         case FilmActionName.LOAD_FILMS:
             return {
                 ...state,
                 items: (action.payload as MovieDocsResponseDtoV13),
-            }
-        case FilmActionName.LOAD_CONTRIES:
-            return {
-                ...state,
-                contries: (action.payload as PossibleValueDto[]),
-            }
-        case FilmActionName.LOAD_GENRES:
-            return {
-                ...state,
-                genres: (action.payload as PossibleValueDto[]),
-            }
+            }      
         case FilmActionName.LOAD_MORE_FILMS:
             var data = (action.payload as MovieDocsResponseDtoV13)
             return {
@@ -85,10 +69,7 @@ export const FilmsReducer = (state: FilmsPageType = initialValue, action: FilmAc
                     docs: [...state.items.docs, ...data.docs]
                 },
             }
-        case FilmActionName.CLEAR_SEARCH:
-            return {
-                ...initialValue
-            }
+       
         default:
             return state
     }
