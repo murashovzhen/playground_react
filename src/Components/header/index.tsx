@@ -165,25 +165,25 @@ const Header = () => {
         <Form onSubmit={onFormSubmit}>
       <Form.Group className="mb-3" controlId="sortby">
         <Form.Label>Сортировка по</Form.Label>
+        <Row>
         <ToggleButtonGroup  type="radio" name="options" defaultValue={form.sortingField} >
-        <ToggleButton id="tbg-radio-1" value="rating.kp" variant="secondary" onChange={handleSortValueChange}>
+        <ToggleButton id="tbg-radio-1" className='p-2 w-50' value="rating.kp" variant="secondary" onChange={handleSortValueChange}>
         Rating
         </ToggleButton>
-        <ToggleButton id="tbg-radio-2" value="year" variant="secondary" onChange={handleSortValueChange}>
+        <ToggleButton id="tbg-radio-2" className='p-2 w-50' value="year" variant="secondary" onChange={handleSortValueChange}>
         Year
         </ToggleButton>
       </ToggleButtonGroup>
-       
-       
+        </Row>
       </Form.Group>
-
+ <hr/>
       <Form.Group className="mb-3">
         <Form.Label>Фильм или сериал</Form.Label>
-        <Form.Control placeholder="Фильм или сериал" onChange={handleSearchValueChange} value={form.searchterm } />
+        <Form.Control className='p-2' placeholder="Фильм или сериал" onChange={handleSearchValueChange} value={form.searchterm } />
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Страна</Form.Label>
-        <Form.Select  
+        <Form.Select  className='p-2'
                 placeholder='Выберете страну'
                 value={form.country}
                 onChange={handleContryChange}

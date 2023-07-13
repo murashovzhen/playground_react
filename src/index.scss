@@ -32,3 +32,16 @@ code {
     url('Content/img/background.png');
     background-size: cover;
 }
+
+
+.btn-primary {
+ 
+  background-color: #7b61ff;
+  border-color: #917cff;
+}
+
+.btn-primary:hover {
+ 
+  background-color: #917cff;
+  border-color: #7b61ff;
+}
