@@ -1,6 +1,6 @@
 
 import { RoutesConstants } from '../../Constants/RouteConstants'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '../../Store'
 import styles from './styles.module.scss'
@@ -22,7 +22,7 @@ const Header = () => {
     dispatch(loadDictionaries());
    }, [])
 
-   
+   const navigate = useNavigate();
  
    
     const authentificationState = useSelector((state: AppState) => state.authentication)
@@ -47,19 +47,23 @@ const Header = () => {
     const handleCloseBudge = (name: string, value: any) => {     
       setForm({...form, [name]: value})
       dispatch(setFilter({...filtersState.filter, [name]: value}))
+      navigate(RoutesConstants.Home);
     }
    
     const handleClearFilters = useCallback(() => {
-    
+      
       setForm(filtersInitialValue)
       dispatch(setFilter(filtersInitialValue))
       setShowFilters(false)
+      navigate(RoutesConstants.Home);
                  
    },[]);
 
     const handleSearchValueChangeHeader = (e: ChangeEvent<HTMLInputElement>) => {
+    
       setForm({...form, searchterm : e.target.value.trim() === '' ? undefined : e.target.value})
-       dispatch(setFilter({...filtersState.filter, searchterm : e.target.value}))             
+       dispatch(setFilter({...filtersState.filter, searchterm : e.target.value}))        
+       navigate(RoutesConstants.Home);     
     };
    
   const handleSearchValueChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -95,6 +99,7 @@ const Header = () => {
        e.preventDefault()       
        dispatch(setFilter(form))
        setShowFilters(false)
+       navigate(RoutesConstants.Home);
      } 
 
 

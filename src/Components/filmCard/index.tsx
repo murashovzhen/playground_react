@@ -1,6 +1,8 @@
 import { MovieDtoV13 } from '@openmoviedb/kinopoiskdev_client'
 import styles from '../filmCard/styles.module.scss'
 import { Badge, Image  } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
+import { RoutesConstants } from '../../Constants/RouteConstants';
 
 
 const FilmCard = (props: { film: MovieDtoV13 }) => {
@@ -26,7 +28,7 @@ const FilmCard = (props: { film: MovieDtoV13 }) => {
             <Badge bg="secondary" className={styles.badgeYear}>{props.film.year === undefined ? "" : props.film.year}</Badge>
             <Image className={styles.filmCardImg} src={props.film.poster?.previewUrl} alt="" />
            
-            <span className={styles.filmCardTitle}>{props.film.name}</span>
+            <Link to={`${RoutesConstants.Film}/${props.film.id}`}><span className={styles.filmCardTitle}>{props.film.name}</span></Link>
             <span className={styles.filmCardText}>{props.film.genres?.map(x =>x.name === undefined? "" : x.name.charAt(0).toUpperCase() + x.name.slice(1))?.join(' • ')}</span>
         </div>
     )
